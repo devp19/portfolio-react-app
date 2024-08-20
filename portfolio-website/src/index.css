@@ -140,6 +140,10 @@ body {
     font-size: 120px;
   }
 
+  .supporting:hover{
+    font-size: 20px;
+  }
+
   .port{
     margin-right: 100px;
   }
