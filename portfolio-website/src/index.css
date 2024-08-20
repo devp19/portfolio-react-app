@@ -136,6 +136,10 @@ body {
     font-size: 80px;
   }
 
+  .title:hover{
+    font-size: 120px;
+  }
+
   .port{
     margin-right: 100px;
   }
