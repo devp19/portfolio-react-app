@@ -1,6 +1,7 @@
 *{
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overflow-y: visible;
   
 }
 
@@ -84,6 +85,8 @@ body {
   background: none;
   border-radius: 100px;
   transition: 0.5s;
+  color: rgb(17, 17, 17);
+  border: 1px solid black;
 }
 
 .custom-btn:hover {
@@ -126,10 +129,6 @@ body {
   .title{
     font-size: 120px; 
     line-height: 120px;
-  }
-
-  .title:hover{
-    font-size: 130px;
   }
 
   .title-2 {
