@@ -29,7 +29,7 @@ function Home() {
             </div>
 
             <div id="about-section" ref={aboutSectionRef} className="regular-bg pt-4">
-                <div className="border full separator">
+                <div className="border separator">
                     <div className="row justify-content-center">
                         <div className="col-md-3 offset-md-1">
                             <img id="portrait-img" className="img-fluid" src={Portrait} alt="Portrait" />
@@ -61,7 +61,7 @@ function Home() {
                                     <div className="para-text pt-4">
                                         <span className="bold">Grade-Point Average</span>
                                         <br /><br />
-                                        <div className="custom">
+                                        <div className="custom pb-4">
                                             3.89
                                         </div>
                                     </div>
