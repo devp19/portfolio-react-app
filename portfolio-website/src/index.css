@@ -11,6 +11,28 @@
   background-position: center;
 }
 
+.icon {
+  color: #1a1a1a;
+  transition: 0.5s;
+}
+
+.icon:hover {
+  color: #acacac;
+}
+
+/* Change the background color of the modal content */
+.modal-content {
+  color: white;
+  background-color: #f9efc8 /* Change this to your desired background color */
+}
+
+.fixed-bottom-left {
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  left: 20px; /* Adjust as needed */
+  z-index: 1050; /* Ensure it’s above other content */
+  font-family: Mis;
+}
 
 
 body {
@@ -123,7 +145,24 @@ body {
   margin-top: -30px;
 }
 
+.title-3 {
+  font-size: 50px;
+  background: none;
+  font-family: Mis;
+}
 
+.right-border {
+  border-right: 1px solid rgb(52, 52, 52);
+}
+
+.mb-3 {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.bottom-border {
+  border-bottom: 1px solid rgb(52, 52, 52) ;
+}
 
 @media (max-width: 768px) {
   .title{
