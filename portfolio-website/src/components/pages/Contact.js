@@ -1,6 +1,26 @@
 import React, { forwardRef } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 const Contact = forwardRef((props, ref) => {
+    const navigate = useNavigate();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const myForm = event.target;
+    const formData = new FormData(myForm);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => console.log("Form successfully submitted"))
+      .catch((error) => alert(error));
+
+    navigate("/success");
+  };
+  
     return (
         <section ref={ref}>
             <div id="contact-section" className="regular-bg pt-4">
@@ -14,7 +34,8 @@ const Contact = forwardRef((props, ref) => {
 
                 <div className="row justify-content-center">
                     <div className="col-md-6 pt-4">
-                        <form name="contact" method="post" data-netlify="true" action="/success/">
+                        <form name="contact" method="post" data-netlify="true" action="/src/Components/Pages/Success.js"
+      onSubmit={handleSubmit}>
                             <input type="hidden" name="form-name" value="contact"/>
 
                             <div className="mb-3">
