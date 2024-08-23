@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
+
 const Contact = forwardRef((props, ref) => {
-
-
     return (
         <section ref={ref}>
             <div id="contact-section" className="regular-bg pt-4">
@@ -15,9 +14,8 @@ const Contact = forwardRef((props, ref) => {
 
                 <div className="row justify-content-center">
                     <div className="col-md-6 pt-4">
-                        <form  name="contact" method="post" data-netlify="true" action="/success/">
-                        
-                        <input type="hidden" name="form-name" value="contact"/>
+                        <form name="contact" method="post" data-netlify="true" action="/success/">
+                            <input type="hidden" name="form-name" value="contact"/>
 
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label supporting">Name</label>
@@ -39,14 +37,11 @@ const Contact = forwardRef((props, ref) => {
                         </form>
                     </div>
                 </div>
-                <div className="separator pt-4">
-                </div>
-                <div className="separator pt-4">
-                </div>
-                <div className="separator pt-4">
-                </div>
+                <div className="separator pt-4"></div>
+                <div className="separator pt-4"></div>
+                <div className="separator pt-4"></div>
 
-                <div className=" border para text-center">
+                <div className="border para text-center">
                     <div className="pt-4">© 2024 Copyright: Dev Patel</div>
                 </div>
             </div>
