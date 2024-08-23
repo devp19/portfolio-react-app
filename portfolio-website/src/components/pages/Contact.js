@@ -15,13 +15,10 @@ const Contact = forwardRef((props, ref) => {
 
                 <div className="row justify-content-center">
                     <div className="col-md-6 pt-4">
-                        <form  name="contact" method="post" data-netlify="true" onSubmit="submit" data-netlify-honeypot="bot-field">
+                        <form  name="contact" method="post" data-netlify="true" onSubmit="submit">
+                        
+                        <input type="hidden" name="form-name" value="contact"/>
 
-                            <input type="hidden" name="form-name" value="contact"/>
-
-                            <div hidden>
-                                <input name='bot-field' />
-                            </div>
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label supporting">Name</label>
                                 <input type="text" name="name" className="form-control" required />

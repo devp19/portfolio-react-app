@@ -41,6 +41,24 @@
 
       
     -->
-    <form name='contact' netlify netlify-honeypot="bot-field" hidden></form>
-  </body>
+    <form  name="contact" netlify netlify-honeypot="bot-field" hidden>
+    
+      <div className="mb-3">
+          <label htmlFor="name" className="form-label supporting">Name</label>
+          <input type="text" name="name"/>
+      </div>
+
+      <div className="mb-3">
+          <label htmlFor="email" className="form-label supporting">Email address</label>
+          <input type="email" name="email"/>
+          <div id="emailHelp" className="form-text">I'll never share your email with anyone else.</div>
+      </div>
+
+      <div className="mb-3">
+          <label htmlFor="message" className="form-label supporting">Message</label>
+          <textarea name="message"></textarea>
+      </div>
+
+      <button type="submit" className="custom-btn">Submit</button>
+  </form>  </body>
 </html>
