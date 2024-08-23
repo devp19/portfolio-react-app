@@ -24,7 +24,7 @@ const Projects = forwardRef((props, ref) => {
                                 <br /><br />
                                 • Projected to save over $10,000 in financial resources towards NFT-digital creations by leveraging the DALL-E ecosystem.
                                 <br /><br />
-                                ↓ <a href="https://github.com/devp19/NEAR-Fantasy" target='_blank'>
+                                ↓ <a href="https://github.com/devp19/NEAR-Fantasy" target='_blank' rel="noreferrer">
                                     <button className="custom-btn">View on GitHub ↗︎</button>
                                 </a>
                             </div>
@@ -62,7 +62,7 @@ const Projects = forwardRef((props, ref) => {
                                 <br /><br />
                                 • Ranked 2nd in the best open-source project category at SerenityHacks.
                                 <br /><br />
-                                ↓ <a href="https://github.com/devp19/MyBuddy" target='_blank'>
+                                ↓ <a href="https://github.com/devp19/MyBuddy" target='_blank' rel="noreferrer">
                                     <button className="custom-btn">View on GitHub ↗︎</button>
                                 </a>
                             </div>
@@ -100,7 +100,7 @@ const Projects = forwardRef((props, ref) => {
                                 <br /><br />
                                 • Developed a Python script to work simultaneously with the bot for real-time data.
                                 <br /><br />
-                                ↓ <a href="https://github.com/devp19/StockEye" target='_blank'>
+                                ↓ <a href="https://github.com/devp19/StockEye" target='_blank' rel="noreferrer">
                                     <button className="custom-btn">View on GitHub ↗︎</button>
                                 </a>
                             </div>
