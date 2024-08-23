@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default function Home(){
-    return(
-
+export default function Success() {
+    return (
         <div>
             <div className="background">
                 <div className='row'>
@@ -16,5 +15,4 @@ export default function Home(){
             </div>
         </div>
     );
-
 }
