@@ -15,7 +15,7 @@ const Contact = forwardRef((props, ref) => {
 
                 <div className="row justify-content-center">
                     <div className="col-md-6 pt-4">
-                        <form  netlify>
+                        <form  name="contact" method="POST" data-netlify="true">
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label supporting">Name</label>
                                 <input type="text" name="name" className="form-control" required />
