@@ -54,7 +54,7 @@ function Home() {
                         <div className="col-md-5 left-sep">
                             <h2 className="title-2">About Me</h2>
                             <div className="para-text">
-                                I'm a 19-year-old Computer Science student, currently attending Toronto Metropolitan University for my honors Bachelor of Science degree!
+                                I'm a 19-year-old Computer Science student, currently attending Toronto Metropolitan University for my honours Bachelor of Science degree!
 
                                 <br /><br />
                                 A small backstory → I was first introduced to programming in Grade 6 and have since fallen in love with programming and the realm of technology! I started off by working on Robots, whether that was through FLL tournaments or even VEX Robotics. I often held a lead-programmer role for autonomous challenges, and that's what influenced my decision to choose Computer Science as my post-secondary career path!
