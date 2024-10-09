@@ -2,7 +2,7 @@
   scroll-behavior: smooth;
   overflow-x: hidden;
   overflow-y: visible;
-  
+  cursor: url("./components/images/icons8-cursor.svg"), auto;  
 }
 
 .background {

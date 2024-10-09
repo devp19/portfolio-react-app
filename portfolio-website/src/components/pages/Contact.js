@@ -62,9 +62,11 @@ const Contact = forwardRef((props, ref) => {
                 <div className="separator pt-4"></div>
                 <div className="separator pt-4"></div>
 
-                <div className="border para text-center">
+                <div className="para text-center">
                     <div className="pt-4">© 2024 Copyright: Dev Patel</div>
                 </div>
+                <div className="separator pt-4"></div>
+
             </div>
         </section>
     );
