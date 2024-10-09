@@ -72,7 +72,7 @@ const Projects = forwardRef((props, ref) => {
                                         <span className="bold">Therapeutic Similarity Of</span>
                                         <br /><br />
                                         <div className="custom">
-                                            95%
+                                            92%
                                         </div>
                                     </div>
                                 </div>
