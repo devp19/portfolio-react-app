@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import Portrait from '../images/port3.png';
 import Projects from './Projects'
 import Contact from './Contact'
+import ResDex from './ResDex'
 
 function Home() {
     const aboutSectionRef = useRef(null);   
@@ -92,7 +93,7 @@ function Home() {
             </div>
 
             
-
+            <ResDex />
             <Projects ref={projectSectionRef} />
             <Contact ref={contactSectionRef} />
 
