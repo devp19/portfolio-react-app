@@ -98,6 +98,17 @@ body {
   height: 100vh;
 }
 
+.svg{
+  text-decoration: none;
+  color: #1a1a1a;
+  margin: 20px;
+  transition: 0.5s;
+}
+
+.svg:hover{
+  transform: translateY(-10px);
+}
+
 .custom-btn {
   padding-left: 10px;
   padding-right: 10px;
