@@ -18,7 +18,7 @@ const ResDex = forwardRef((props, ref) => {
                         {/* Project I */}
                         <div className='row'>
                             <div className='col-md-6 mx-auto'>
-                            <img className='img-fluid' src={ResDexImg} style={{borderRadius: '20px'}}></img>
+                            <img className='img-fluid' src={ResDexImg} alt='resdex-banner' style={{borderRadius: '20px'}}></img>
                             </div>
                         </div>
                         <div className="col-md-8 left-sep pt-4">
