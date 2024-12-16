@@ -8,8 +8,8 @@ const ResDex = forwardRef((props, ref) => {
                 <div className="border separator">
                     <div className="row justify-content-center">
                         <div className="col-md-8 justify-content-center">
-                            <div className="title-2 text-center">ResDex <img src={ResDexLogo} alt='resdex logo' height={50}/>
-                            
+                            <div className="title-2 text-center bottom-border"> &gt; ResDex <img src={ResDexLogo} alt='resdex logo' height={50}/>
+                             <span style={{marginLeft: '20px'}}>&lt;</span>
                             </div>
                         </div>
                     </div>
@@ -17,9 +17,9 @@ const ResDex = forwardRef((props, ref) => {
                     <div className="row justify-content-center left-sep">
                         {/* Project I */}
                         <div className='row'>
-                            <div className='col-md-6 mx-auto'>
+                            {/* <div className='col-md-6 mx-auto'>
                             <img className='img-fluid' src={ResDexImg} alt='resdex-banner' style={{borderRadius: '20px'}}></img>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="col-md-8 left-sep pt-4">
                         <div className="para-text">
@@ -30,7 +30,7 @@ const ResDex = forwardRef((props, ref) => {
                             <div className="title-3">What is ResDex?</div>
                             <div className="para-text">
                                 
-                            ResDex is a student-friendly, accessible research paper “publishing” platform that gives students the opportunity to stand out among millions, review and edit papers, and connect with PHD level researchers. Designed to foster a collaborative academic community, ResDex allows users to showcase their research, achievements, and certifications in a dynamic online portfolio.
+                            ResDex is a student-friendly, accessible research paper “publishing” platform that gives students the opportunity to stand out among millions, review and edit papers, and connect with pHD level researchers. Designed to foster a collaborative academic community, ResDex allows users to showcase their research, achievements, and certifications in a dynamic online portfolio.
                             <br /><br />
 By engaging in peer and expert reviews, students can refine their work, gain valuable feedback, and build meaningful connections with academics and professionals in their field.
                                 <br /><br />

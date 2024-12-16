@@ -4,10 +4,10 @@ const Projects = forwardRef((props, ref) => {
     return (
         <section ref={ref}>
             <div id="projects-section" className="regular-bg pt-4">
-                <div className="border separator">
+                <div className="separator">
                     <div className="row justify-content-center">
-                        <div className="col-md-8 justify-content-center border">
-                            <div className="title-2 text-center">Projects</div>
+                        <div className="col-md-8 justify-content-center">
+                            <div className="title-2 text-center bottom-border">Projects</div>
                         </div>
                     </div>
 

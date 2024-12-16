@@ -35,7 +35,7 @@ function Home() {
         <div>
             <div className="background">
                 <div className='row'>
-                    <div className="col-md border full center-container">
+                    <div className="col-md full center-container">
                         <div className="centered-text">
                             <h5 className="supporting">Hello! I'm</h5>
                             <h2 className="title">Dev Patel</h2>
@@ -60,7 +60,7 @@ function Home() {
             </div>
 
             <div id="about-section" ref={aboutSectionRef} className="regular-bg pt-4">
-                <div className="border separator">
+                <div className="separator">
                     <div className="row justify-content-center">
                         <div className="col-md-3 offset-md-1">
                             <img id="portrait-img" className="img-fluid" src={Portrait} alt="Portrait" />

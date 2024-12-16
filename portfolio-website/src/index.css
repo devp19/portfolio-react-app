@@ -76,6 +76,11 @@ body {
   transition: 0.5s ease-out;
 }
 
+.supporting-2 {
+  font-family: Mis;
+  transition: 0.5s ease-out;
+}
+
 .supporting:hover{
   font-size: 30px;
 }
