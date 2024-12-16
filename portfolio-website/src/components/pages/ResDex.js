@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import ResDexLogo from '../images/resdexlogo.png';
-import ResDexImg from '../images/resdex-img.png'
+
 const ResDex = forwardRef((props, ref) => {
     return (
         <section ref={ref}>
