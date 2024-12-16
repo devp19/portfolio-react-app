@@ -72,7 +72,7 @@ architecture to enhance scalability, enabling the handling of 1,500 additional r
   <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
   <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
 </svg></div>
-                            <div className="para-text">
+                            <div className="para-text pt-2">
                             <i style={{borderLeft: "3px solid black"}}><strong style={{marginLeft: '10px'}}>Generative AI Therapist –– SerenityHacks</strong></i>
                                 <br /><br />
 
@@ -115,7 +115,7 @@ prompt-engineering techniques to train and fine-tune the model for active listen
   <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
 </svg></div>
             
-                            <div className="para-text pt-4">
+                            <div className="para-text pt-2">
                             <i style={{borderLeft: "3px solid black"}}><strong style={{marginLeft: '10px'}}>Fantasy-Sports Prototype on the NEAR Blockchain</strong></i>
                                 <br /><br />
 
@@ -153,19 +153,16 @@ methods by leveraging the DALL-E ecosystem for instant cost-free additions to th
 
 
                         <div className="col-md-5 left-sep bottom-border pt-4">
-                            <div className="title-3">IV. StockEye <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <div className="title-3">StockEye <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
   <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
   <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
 </svg></div>
-                            <div className="para-text">
-                                <strong>Stock Market Portfolio Tracker Discord Bot</strong>
+                            <div className="para-text pt-2">
+                            <i style={{borderLeft: "3px solid black"}}><strong style={{marginLeft: '10px'}}>Dynamic Investment Portfolio Bot</strong></i>
                                 <br /><br />
-                                • Reduced traders’ dependency by over 34% through automation.
-                                <br /><br />
-                                • Saved an average of 2 hours per week through integration with Node.js module.
-                                <br /><br />
-                                • Developed a Python script to work simultaneously with the bot for real-time data.
-                                <br /><br />
+                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Reduced traders’ dependency on manual-research efforts by over 34% through automation when evaluated against specific-data findings from different existing market-applications.</p></p>                                
+                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Saved an average of 2 hours per week through integration with Node.js module <i>`Discord.js`</i> when compared to manual mobile-application usage.</p></p>                                
+                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Developed dynamic web-scraping Python scripts to work simultaneously with the bot for real-time stock data and company information from <i>`SeekingAlpha`</i>. Utilized a statically changing header-system to bypass Chrome rate-limiters.</p></p>                                
                                 ↓ <a href="https://github.com/devp19/StockEye" target='_blank' rel="noreferrer">
                                     <button className="custom-btn">View on GitHub ↗︎</button>
                                 </a>
