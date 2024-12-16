@@ -178,7 +178,12 @@ body {
 
   .title-2 {
     margin-top: 20px;
-    font-size: 80px;
+    font-size: 50px;
+  }
+
+  .title-3{
+
+    font-size: 40px;
   }
 
   .title:hover{

@@ -8,7 +8,7 @@ const ResDex = forwardRef((props, ref) => {
                 <div className="border separator">
                     <div className="row justify-content-center">
                         <div className="col-md-8 justify-content-center">
-                            <div className="title-2 text-center bottom-border"> &gt; ResDex <img src={ResDexLogo} alt='resdex logo' height={50}/>
+                            <div className="title-2 text-center bottom-border" style={{marginLeft: '20px', marginRight: '20px'}}> &gt; ResDex <img src={ResDexLogo} alt='resdex logo' height={50}/>
                              <span style={{marginLeft: '20px'}}>&lt;</span>
                             </div>
                         </div>
