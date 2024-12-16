@@ -66,7 +66,7 @@ function Home() {
                             <img id="portrait-img" className="img-fluid" src={Portrait} alt="Portrait" />
                 
                         </div>
-                        <div className="col-md-5 left-sep">
+                        <div className="col-md-5 left-sep custom-abt">
                             <h2 className="title-2">About Me</h2>
                             <div className="para-text">
                                 I'm a 19-year-old Computer Science student, currently attending Toronto Metropolitan University for my honours Bachelor of Science degree!

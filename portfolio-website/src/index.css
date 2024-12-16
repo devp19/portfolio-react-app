@@ -20,20 +20,6 @@
   color: #acacac;
 }
 
-/* Change the background color of the modal content */
-.modal-content {
-  color: white;
-  background-color: #f9efc8 /* Change this to your desired background color */
-}
-
-.fixed-bottom-left {
-  position: fixed;
-  bottom: 20px; /* Adjust as needed */
-  left: 20px; /* Adjust as needed */
-  z-index: 1050; /* Ensure it’s above other content */
-  font-family: Mis;
-}
-
 
 body {
   margin-left: 50px;
@@ -175,11 +161,15 @@ body {
   border-bottom: 1px solid rgb(52, 52, 52) ;
 }
 
+
+
 @media (max-width: 768px) {
   .title{
     font-size: 120px; 
     line-height: 120px;
   }
+ 
+
 
   .title-2 {
     margin-top: 20px;
@@ -188,6 +178,10 @@ body {
 
   .title:hover{
     font-size: 120px;
+  }
+
+  .supporting{
+    margin-top: 80px;
   }
 
   .supporting:hover{
