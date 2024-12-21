@@ -94,7 +94,7 @@ function Home() {
                                         <span className="bold">Grade-Point Average</span>
                                         <br /><br />
                                         <div className="custom pb-4">
-                                            3.89
+                                            3.94
                                         </div>
                                     </div>
                                 </div>
