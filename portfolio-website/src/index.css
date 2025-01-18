@@ -67,9 +67,7 @@ body {
   transition: 0.5s;
 }
 
-.title:hover {
-  font-size: 180px;
-}
+
 
 .supporting {
   font-family: Mis;
@@ -81,9 +79,7 @@ body {
   transition: 0.5s ease-out;
 }
 
-.supporting:hover{
-  font-size: 30px;
-}
+
 
 .full {
   height: 100vh;
@@ -98,6 +94,7 @@ body {
 
 .svg:hover{
   transform: translateY(-10px);
+  fill: rgb(178, 178, 178);
 }
 
 .custom-btn {
@@ -169,11 +166,10 @@ body {
 
 
 @media (max-width: 768px) {
-  .title{
-    font-size: 90px; 
-    line-height: 120px;
-  }
  
+ .title{
+  font-size: 80px;
+ }
 
 
   .title-2 {
@@ -186,10 +182,7 @@ body {
     font-size: 40px;
   }
 
-  .title:hover{
-    font-size: 90px;
-  }
-
+  
   .supporting{
     margin-top: 80px;
   }
