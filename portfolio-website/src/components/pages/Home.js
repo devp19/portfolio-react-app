@@ -37,7 +37,7 @@ function Home() {
                 <div className='row'>
                     <div className="col-md full center-container">
                         <div className="centered-text">
-                            <h5 className="supporting">Hello! I'm</h5>
+                            <h5 className="supporting" style={{marginTop: '100px'}}>Hello! I'm</h5>
                             <h2 className="title">Dev Patel</h2>
                             <button className="custom-btn" onClick={scrollToAbout}>About ↗︎</button>
                             <button className="custom-btn" onClick={scrollToProject}>Projects ↗︎</button>
