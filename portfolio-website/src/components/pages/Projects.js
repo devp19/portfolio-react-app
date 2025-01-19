@@ -169,6 +169,7 @@ By engaging in peer and expert reviews, students can refine their work, gain val
 </button>  
 <button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://github.com/devp19/mybuddy', '_blank', 'noopener noreferrer')}>
   GitHub ↗︎   
+  
 </button> 
                   </div>
                 </div>
