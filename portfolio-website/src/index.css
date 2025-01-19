@@ -5,6 +5,10 @@
   cursor: url("./components/images/icons8-cursor.svg"), auto;  
 }
 
+.border-black {
+  border: 1px solid red;
+}
+
 .background {
   background-image: url(./components/images/plant.jpg);
   background-size: cover;
@@ -224,6 +228,11 @@ body {
   animation: fadeInSlideDown 1s ease-out forwards;
 }
 
+.description {
+  opacity: 0;
+  animation: fadeInSlideDown 1s ease-out forwards;
+}
+
 /* Stagger the animations */
 .centered-text h5 {
   animation-delay: 0.2s;
@@ -273,3 +282,17 @@ body {
 #icon-gap {
   margin-left: 10px;
 }
+
+
+.box {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  perspective: 1000px;
+
+}
+

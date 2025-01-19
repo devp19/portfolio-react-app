@@ -1,198 +1,184 @@
-import React, { forwardRef } from 'react';
-
-const Projects = forwardRef((props, ref) => {
-    return (
-        <section ref={ref}>
-            <div id="projects-section" className="regular-bg pt-4">
-                <div className="separator">
-                    <div className="row justify-content-center">
-                        <div className="col-md-8 justify-content-center">
-                            <div className="title-2 text-center bottom-border">Projects</div>
-                        </div>
-                    </div>
-
-                    <div className="row justify-content-center left-sep">
-                        {/* Project I */}
-                        <div className="col-md-5 left-sep bottom-border pt-4">
-                            <div className="title-3">ResDex <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
-  <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3m-8.322.12q.322-.119.684-.12h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981z"/>
-</svg> </div>
-            
-                            <div className="para-text pt-2">
-                                <i style={{borderLeft: "3px solid black"}}><strong style={{marginLeft: '10px'}}>Full-Stack Web Application</strong></i>
-                                <br /><br />
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Lead a cross-functional team of medical and engineering students to develop and pitch the platform to
-prestigious institutions (UofT, McMaster, UWaterloo), leading to 500+ pre-signups. </p></p>                                
-                            
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Built a network of expertise consisting of 12 PhD professionals across diverse fields, that ignited innovative
-insights and accelerated platform development. </p></p>                                
-                            
-
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Utilized AWS (Cognito, S3) and Firebase (Auth, Firestore) for efficient user profiling and storage, while
-implementing caching strategies to minimize unnecessary API fetch calls, resulting in an on-average 30.20 ms
-improvement in profile loading times.</p></p>                                
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Automated backend workflows using AWS Lambda and Firebase Functions, leveraging serverless
-architecture to enhance scalability, enabling the handling of 1,500 additional requests per day.</p></p>                                
+import React, { useState, forwardRef } from 'react';
+import QonnectR from '../images/qr.png';
+import Resdex from '../images/resdex1.png';
+import MyBuddy from '../images/MyBuddy.png';
+import { CSSTransition } from 'react-transition-group';
 
 
-                            
-                                ↓ <a href="https://resdex.vercel.app/" target='_blank' rel="noreferrer">
-                                    <button className="custom-btn">View Platform ↗︎</button>
-                                </a>
-                                <a href="https://github.com/devp19/resdex/" target='_blank' rel="noreferrer">
-                                    <button className="custom-btn">View on GitHub ↗︎</button>
-                                </a>
-                            </div>
-                            <div className="row">
-                                <div className="col-md">
-                                    <div className="para-text pt-4">
-                                        <span className="bold">Pre-signed-up Users</span>
-                                        <br /><br />
-                                        <div className="custom">
-                                            500+
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md">
-                                    <div className="para-text pt-4">
-                                        <span className="bold">Partnerships</span>
-                                        <br /><br />
-                                        <div className="custom pb-4">
-                                           McMaster
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+const Projects = forwardRef((props, ref) =>
+     {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpandedResDex, setIsExpandedResDex] = useState(false);
+  const [isExpandedMyBuddy, setIsExpandedMyBuddy] = useState(false);
 
-                        {/* Project II */}
-                        <div className="col-md-5 left-sep bottom-border pt-4">
-                            <div className="title-3">MyBuddy <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"/>
-  <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
-  <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
-</svg></div>
-                            <div className="para-text pt-2">
-                            <i style={{borderLeft: "3px solid black"}}><strong style={{marginLeft: '10px'}}>Generative AI Therapist –– SerenityHacks</strong></i>
-                                <br /><br />
+  const handleReadMoreClick = () => {
+    setIsExpanded(!isExpanded);
+  };
 
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Achieved 92% accuracy in therapeutic conversation similarity using 100+ prompts by employing
-prompt-engineering techniques to train and fine-tune the model for active listening.</p></p>
+  const handleReadMoreClickResDex = () => {
+    setIsExpandedResDex(!isExpandedResDex);
+  };
 
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Automated real-time responses by integrating Google Cloud’s Speech-to-Text API with OpenAI’s LLM, resulting in accurate transcriptions and response times in under 100ms in conversational applications.</p></p>                                
-                                
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}>                                 Ranked 2nd in the best open-source project category at SerenityHacks and received a 9.72/10 user satisfaction rating over a minimum 2-week journaling period.</p></p>                                
-                            
-                                ↓ <a href="https://github.com/devp19/MyBuddy" target='_blank' rel="noreferrer">
-                                    <button className="custom-btn">View on GitHub ↗︎</button>
-                                </a>
-                            </div>
-                            <div className="row">
-                                <div className="col-md">
-                                    <div className="para-text pt-4">
-                                        <span className="bold">Therapeutic Similarity Of</span>
-                                        <br /><br />
-                                        <div className="custom">
-                                            92%
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md">
-                                    <div className="para-text pt-4">
-                                        <span className="bold">Best Open Source Project Rank</span>
-                                        <br /><br />
-                                        <div className="custom pb-4">
-                                            No. 2
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+  const handleReadMoreClickMyBuddy = () => {
+    setIsExpandedMyBuddy(!isExpandedMyBuddy);
+  };
 
-                        {/* Project III */}
-                        <div className="col-md-5 left-sep bottom-border pt-4">
-                            <div className="title-3">NEAR Fantasy <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-  <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z"/>
-</svg></div>
-            
-                            <div className="para-text pt-2">
-                            <i style={{borderLeft: "3px solid black"}}><strong style={{marginLeft: '10px'}}>Fantasy-Sports Prototype on the NEAR Blockchain</strong></i>
-                                <br /><br />
+  return (
+    <section className='regular-bg' ref={ref}>
+      <div className='container mt-4 regular-bg'>
+        <div className='row justify-content-center' style={{borderTop: '1px solid black', marginTop: '50px'}}>
+          <div className="title-2 text-center mt-4">Projects</div>
 
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Improved transaction security by 40% through the creation of a secure and private payment portal utilizing the
-NEAR Blockchain, renowned for its robust security features, scalability, and decentralized architecture. </p></p>                                
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Projected to save over $10,000 in financial resources towards NFT-digital creations when compared to traditional
-methods by leveraging the DALL-E ecosystem for instant cost-free additions to the collection. </p></p>                                
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Labelled as the 1st ever fantasy-sports platform created on the NEAR Blockchain at HawkHacks. </p></p>                                
+          <div className='col-md-9 p-3'>
+            <div className='row mt-3 box d-flex align-items-center' style={{ marginLeft: '20px', marginRight: '20px' }}>
+              
+              <div className='col-auto d-flex align-items-center justify-content-center'>
+                <img
+                  className='img-fluid'
+                  src={QonnectR}
+                  alt='QonnectR'
+                  style={{ maxHeight: '50px', borderRadius: '50%' }}
+                />
+              </div>
 
-                                ↓ <a href="https://github.com/devp19/NEAR-Fantasy" target='_blank' rel="noreferrer">
-                                    <button className="custom-btn">View on GitHub ↗︎</button>
-                                </a>
-                            </div>
-                            <div className="row">
-                                <div className="col-md">
-                                    <div className="para-text pt-4">
-                                        <span className="bold">Increased Transaction Security</span>
-                                        <br /><br />
-                                        <div className="custom">
-                                            +40%
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md">
-                                    <div className="para-text pt-4">
-                                        <span className="bold">Saving More Than</span>
-                                        <br /><br />
-                                        <div className="custom pb-4">
-                                            $10,000
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div className="col-md-5 left-sep bottom-border pt-4">
-                            <div className="title-3">StockEye <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
-  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
-  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
-</svg></div>
-                            <div className="para-text pt-2">
-                            <i style={{borderLeft: "3px solid black"}}><strong style={{marginLeft: '10px'}}>Dynamic Investment Portfolio Bot</strong></i>
-                                <br /><br />
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Reduced traders’ dependency on manual-research efforts by over 34% through automation when evaluated against specific-data findings from different existing market-applications.</p></p>                                
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Saved an average of 2 hours per week through integration with Node.js module <i>`Discord.js`</i> when compared to manual mobile-application usage.</p></p>                                
-                                <p style={{borderLeft: "3px solid black"}}>  <p style={{marginLeft: '10px'}}> Developed dynamic web-scraping Python scripts to work simultaneously with the bot for real-time stock data and company information from <i>`SeekingAlpha`</i>. Utilized a statically changing header-system to bypass Chrome rate-limiters.</p></p>                                
-                                ↓ <a href="https://github.com/devp19/StockEye" target='_blank' rel="noreferrer">
-                                    <button className="custom-btn">View on GitHub ↗︎</button>
-                                </a>
-                            </div>
-                            <div className="row">
-                                <div className="col-md">
-                                    <div className="para-text pt-4">
-                                        <span className="bold">Saves Weekly Time Of</span>
-                                        <br /><br />
-                                        <div className="custom">
-                                            2 Hours+
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md">
-                                    <div className="para-text pt-4">
-                                        <span className="bold">Response Time Of</span>
-                                        <br /><br />
-                                        <div className="custom pb-4">
-                                            2.4 ms
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+              <div className='col'>
+                <div className='supporting-2 d-flex' style={{ fontSize: '25px' }}>
+                  QonnectR
                 </div>
+                <div className='text-muted d-flex' style={{ fontSize: '10px' }}>
+                  <i>DeltaHacks XI Winner (January, 2025)</i>
+                </div>
+              </div>
+
+              <div className='col-auto d-flex justify-content-end'>
+                <a onClick={handleReadMoreClick} style={{ cursor: 'pointer', fontSize: '12px' }} className='text-muted'>
+                  <i>[ {isExpanded ? 'Read Less' : 'Read More'} ]</i>
+                </a>
+              </div>
+
+              {isExpanded && (
+                <div className='row mt-3 description p-3' style={{ marginLeft: '20px', marginRight: '20px' }}>
+                  <div className='col'>
+                    <p className='text-muted'>
+                    Have you ever found it hard to come up with inspiring project ideas, or struggled to stay motivated once you've started? Trust me, I’ve been there too. That’s exactly why we built QonnectR. It’s a platform designed to make collaboration seamless and exciting. You can create a profile, showcase your projects, and invite others to join your journey. But it doesn’t stop there—QonnectR also lets you discover and connect with passionate people, so you can jump into projects that excite you. Think of it as a space where solo ideas transform into dynamic team efforts. QonnectR isn’t just a tool—it’s a community where creativity meets collaboration, helping turn your visions into reality.
+
+</p>
+<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://qonnectr.vercel.app/', '_blank', 'noopener noreferrer')}>
+  Website ↗︎   
+</button>  
+<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://devpost.com/software/qonnectr', '_blank', 'noopener noreferrer')}>
+  Devpost ↗︎   
+</button>  
+<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://github.com/devp19/qonnectr', '_blank', 'noopener noreferrer')}>
+  GitHub ↗︎   
+</button>  
+
+                </div>
+                </div>
+              )}
             </div>
-        </section>
-    );
-});
+
+
+            <div className='row mt-3 box d-flex align-items-center' style={{ marginLeft: '20px', marginRight: '20px' }}>
+              
+              <div className='col-auto d-flex align-items-center justify-content-center'>
+                <img
+                  className='img-fluid'
+                  src={Resdex}
+                  alt='Resdex'
+                  style={{ maxHeight: '50px', borderRadius: '50%' }}
+                />
+              </div>
+
+              <div className='col'>
+                <div className='supporting-2 d-flex' style={{ fontSize: '25px' }}>
+                  ResDex
+                </div>
+                <div className='text-muted d-flex' style={{ fontSize: '10px' }}>
+                  <i>Full-Stack Web Application (August, 2024 - Present)</i>
+                </div>
+              </div>
+
+              <div className='col-auto d-flex justify-content-end'>
+                <a onClick={handleReadMoreClickResDex} style={{ cursor: 'pointer', fontSize: '12px' }} className='text-muted'>
+                  <i>[ {isExpandedResDex ? 'Read Less' : 'Read More'} ]</i>
+                </a>
+              </div>
+
+              {isExpandedResDex && (
+                <div className='row mt-3 description' style={{ marginLeft: '20px', marginRight: '20px' }}>
+                  <div className='col'>
+                    <p className='text-muted'>
+                    ResDex is a student-friendly, accessible research paper “publishing” platform that gives students the opportunity to stand out among millions, review and edit papers, and connect with PHD level researchers. Designed to foster a collaborative academic community, ResDex allows users to showcase their research, achievements, and certifications in a dynamic online portfolio.
+<br></br>
+<br></br>
+By engaging in peer and expert reviews, students can refine their work, gain valuable feedback, and build meaningful connections with academics and professionals in their field.                    </p>
+<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://resdex.vercel.app/', '_blank', 'noopener noreferrer')}>
+  Website ↗︎   
+</button>  
+<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://github.com/devp19/resdex', '_blank', 'noopener noreferrer')}>
+  GitHub ↗︎   
+</button> 
+                  </div>
+                  
+                </div>
+                
+
+                
+              )}
+            </div>
+
+
+
+            <div className='row mt-3 box d-flex align-items-center' style={{ marginLeft: '20px', marginRight: '20px' }}>
+              
+              <div className='col-auto d-flex align-items-center justify-content-center'>
+                <img
+                  className='img-fluid'
+                  src={MyBuddy}
+                  alt='MyBuddy'
+                  style={{ maxHeight: '50px', borderRadius: '50%' }}
+                />
+              </div>
+
+              <div className='col'>
+                <div className='supporting-2 d-flex' style={{ fontSize: '25px' }}>
+                 MyBuddy
+                </div>
+                <div className='text-muted d-flex' style={{ fontSize: '10px' }}>
+                  SerenityHacks 2nd Place (Best Open-Source Project) (January, 2024)
+                </div>
+              </div>
+
+              <div className='col-auto d-flex justify-content-end'>
+                <a onClick={handleReadMoreClickMyBuddy} style={{ cursor: 'pointer', fontSize: '12px' }} className='text-muted'>
+                  <i>[ {isExpandedMyBuddy ? 'Read Less' : 'Read More'} ]</i>
+                </a>
+              </div>
+
+              {isExpandedMyBuddy && (
+                <div className='row mt-3 description' style={{ marginLeft: '20px', marginRight: '20px' }}>
+                  <div className='col'>
+                    <p className='text-muted'>
+                    MyBuddy was developed as a comforting mental-health aid for those who find it difficult to journal or talk to others about their personal struggles. Many people experience a sense of isolation and find it challenging to express themselves verbally, especially when it comes to sensitive topics like mental health. MyBuddy aims to bridge this gap by offering a compassionate, non-judgmental space where users can reflect, document, and process their feelings privately.
+
+
+</p>
+<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://devpost.com/software/mybuddy', '_blank', 'noopener noreferrer')}>
+  Devpost ↗︎   
+</button>  
+<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://github.com/devp19/mybuddy', '_blank', 'noopener noreferrer')}>
+  GitHub ↗︎   
+</button> 
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+})
 
 export default Projects;

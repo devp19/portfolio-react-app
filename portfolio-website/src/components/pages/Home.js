@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import Portrait from '../images/circle.png';
 import Projects from './Projects'
 import Contact from './Contact'
-import ResDex from './ResDex'
 import { Link } from 'react-router-dom';
 
 
@@ -32,12 +31,12 @@ function Home() {
 
 
     return (
-        <div>
+        <div className='regular-bg'>
             <div className="background">
                 <div className='row'>
                     <div className="col-md full center-container">
                         <div className="centered-text">
-                            <h5 className="supporting">Hello! I'm</h5>
+                            <h5 className="supporting" style={{marginTop: '100px'}}>Hello! I'm</h5>
                             <h2 className="title">Dev Patel</h2>
                             <button className="custom-btn" onClick={scrollToAbout}>About ↗︎</button>
                             <button className="custom-btn" onClick={scrollToProject}>Projects ↗︎</button>
@@ -107,7 +106,6 @@ function Home() {
             </div>
 
             
-            <ResDex />
             <Projects ref={projectSectionRef} />
             <Contact ref={contactSectionRef} />
         </div>
