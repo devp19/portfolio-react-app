@@ -2,7 +2,6 @@ import React, { useState, forwardRef } from 'react';
 import QonnectR from '../images/qr.png';
 import Resdex from '../images/resdex1.png';
 import MyBuddy from '../images/MyBuddy.png';
-import { CSSTransition } from 'react-transition-group';
 
 
 const Projects = forwardRef((props, ref) =>
