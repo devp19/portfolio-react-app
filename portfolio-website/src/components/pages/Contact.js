@@ -34,8 +34,8 @@ const Contact = forwardRef((props, ref) => {
                     </div>
                 </div>
 
-                <div className="row justify-content-center" style={{marginLeft: '50px', marginRight: '50px'}}>
-                    <div className="col-md-6 box p-4">
+                <div className="row justify-content-center" style={{marginLeft: '50px', marginRight: '50px', padding: '20px'}}>
+                    <div className="col-md-6 box" style={{padding: '20px'}}>
                         <form name="contact" method="post" style={{borderLeft: "3px solid black"}} data-netlify="true" action="/src/Components/Pages/Success.js"
       onSubmit={handleSubmit}>
                             <input type="hidden" name="form-name" value="contact"/>

@@ -42,7 +42,7 @@ const Projects = forwardRef((props, ref) =>
               </div>
 
               <div className='col'>
-                <div className='supporting-2 d-flex' style={{ fontSize: '25px' }}>
+                <div className='supporting-2 d-flex change-font'>
                   QonnectR
                 </div>
                 <div className='text-muted d-flex' style={{ fontSize: '10px' }}>
@@ -57,7 +57,7 @@ const Projects = forwardRef((props, ref) =>
               </div>
 
               {isExpanded && (
-                <div className='row mt-3 description p-3' style={{ marginLeft: '20px', marginRight: '20px' }}>
+                <div className='row mt-3 description' style={{ marginLeft: '20px', marginRight: '20px' }}>
                   <div className='col'>
                     <p className='text-muted'>
                     Have you ever found it hard to come up with inspiring project ideas, or struggled to stay motivated once you've started? Trust me, I’ve been there too. That’s exactly why we built QonnectR. It’s a platform designed to make collaboration seamless and exciting. You can create a profile, showcase your projects, and invite others to join your journey. But it doesn’t stop there—QonnectR also lets you discover and connect with passionate people, so you can jump into projects that excite you. Think of it as a space where solo ideas transform into dynamic team efforts. QonnectR isn’t just a tool—it’s a community where creativity meets collaboration, helping turn your visions into reality.
@@ -94,7 +94,7 @@ const Projects = forwardRef((props, ref) =>
               </div>
 
               <div className='col'>
-                <div className='supporting-2 d-flex' style={{ fontSize: '25px' }}>
+                <div className='supporting-2 change-font d-flex'>
                   ResDex
                 </div>
                 <div className='text-muted d-flex' style={{ fontSize: '10px' }}>
@@ -145,7 +145,7 @@ By engaging in peer and expert reviews, students can refine their work, gain val
               </div>
 
               <div className='col'>
-                <div className='supporting-2 d-flex' style={{ fontSize: '25px' }}>
+                <div className='supporting-2 d-flex change-font'>
                  MyBuddy
                 </div>
                 <div className='text-muted d-flex' style={{ fontSize: '10px' }}>
