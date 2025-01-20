@@ -24,6 +24,8 @@ const Contact = forwardRef((props, ref) => {
     return (
         <section ref={ref}>
             <div id="contact-section" className="regular-bg pt-4">
+            <div className='row' style={{borderTop: '1px solid black', marginLeft: '100px', marginRight: '100px', marginTop: '50px'}}> </div>
+
                 <div className="separator pt-4">
                     <div className="row justify-content-center">
                         <div className="col-md-8 justify-content-center">
@@ -32,8 +34,8 @@ const Contact = forwardRef((props, ref) => {
                     </div>
                 </div>
 
-                <div className="row justify-content-center">
-                    <div className="col-md-6 pt-4">
+                <div className="row justify-content-center" style={{marginLeft: '50px', marginRight: '50px'}}>
+                    <div className="col-md-6 box p-4">
                         <form name="contact" method="post" style={{borderLeft: "3px solid black"}} data-netlify="true" action="/src/Components/Pages/Success.js"
       onSubmit={handleSubmit}>
                             <input type="hidden" name="form-name" value="contact"/>
