@@ -9,6 +9,11 @@
   border: 1px solid red;
 }
 
+#portrait-img {
+  padding-right: 20px;
+  border-right: 1px solid #1a1a1a;
+}
+
 .background {
   background-image: url(./components/images/plant.jpg);
   background-size: cover;
@@ -207,7 +212,9 @@ body {
   #portrait-img {
     margin-top: 30px;
     margin-left: 30px;
-    max-width: 290px;
+    max-width: 200px;
+    border-bottom: 1px solid #1a1a1a;
+    border-right: none;
   }
 
 }
