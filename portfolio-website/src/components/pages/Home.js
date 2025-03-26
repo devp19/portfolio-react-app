@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Portrait from '../images/circle.png';
+import Portrait from '../images/circle4.png';
 import Projects from './Projects'
 import Contact from './Contact'
 import { Link } from 'react-router-dom';
@@ -68,12 +68,14 @@ function Home() {
                         <div className="col-md-5 left-sep custom-abt">
                             <h2 className="title-2">About Me</h2>
                             <div className="para-text">
-                                I'm a 19-year-old Computer Science student, currently attending Toronto Metropolitan University for my honours Bachelor of Science degree!
-
+                                Software Engineer from Toronto, Ontario; studying <strong style={{fontStyle: 'italic'}}>Computer Science</strong> at Toronto Metropolitan University (formerly Ryerson).
                                 <br /><br />
+                                Incoming <em><strong>Automation & AI Engineer</strong></em> at <strong style={{fontStyle: 'italics'}}>Fidelity Investments</strong> for S25 as an <i>Emerging Techologies Student</i>.
+                                <br></br>
+                                <br></br>
                                 A small backstory → I was first introduced to programming in Grade 6 and have since fallen in love with programming and the realm of technology! I started off by working on Robots, whether that was through FLL tournaments or even VEX Robotics. I often held a lead-programmer role for autonomous challenges, and that's what influenced my decision to choose Computer Science as my post-secondary career path!
                                 <br /><br />
-                                Going back to the present → I'm in my second year of Computer Science, so with any free time I get, I'm ideally keeping up with any tech-related news surrounding artificial intelligence. I'm a big believer in Artificial-Intelligence adoption in medicinal sectors, which is something I hope to contribute towards post-undergrad!
+                                Going back to the present → I'm in my second year of Computer Science, so with any free time I get, I'm ideally keeping up with any tech-related news surrounding artificial intelligence. I'm a big believer in Artificial-Intelligence adoption in medicinal sectors, which is something I hope to contribute towards post-undergrad.
                                 <br /><br />
                                 ↓
                             </div>
