@@ -70,7 +70,7 @@ function Home() {
                             <div className="para-text">
                                 Software Engineer from Toronto, Ontario; studying <strong style={{fontStyle: 'italic'}}>Computer Science</strong> at Toronto Metropolitan University (formerly Ryerson).
                                 <br /><br />
-                                Incoming <em><strong>Automation & AI Engineer</strong></em> at <strong style={{fontStyle: 'italics'}}>Fidelity Investments</strong> for S25 as an <i>Emerging Techologies Student</i>.
+                                Incoming <em><strong>Automation Engineer</strong></em> at <strong style={{fontStyle: 'italics'}}>Fidelity Investments</strong> for S25 as an <i>Emerging Technologies Student</i>.
                                 <br></br>
                                 <br></br>
                                 A small backstory → I was first introduced to programming in Grade 6 and have since fallen in love with programming and the realm of technology! I started off by working on Robots, whether that was through FLL tournaments or even VEX Robotics. I often held a lead-programmer role for autonomous challenges, and that's what influenced my decision to choose Computer Science as my post-secondary career path!
