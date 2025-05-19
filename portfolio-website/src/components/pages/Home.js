@@ -1,13 +1,15 @@
 import React, { useRef } from 'react';
 import Portrait from '../images/circle4.png';
-import Projects from './Projects'
-import Contact from './Contact'
+import Projects from './Projects';
+import Work from './Work';
+import Contact from './Contact';
 import { Link } from 'react-router-dom';
 
 
 function Home() {
     const aboutSectionRef = useRef(null);   
     const projectSectionRef = useRef(null);
+    const workSectionRef = useRef(null);
     const contactSectionRef = useRef(null);
 
     const scrollToContact = () => {
@@ -107,7 +109,7 @@ function Home() {
                 
             </div>
 
-            
+            <Work ref={workSectionRef} />
             <Projects ref={projectSectionRef} />
             <Contact ref={contactSectionRef} />
         </div>
