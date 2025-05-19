@@ -118,7 +118,7 @@ By engaging in peer and expert reviews, students can refine their work, gain val
                     Have you ever found it hard to come up with inspiring project ideas, or struggled to stay motivated once you've started? Trust me, I’ve been there too. That’s exactly why we built QonnectR. It’s a platform designed to make collaboration seamless and exciting. You can create a profile, showcase your projects, and invite others to join your journey. But it doesn’t stop there—QonnectR also lets you discover and connect with passionate people, so you can jump into projects that excite you. Think of it as a space where solo ideas transform into dynamic team efforts. QonnectR isn’t just a tool—it’s a community where creativity meets collaboration, helping turn your visions into reality.
 
 </p>
-<img src={QonnectRWin} className='border-black' style={{width: '400px', borderRadius: '5px'}}></img>
+<img src={QonnectRWin} className='border-black img-fluid' style={{width: '400px', borderRadius: '5px'}}></img>
 <br></br>
 <br></br>
 <button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://qonnectr.vercel.app/', '_blank', 'noopener noreferrer')}>

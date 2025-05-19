@@ -27,7 +27,7 @@ const Work = forwardRef((props, ref) =>
       <div className='container mt-4 regular-bg'>
         <div className='row' style={{borderTop: '1px solid black', marginLeft: '100px', marginRight: '100px'}}> </div>
         <div className='row justify-content-center' style={{ marginTop: '30px'}}>
-          <div className="title-2 text-center mt-4">Work Experience</div>
+          <div className="title-2 text-center mt-4" style={{ paddingLeft: '30px', paddingRight: '30px' }}>Work Experience</div>
 
           <div className='col-md-9 p-3'>
             <div className='row mt-3 box d-flex align-items-center' style={{ marginLeft: '20px', marginRight: '20px' }}>
