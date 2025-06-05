@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import Portrait from '../images/circle4.png';
+import Portrait from '../images/circle.png';
 import Projects from './Projects';
 import Work from './Work';
 import Contact from './Contact';
