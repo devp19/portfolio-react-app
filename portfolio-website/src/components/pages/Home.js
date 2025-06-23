@@ -63,10 +63,10 @@ function Home() {
             <div id="about-section" ref={aboutSectionRef} className="regular-bg pt-4">
                 <div className="separator">
                     <div className="row justify-content-center">
-                        <div className="col-md-3 offset-md-1">
+                        {/* <div className="col-md-3 offset-md-1">
                             <img id="portrait-img" className="img-fluid" src={Portrait} alt="Portrait" />
                 
-                        </div>
+                        </div> */}
                         <div className="col-md-5 left-sep custom-abt">
                             <h2 className="title-2">About Me</h2>
                             <div className="para-text">
