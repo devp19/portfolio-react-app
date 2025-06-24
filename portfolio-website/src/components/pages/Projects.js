@@ -70,7 +70,7 @@ By engaging in peer and expert reviews, students can refine their work, gain val
 <img src={ResDexShow} className='img-fluid border-black' style={{width: '400px', borderRadius: '5px'}}></img>
 <br></br>
 <br></br>
-<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://resdex.vercel.app/', '_blank', 'noopener noreferrer')}>
+<button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://resdex.ca', '_blank', 'noopener noreferrer')}>
   Website ↗︎   
 </button>  
 <button className="custom-btn mb-2 pl-2" onClick={() => window.open('https://github.com/devp19/resdex', '_blank', 'noopener noreferrer')}>
