@@ -6,7 +6,15 @@ import { SpinningText } from "@/components/magicui/spinning-text";
 import { FiGithub, FiExternalLink, FiLinkedin } from "react-icons/fi";
 
 const projects = [
-  {
+    {
+        title: "RESDEX",
+        image: "/HotSpots3.png",
+        desc: "A centralized research hub that empowers students to showcase their work, build academic portfolios, and connect with peers and institutions. ResDex streamlines research discovery and visibility, creating a unified platform that bridges emerging talent with opportunity across the academic landscape.",
+        github: "https://github.com/devp19/resdex",
+        link: "https://resdex.ca",
+        linkedin: "https://www.linkedin.com/posts/devp19_just-wrapped-up-an-incredible-weekend-at-activity-7343044428422332417-ItRx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAESdXuYB0L4oy78G6IDR6GZO4HCCkvrnPuM",
+      },
+      {
     title: "HOTSPOTS-AI",
     image: "/HotSpots3.png",
     desc: "A geospatial ML pipeline using a Gemini‑tuned Random Forest to synthesize Land Surface Temperature (LST), NDVI, and 3D building‐density data for urban heat vulnerability mapping.",
@@ -18,7 +26,7 @@ const projects = [
     title: "PERCEPTA",
     image: "/percepta2.png",
     desc: "A real-time visual intelligence pipeline combining OpenCV image processing, YOLOv5 object detection, and context-aware NLP to generate AI-driven scene comprehension.",
-    github: "https://github.com/devp19/percepta",
+    link: 'https://example.com',
   },
   {
     title: "QONNECTR",
@@ -29,23 +37,19 @@ const projects = [
     linkedin: "https://www.linkedin.com/posts/devp19_what-better-way-to-kick-off-2025-than-activity-7287567295676104704-xo8M?utm_source=share&utm_medium=member_desktop&rcm=ACoAAESdXuYB0L4oy78G6IDR6GZO4HCCkvrnPuM",
   },
   {
-    title: "PUBLIC FUNDING RESEARCH",
-    year: "2022",
-    image: "/project4.png",
-    desc: "Iterative translation disambiguation for cross-language information retrieval.",
+    title: "MYBUDDY",
+    image: "/mybuddy.png",
+    desc: "A generative AI wellness assistant that combines NLP and real-time speech-to-text to simulate therapeutic conversations. MyBuddy interprets spoken input and generates empathetic, context-aware responses, offering accessible mental health support through natural, reflective dialogue.",
+    github: "https://github.com/devp19/mybuddy",
+    linkedin: "https://www.linkedin.com/posts/devp19_this-past-weekend-i-had-the-incredible-opportunity-activity-7157891977940807680-KbtK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAESdXuYB0L4oy78G6IDR6GZO4HCCkvrnPuM",
   },
+  
   {
-    title: "MATCHMAKING",
-    year: "2024",
-    image: "/project5.png",
-    desc: "Would love to play various musical instruments, enjoy coding, and have a passion for guitar playing.",
-  },
-  {
-    title: "RECOMMENDATIONS SYSTEM",
-    year: "2024",
-    image: "/project6.png",
-    desc: "A modern recommendations system for professional networking and career growth.",
-  },
+    title: "CITCO",
+    image: "/citco.png",
+    desc: "A web-based research analytics platform that examines the relationship between public funding and academic impact among Canadian computer science researchers. Citco cross-references grant data with citation records, allowing users to filter by year, institution, or domain and visualize 15-year trends. ",
+    github: "https://github.com/devp19/citco",
+},
 ];
 
 export default function Projects() {
@@ -145,30 +149,32 @@ export default function Projects() {
                     )}
                   </span>
                 <span className="flex items-center gap-3 ml-2">
-                  <div className="relative">
-                    <a
-                      href={proj.github || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`GitHub repository for ${proj.title}`}
-                      className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition cursor-pointer"
-                      onMouseEnter={e => {
-                        const tooltip = e.currentTarget.nextElementSibling;
-                        if (tooltip) tooltip.classList.add('opacity-100');
-                      }}
-                      onMouseLeave={e => {
-                        const tooltip = e.currentTarget.nextElementSibling;
-                        if (tooltip) tooltip.classList.remove('opacity-100');
-                      }}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
-                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                      </svg>
-                    </a>
-                    <div className="absolute left-1/2 -translate-x-1/2 -top-8 bg-[#23272e] text-white text-xs rounded px-2 py-1 opacity-0 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-50">
-                      View Code
+                  {proj.github && (
+                    <div className="relative">
+                      <a
+                        href={proj.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`GitHub repository for ${proj.title}`}
+                        className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition cursor-pointer"
+                        onMouseEnter={e => {
+                          const tooltip = e.currentTarget.nextElementSibling;
+                          if (tooltip) tooltip.classList.add('opacity-100');
+                        }}
+                        onMouseLeave={e => {
+                          const tooltip = e.currentTarget.nextElementSibling;
+                          if (tooltip) tooltip.classList.remove('opacity-100');
+                        }}
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
+                          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                        </svg>
+                      </a>
+                      <div className="absolute left-1/2 -translate-x-1/2 -top-8 bg-[#23272e] text-white text-xs rounded px-2 py-1 opacity-0 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-50">
+                        View Code
+                      </div>
                     </div>
-                  </div>
+                  )}
                   {proj.linkedin && (
                     <div className="relative">
                       <a
