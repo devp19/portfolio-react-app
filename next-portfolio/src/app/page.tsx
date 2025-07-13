@@ -1,25 +1,184 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import { useEffect, useState, useRef, useCallback, MouseEvent } from "react";
+import type { MouseEvent as ReactMouseEvent } from "react";
+import { TextAnimate } from "@/components/magicui/text-animate";
+import { motion, AnimatePresence } from "framer-motion";
+import { SpinningText } from "@/components/magicui/spinning-text";
+import { FiGithub, FiLinkedin, FiX } from "react-icons/fi";
+import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
+
+// --- TiltEffect helper ---
+function throttle<T extends (...args: any[]) => any>(
+  func: T,
+  delay: number
+): (...args: Parameters<T>) => void {
+  let lastCall = 0;
+  return (...args: Parameters<T>) => {
+    const now = new Date().getTime();
+    if (now - lastCall < delay) {
+      return;
+    }
+    lastCall = now;
+    return func(...args);
+  };
+}
+
+const TiltEffect: React.FC<{ children: React.ReactNode; className?: string }>
+  = ({ children, className }) => {
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const [hovered, setHovered] = useState(false);
+
+  const onMouseMove = useCallback(
+    throttle((e: MouseEvent<HTMLDivElement>) => {
+      const card = e.currentTarget;
+      const box = card.getBoundingClientRect();
+      const x = e.clientX - box.left;
+      const y = e.clientY - box.top;
+      const centerX = box.width / 2;
+      const centerY = box.height / 2;
+      const rotateX = (y - centerY) / 7;
+      const rotateY = (centerX - x) / 7;
+      setRotate({ x: rotateX, y: rotateY });
+    }, 100),
+    []
+  );
+
+  const onMouseLeave = () => {
+    setRotate({ x: 0, y: 0 });
+    setHovered(false);
+  };
+
+  const onMouseEnter = () => {
+    setHovered(true);
+  };
+
   return (
     <div
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden rounded-[32px] md:rounded-[40px] m-2 md:m-6 shadow-2xl"
+      className={className}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      onMouseEnter={onMouseEnter}
       style={{
-        background: "#F49C69",
-        backgroundImage:
-          "radial-gradient(circle at 50% 100%, rgba(244, 156, 105, 1) 0%, rgba(205, 65, 64, 1) 20%, rgba(102, 16, 32, 1) 42%, rgba(0, 0, 0, 1) 65%)",
+        transform: `perspective(1000px) rotateX(${rotate.x}deg) rotateY(${rotate.y}deg) scale3d(${hovered ? 1.06 : 1}, ${hovered ? 1.06 : 1}, 1)`,
+        transition: "all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s",
+        display: 'inline-block',
       }}
     >
-      {/* Top nav */}
-      <header className="relative z-10 w-full flex items-center justify-between px-6 pt-6">
-        {/* Logo */}
-        <div className="flex items-center">
-          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-            <Image src="/next.svg" alt="Logo" width={28} height={28} />
-          </div>
+      {children}
+    </div>
+  );
+};
+
+export default function Home() {
+  const [showContent, setShowContent] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(true);
+  const [overlayShouldRender, setOverlayShouldRender] = useState(true);
+  const [showRest, setShowRest] = useState(false);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const profileBtnRef = useRef<HTMLButtonElement>(null);
+
+  // Sample nav items
+  const navItems = [
+    { name: "Home", link: "#home" },
+    { name: "Work", link: "#work" },
+    { name: "About", link: "#about" },
+    { name: "Contact", link: "#contact" },
+  ];
+
+  useEffect(() => {
+    // Start fade out after 1s
+    const timeout = setTimeout(() => {
+      setOverlayVisible(false);
+      // Remove overlay from DOM after fade duration (700ms)
+      setTimeout(() => setOverlayShouldRender(false), 300);
+      // Show content after overlay fade (0.7s matches fade duration)
+      setTimeout(() => setShowContent(true), 300);
+      // Show rest after research animation (0.7s delay + 0.7s duration)
+      setTimeout(() => setShowRest(true), 300 + 700 + 700);
+    }, 100);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    if (!profileMenuOpen) return;
+    function handleClick(e: Event) {
+      if (
+        profileBtnRef.current &&
+        !profileBtnRef.current.contains(e.target as Node)
+      ) {
+        setProfileMenuOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [profileMenuOpen]);
+
+  return (
+    <>
+      {showRest && (
+        <div className="fixed left-0 w-full z-50" style={{ top: '2rem', position: 'fixed' }}>
+          <Navbar>
+            <NavBody>
+              <div className="flex items-center justify-between w-full">
+                <div className="flex items-center gap-4">
+                  <Image src="/profile.png" alt="Logo" width={32} height={32} className="rounded-full" />
+                </div>
+                <NavItems items={navItems} />
+                <div className="flex items-center gap-2">
+                  <button className="w-10 h-10 flex items-center justify-center bg-transparent border-none shadow-none p-0 m-0 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
+                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                    </svg>
+                  </button>
+                  <button className="w-10 h-10 flex items-center justify-center bg-transparent border-none shadow-none p-0 m-0 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
+                      <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                    </svg>
+                  </button>
+                  <button className="w-10 h-10 flex items-center justify-center bg-transparent border-none shadow-none p-0 m-0 cursor-pointer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
+                      <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </NavBody>
+          </Navbar>
         </div>
+      )}
+      <div
+        className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden shadow-2xl"
+        style={{
+          background: "#F49C69",
+          backgroundImage:
+            "radial-gradient(circle at 50% 100%, rgba(244, 156, 105, 1) 0%, rgba(205, 65, 64, 1) 20%, rgba(102, 16, 32, 1) 42%,rgb(10, 10, 10) 65%)",
+        }}
+      >
+      {/* Fade-in overlay */}
+      {overlayShouldRender && (
+        <div
+          className={`fixed inset-0 z-50 bg-black transition-opacity duration-700`}
+          style={{ opacity: overlayVisible ? 1 : 0, pointerEvents: overlayVisible ? "auto" : "none" }}
+        />
+      )}
+      {/* Top nav */}
+      <motion.header
+        className="relative z-10 w-full flex items-center justify-between px-6 pt-6"
+        initial={{ opacity: 0, y: 40 }}
+        animate={showRest ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        {/* Logo */}
+        {/* <div className="flex items-center">
+          <SpinningText className="absolute left-10 top-10 text-xs" duration={40} radius={9} fontSize={12}>
+            Dev Patel • Dev Patel
+          </SpinningText>
+        </div> */}
         {/* Centered nav */}
-        <nav className="absolute left-1/2 top-6 -translate-x-1/2">
+        {/* <nav className="absolute left-1/2 top-6 -translate-x-1/2">
           <ul className="flex gap-4 bg-white/10 backdrop-blur-md rounded-full px-6 py-2 border border-white/20">
             <li>
               <a href="#work" className="text-white/90 font-medium px-3 py-1 rounded-full hover:bg-white/20 transition">
@@ -37,40 +196,121 @@ export default function Home() {
               </a>
             </li>
           </ul>
-        </nav>
+        </nav> */}
         {/* Top right icons */}
-        <div className="flex items-center gap-2">
-          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition">
+        <div className="flex items-center gap-2 relative">
+          {/* <button className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition">
             <Image src="/linkedin.svg" alt="LinkedIn" width={20} height={20} />
-          </button>
-          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition">
-            <Image src="/globe.svg" alt="Settings" width={20} height={20} />
-          </button>
+          </button> */}
+          {/* Social icons removed from here; now only in navbar */}
+        <AnimatePresence>
+          {profileMenuOpen && (
+            <motion.div
+              key="profile-dropdown"
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="absolute right-0 mt-2 w-56 rounded-xl shadow-xl z-50 backdrop-blur-md bg-black/70 border border-white/10 p-4 flex flex-col gap-2"
+              style={{ top: '100%' }}
+            >
+              <span className="text-white/80 font-semibold">Dev Patel</span>
+              <span className="text-white/50 text-sm">Automation Analyst @ Fidelity Investments</span>
+              <hr className="border-white/10 my-2" />
+              <button className="text-left text-white/80 hover:bg-white/10 rounded-lg px-2 py-1 transition cursor-pointer">Profile</button>
+              <button className="text-left text-white/80 hover:bg-white/10 rounded-lg px-2 py-1 transition cursor-pointer">Settings</button>
+              <button className="text-left text-red-400 hover:bg-red-400/20 rounded-lg px-2 py-1 transition cursor-pointer">Logout</button>
+            </motion.div>
+          )}
+        </AnimatePresence>
         </div>
-      </header>
+      </motion.header>
 
       {/* Hero section */}
       <main className="flex-1 flex flex-col items-center justify-center z-10 relative px-4">
         {/* Profile */}
-        <div className="flex flex-col items-center mb-8">
-          <Image src="/profile.jpg" alt="Profile" width={48} height={48} className="rounded-full border-2 border-white/30 mb-2" />
-          <span className="text-white/80 font-medium text-lg">Dev Patel</span>
-        </div>
+        <motion.div
+          className="flex flex-row items-center gap-4 mb-8"
+          initial={{ opacity: 0, y: 40 }}
+          animate={showRest ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+        >
+          {/* <div className="w-15 h-15 rounded-full border-2 border-white/30 flex items-end justify-center mb-2 overflow-hidden">
+            <Image src="/profile.png" alt="Profile" width={68} height={68} className="rounded-full" style={{ marginBottom: '-5px' }} />
+          </div> */}
+          <div className="flex flex-col items-center w-full">
+            <div className="flex flex-row items-center justify-center gap-2 mb-0 w-full">
+              <Image src="/signature.png" alt="Signature" width={100} height={32} />
+              <span className="text-white/80 font-regulartext-lg"> · </span>
+              <span className="text-white/80 font-regulartext-lg">Dev Patel</span>
+            </div>
+        
+          </div>
+        </motion.div>
         {/* Headline */}
-        <h1 className="text-center text-white font-extralight tracking-tight text-4xl md:text-7xl leading-tight max-w-5xl mb-10">
-          code, cognition & applied research.
-        </h1>
+        <div className="text-center max-w-5xl mb-10" style={{ top: '100px' }}>
+          {showContent && (
+            <>
+              <TextAnimate animation="blurIn" as="h1" duration={0.7} className="text-white font-regular tracking-tight text-4xl md:text-7xl leading-tight">
+                code, cognition & applied
+              </TextAnimate>
+              <TextAnimate animation="blurIn" as="h1" duration={0.7} delay={0.7} className="text-white font-regular tracking-tight text-4xl md:text-7xl leading-tight">
+                research.
+              </TextAnimate>
+            </>
+          )}
+        </div>
         {/* CTA Button */}
-        <button className="mt-2 px-8 py-3 rounded-full bg-white/10 border border-white/30 text-white/90 font-medium text-lg backdrop-blur-md hover:bg-white/20 transition shadow-lg"
-          style={{
-            boxShadow: "0 4px 32px 0 rgba(255,94,98,0.15)",
-            border: "1.5px solid rgba(255,255,255,0.18)",
-            background: "rgba(255,255,255,0.08)",
-            color: "#fff",
-          }}>
-          View my work
-        </button>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={showRest ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+        >
+          <TiltEffect>
+            <button
+              className="mt-2 px-8 py-3 rounded-full bg-white/10 border border-white/30 text-white/90 font-medium text-lg backdrop-blur-md hover:bg-white/20 transition shadow-lg cursor-pointer"
+              style={{
+                boxShadow: "0 4px 32px 0 rgba(255,94,98,0.15)",
+                border: "1.5px solid rgba(255,255,255,0.18)",
+                background: "rgba(255,255,255,0.08)",
+                color: "#fff",
+              }}
+            >
+              Explore
+            </button>
+          </TiltEffect>
+        </motion.div>
       </main>
     </div>
+
+    {/* About Me Section (separate page/section, plain background) */}
+    <section className="w-full flex flex-col items-center justify-center py-24" style={{ background: 'rgb(10, 10, 10)', color: 'white' }}>
+      <h2 className="text-5xl md:text-6xl font-regular tracking-tight mb-10 text-center text-white">about me.</h2>
+      <div className="max-w-2xl w-full mx-auto flex flex-col items-center">
+        <p className="text-center text-lg text-white mb-4 font-regular">
+          Software Engineer from Toronto, Ontario; studying <span className="font-semibold">Computer Science</span> at Toronto Metropolitan University (formerly Ryerson).
+        </p>
+        <p className="text-center text-lg text-white mb-4 font-regular">
+          <span className="font-semibold">Automation Developer at Fidelity Investments</span> for S25 as an <span className="italic">Emerging Technologies Student</span>.
+        </p>
+        <p className="text-center text-base text-white mb-4 font-regular">
+          A small backstory → I was first introduced to programming in Grade 6 and have since fallen in love with programming and the realm of technology! I started off by working on Robots, whether that was through FLL tournaments or even VEX Robotics. I often held a lead-programmer role for autonomous challenges, and that's what influenced my decision to choose Computer Science as my post-secondary career path!
+        </p>
+        <p className="text-center text-base text-white mb-8 font-regular">
+          Going back to the present → I'm in my second year of Computer Science, so with any free time I get, I'm ideally keeping up with any tech-related news surrounding artificial intelligence. I'm a big believer in Artificial-Intelligence adoption in medicinal sectors, which is something I hope to contribute towards post-undergrad.
+        </p>
+        <div className="flex flex-row justify-center items-end gap-16 mt-8 w-full">
+          <div className="flex flex-col items-center">
+            <span className="text-base mb-2">Coding for more than</span>
+            <span className="text-4xl md:text-5xl font-regular tracking-tight text-white">7+ Years</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-base mb-2">Grade-Point Average</span>
+            <span className="text-4xl md:text-5xl font-regular tracking-tight text-white">3.94</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    </>
   );
 }
