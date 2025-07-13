@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
 import { SpinningText } from "@/components/magicui/spinning-text";
 import { FiGithub, FiExternalLink, FiLinkedin } from "react-icons/fi";
+import { BlurFade } from "@/components/magicui/blur-fade";
 
 const projects = [
     {
@@ -44,6 +45,18 @@ const projects = [
     linkedin: "https://www.linkedin.com/posts/devp19_this-past-weekend-i-had-the-incredible-opportunity-activity-7157891977940807680-KbtK?utm_source=share&utm_medium=member_desktop&rcm=ACoAAESdXuYB0L4oy78G6IDR6GZO4HCCkvrnPuM",
   },
   
+  {
+    title: "STOCKEYE",
+    image: "/stockeye.png",
+    desc: "A Discord bot using Discord.js for automated financial research: web‑scraping corporate metrics, integrating LLM‑driven summaries, generating private “portfolio” channels, and planning ML‑enabled stock‑movement prediction from time‑series data ",
+    github: "https://github.com/devp19/stockeye",
+},
+  {
+    title: "NEAR FANTASY",
+    image: "/near.png",
+    desc: "A decentralized fantasy sports platform that merges real-world gameplay with blockchain-backed digital ownership. NEAR Fantasy leverages smart contracts and wallet-based identity to let users draft, trade, and compete using tokenized player assets in real-time.",
+    github: "https://github.com/devp19/near-fantasy",
+},
   {
     title: "CITCO",
     image: "/citco.png",
@@ -118,7 +131,8 @@ export default function Projects() {
       {/* Projects Grid */}
       <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-24 overflow-visible">
         {projects.map((proj, i) => (
-          <div key={i} className="bg-white/5 rounded-2xl shadow-lg border border-white/10 flex flex-col overflow-visible group transition-all duration-300">
+          <BlurFade key={i} inView delay={i * 0.08}>
+            <div className="bg-white/5 rounded-2xl shadow-lg border border-white/10 flex flex-col overflow-visible group transition-all duration-300 h-[500px]">
             <div className="w-full h-48 bg-black/30 flex items-center justify-center overflow-hidden rounded-t-2xl">
               <Image src={proj.image} alt={proj.title} width={400} height={200} className="object-cover w-full h-full rounded-t-2xl transition-transform duration-500 group-hover:scale-110" />
             </div>
@@ -247,7 +261,7 @@ export default function Projects() {
                   
                 </span>
               </div>
-              <p className="text-white/80 text-sm mt-3 leading-relaxed flex-1">{proj.desc}</p>
+              <p className="text-white/80 text-sm mt-3 leading-relaxed flex-1 line-clamp-4">{proj.desc}</p>
               <div className="mt-4">
                 <a
                   href="#"
@@ -268,6 +282,7 @@ export default function Projects() {
               </div>
             </div>
           </div>
+          </BlurFade>
         ))}
       </div>
     </div>

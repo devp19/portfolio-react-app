@@ -69,6 +69,10 @@ export default function About() {
         <p className="text-lg text-white/80">
           i build intelligent, real-world solutions <br></br>automation analyst @ fidelity investments, cs @ torontomet, cofounder @ resdex
         </p>
+        <div className="flex flex-row justify-center items-center gap-6 mt-5">
+          <Image src="/fidelity.png" alt="Fidelity Investments Logo" width={170} height={54} className="object-contain" />
+          <Image src="/tmu-logo-one-colour-white.jpg" alt="Toronto Metropolitan University Logo" width={120} height={54} className="object-contain" />
+        </div>
       </div>
       {/* About Card Section */}
       <div className="max-w-6xl w-full mx-auto flex flex-col items-center pb-24">
