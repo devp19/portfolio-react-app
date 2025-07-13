@@ -2,102 +2,75 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden rounded-[32px] md:rounded-[40px] m-2 md:m-6 shadow-2xl"
+      style={{
+        background: "#F49C69",
+        backgroundImage:
+          "radial-gradient(circle at 50% 100%, rgba(244, 156, 105, 1) 0%, rgba(205, 65, 64, 1) 20%, rgba(102, 16, 32, 1) 42%, rgba(0, 0, 0, 1) 65%)",
+      }}
+    >
+      {/* Top nav */}
+      <header className="relative z-10 w-full flex items-center justify-between px-6 pt-6">
+        {/* Logo */}
+        <div className="flex items-center">
+          <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
+            <Image src="/next.svg" alt="Logo" width={28} height={28} />
+          </div>
         </div>
+        {/* Centered nav */}
+        <nav className="absolute left-1/2 top-6 -translate-x-1/2">
+          <ul className="flex gap-4 bg-white/10 backdrop-blur-md rounded-full px-6 py-2 border border-white/20">
+            <li>
+              <a href="#work" className="text-white/90 font-medium px-3 py-1 rounded-full hover:bg-white/20 transition">
+                Work
+              </a>
+            </li>
+            <li>
+              <a href="#about" className="text-white/90 font-medium px-3 py-1 rounded-full hover:bg-white/20 transition">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="#contact" className="text-white/90 font-medium px-3 py-1 rounded-full hover:bg-white/20 transition">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </nav>
+        {/* Top right icons */}
+        <div className="flex items-center gap-2">
+          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition">
+            <Image src="/linkedin.svg" alt="LinkedIn" width={20} height={20} />
+          </button>
+          <button className="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition">
+            <Image src="/globe.svg" alt="Settings" width={20} height={20} />
+          </button>
+        </div>
+      </header>
+
+      {/* Hero section */}
+      <main className="flex-1 flex flex-col items-center justify-center z-10 relative px-4">
+        {/* Profile */}
+        <div className="flex flex-col items-center mb-8">
+          <Image src="/profile.jpg" alt="Profile" width={48} height={48} className="rounded-full border-2 border-white/30 mb-2" />
+          <span className="text-white/80 font-medium text-lg">Dev Patel</span>
+        </div>
+        {/* Headline */}
+        <h1 className="text-center text-white font-extralight tracking-tight text-4xl md:text-7xl leading-tight max-w-5xl mb-10">
+          code, cognition & applied research.
+        </h1>
+        {/* CTA Button */}
+        <button className="mt-2 px-8 py-3 rounded-full bg-white/10 border border-white/30 text-white/90 font-medium text-lg backdrop-blur-md hover:bg-white/20 transition shadow-lg"
+          style={{
+            boxShadow: "0 4px 32px 0 rgba(255,94,98,0.15)",
+            border: "1.5px solid rgba(255,255,255,0.18)",
+            background: "rgba(255,255,255,0.08)",
+            color: "#fff",
+          }}>
+          View my work
+        </button>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
