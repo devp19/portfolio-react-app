@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SpinningText } from "@/components/magicui/spinning-text";
 import { FiGithub, FiLinkedin, FiX } from "react-icons/fi";
 import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 // --- TiltEffect helper ---
 function throttle<T extends (...args: any[]) => any>(
@@ -71,6 +72,32 @@ const TiltEffect: React.FC<{ children: React.ReactNode; className?: string }>
   );
 };
 
+// Shine effect style for buttons
+const ShineStyle = () => (
+  <style>{`
+    .shine-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .shine-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 60%, transparent 100%);
+      transform: skewX(-20deg);
+      transition: left 0.5s cubic-bezier(.4,0,.2,1);
+      pointer-events: none;
+    }
+    .shine-btn:hover::before {
+      left: 120%;
+      transition: left 0.5s cubic-bezier(.4,0,.2,1);
+    }
+  `}</style>
+);
+
 export default function Home() {
   const [showContent, setShowContent] = useState(false);
   const [overlayVisible, setOverlayVisible] = useState(true);
@@ -78,6 +105,10 @@ export default function Home() {
   const [showRest, setShowRest] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const profileBtnRef = useRef<HTMLButtonElement>(null);
+
+  // Sequenced headline state
+  const [headlineStep, setHeadlineStep] = useState(1);
+  const [showHeadline, setShowHeadline] = useState(true);
 
   // Sample nav items
   const navItems = [
@@ -95,11 +126,47 @@ export default function Home() {
       setTimeout(() => setOverlayShouldRender(false), 300);
       // Show content after overlay fade (0.7s matches fade duration)
       setTimeout(() => setShowContent(true), 300);
-      // Show rest after research animation (0.7s delay + 0.7s duration)
-      setTimeout(() => setShowRest(true), 300 + 700 + 700);
+      // Start headline sequence after overlay
+      setTimeout(() => setHeadlineStep(1), 300);
+      // Do NOT show rest here; will be handled after headline sequence
     }, 100);
     return () => clearTimeout(timeout);
   }, []);
+
+  // Show rest of hero only after the final headline animation is fully complete
+  useEffect(() => {
+    if (headlineStep !== 3 || !showContent) return;
+    // Calculate total animation time for the final step
+    const text = 'Exploring the intersection of code, cognition, and applied research to build intelligent, real-world solutions.';
+    const duration = 1.1, stagger = 0.05;
+    const numWords = text.trim().split(/\s+/).length;
+    const totalDuration = (duration + stagger * (numWords - 1)) * 1000;
+    const timeout = setTimeout(() => setShowRest(true), totalDuration);
+    return () => clearTimeout(timeout);
+  }, [headlineStep, showContent]);
+
+  // Headline sequencing with simple timeouts and fade
+  useEffect(() => {
+    if (!showContent) return;
+    let timeouts: NodeJS.Timeout[] = [];
+    // Animation config
+    const configs = [
+      { text: 'Hey!', duration: 0.7, stagger: 0.05 },
+      { text: "My name is Dev and this is my little space on the internet where I'm", duration: 1.1, stagger: 0.05, extraDelay: 0.5 },
+      { text: 'Exploring the intersection of code, cognition, and applied research to build intelligent, real-world solutions.', duration: 1.1, stagger: 0.05 },
+    ];
+    if (headlineStep === 1 || headlineStep === 2) {
+      setShowHeadline(true);
+      const { text, duration, stagger, extraDelay } = configs[headlineStep - 1];
+      const numWords = text.trim().split(/\s+/).length;
+      let totalDuration = (duration + stagger * (numWords - 1)) * 1000; // ms
+      if (extraDelay) totalDuration += extraDelay * 1000;
+      timeouts.push(setTimeout(() => setShowHeadline(false), totalDuration));
+      timeouts.push(setTimeout(() => { setHeadlineStep(headlineStep + 1); setShowHeadline(true); }, totalDuration + 200));
+    }
+    // step 3 stays
+    return () => timeouts.forEach(clearTimeout);
+  }, [headlineStep, showContent]);
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -118,8 +185,15 @@ export default function Home() {
 
   return (
     <>
+      <SmoothCursor />
       {showRest && (
-        <div className="fixed left-0 w-full z-50" style={{ top: '2rem', position: 'fixed' }}>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          className="fixed left-0 w-full z-[9999]"
+          style={{ top: '2rem', position: 'fixed' }}
+        >
           <Navbar>
             <NavBody>
               <div className="flex items-center justify-between w-full">
@@ -127,27 +201,28 @@ export default function Home() {
                   <Image src="/profile.png" alt="Logo" width={32} height={32} className="rounded-full" />
                 </div>
                 <NavItems items={navItems} />
-                <div className="flex items-center gap-2">
-                  <button className="w-10 h-10 flex items-center justify-center bg-transparent border-none shadow-none p-0 m-0 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
-                      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
-                    </svg>
-                  </button>
-                  <button className="w-10 h-10 flex items-center justify-center bg-transparent border-none shadow-none p-0 m-0 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
-                      <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
-                    </svg>
-                  </button>
-                  <button className="w-10 h-10 flex items-center justify-center bg-transparent border-none shadow-none p-0 m-0 cursor-pointer">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
-                      <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-                    </svg>
-                  </button>
-                </div>
+                {/* Social icons absolutely positioned top right */}
+              </div>
+              <div className="absolute top-2 right-6 z-[10000] flex items-center gap-2 pointer-events-auto">
+                <a href="https://github.com/devp19" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                  </svg>
+                </a>
+                <a href="https://linkedin.com/in/devp19" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                  </svg>
+                </a>
+                <a href="https://x.com/devp19" aria-label="X" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#e5e7eb" viewBox="0 0 16 16">
+                    <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                  </svg>
+                </a>
               </div>
             </NavBody>
           </Navbar>
-        </div>
+        </motion.div>
       )}
       <div
         className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden shadow-2xl"
@@ -158,9 +233,9 @@ export default function Home() {
         }}
       >
       {/* Fade-in overlay */}
-      {overlayShouldRender && (
+      {overlayShouldRender && !showRest && (
         <div
-          className={`fixed inset-0 z-50 bg-black transition-opacity duration-700`}
+          className={`fixed inset-0 z-40 bg-black transition-opacity duration-700`}
           style={{ opacity: overlayVisible ? 1 : 0, pointerEvents: overlayVisible ? "auto" : "none" }}
         />
       )}
@@ -241,44 +316,86 @@ export default function Home() {
           <div className="flex flex-col items-center w-full">
             <div className="flex flex-row items-center justify-center gap-2 mb-0 w-full">
               <Image src="/signature.png" alt="Signature" width={100} height={32} />
-              <span className="text-white/80 font-regulartext-lg"> · </span>
-              <span className="text-white/80 font-regulartext-lg">Dev Patel</span>
+              {/* <span className="text-white/80 font-regulartext-lg"> · </span>
+              <span className="text-white/80 font-regulartext-lg">Dev Patel</span> */}
             </div>
         
           </div>
         </motion.div>
         {/* Headline */}
-        <div className="text-center max-w-5xl mb-10" style={{ top: '100px' }}>
-          {showContent && (
-            <>
-              <TextAnimate animation="blurIn" as="h1" duration={0.7} className="text-white font-regular tracking-tight text-4xl md:text-7xl leading-tight">
-                code, cognition & applied
-              </TextAnimate>
-              <TextAnimate animation="blurIn" as="h1" duration={0.7} delay={0.7} className="text-white font-regular tracking-tight text-4xl md:text-7xl leading-tight">
-                research.
-              </TextAnimate>
-            </>
+        <div className="text-center max-w-5xl mb-10" style={{ top: '100px', minHeight: '3.5em' }}>
+          {showContent && headlineStep === 1 && showHeadline && (
+            <TextAnimate
+              key="hey"
+              animation="blurIn"
+              as="h1"
+              by="word"
+              duration={0.7}
+              className="text-white font-regular tracking-tight text-4xl md:text-5xl leading-tight"
+            >
+              Hey!
+            </TextAnimate>
+          )}
+          {showContent && headlineStep === 2 && showHeadline && (
+            <TextAnimate
+              key="imdev"
+              animation="blurIn"
+              as="h1"
+              by="word"
+              duration={1.1}
+              className="text-white font-regular tracking-tight text-3xl md:text-4xl leading-tight"
+            >
+              {"My name is Dev and this is my little space on the internet where I'm"}
+            </TextAnimate>
+          )}
+          {showContent && headlineStep === 3 && (
+            <TextAnimate
+              key="exploring"
+              animation="blurIn"
+              as="h1"
+              by="word"
+              duration={1.1}
+              className="text-white font-regular tracking-tight text-4xl md:text-5xl leading-tight"
+            >
+              Exploring the intersection of code, cognition, and applied research to build intelligent, real-world solutions.
+            </TextAnimate>
           )}
         </div>
         {/* CTA Button */}
+        <ShineStyle />
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={showRest ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         >
-          <TiltEffect>
-            <button
-              className="mt-2 px-8 py-3 rounded-full bg-white/10 border border-white/30 text-white/90 font-medium text-lg backdrop-blur-md hover:bg-white/20 transition shadow-lg cursor-pointer"
-              style={{
-                boxShadow: "0 4px 32px 0 rgba(255,94,98,0.15)",
-                border: "1.5px solid rgba(255,255,255,0.18)",
-                background: "rgba(255,255,255,0.08)",
-                color: "#fff",
-              }}
-            >
-              Explore
-            </button>
-          </TiltEffect>
+          <div className="flex flex-row gap-4">
+            <TiltEffect>
+              <button
+                className="shine-btn mt-2 px-6 py-2 rounded-md bg-white/10 border border-white/30 text-white/90 font-medium text-base backdrop-blur-md hover:bg-white/20 transition shadow-lg cursor-pointer"
+                style={{
+                  boxShadow: "0 4px 32px 0 rgba(255,94,98,0.15)",
+                  border: "1.5px solid rgba(255,255,255,0.18)",
+                  background: "rgba(255,255,255,0.08)",
+                  color: "#fff",
+                }}
+              >
+                Learn More
+              </button>
+            </TiltEffect>
+            <TiltEffect>
+              <button
+                className="shine-btn mt-2 px-6 py-2 rounded-md bg-white/20 border border-white/30 text-white/90 font-medium text-base backdrop-blur-md hover:bg-white/30 transition shadow-lg cursor-pointer"
+                style={{
+                  boxShadow: "0 4px 32px 0 rgba(255,94,98,0.15)",
+                  border: "1.5px solid rgba(255,255,255,0.18)",
+                  background: "rgba(255,255,255,0.12)",
+                  color: "#fff",
+                }}
+              >
+                View Projects
+              </button>
+            </TiltEffect>
+          </div>
         </motion.div>
       </main>
     </div>
