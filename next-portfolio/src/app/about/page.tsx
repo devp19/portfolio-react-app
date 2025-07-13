@@ -3,24 +3,20 @@
 import Image from "next/image";
 import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
 import { SpinningText } from "@/components/magicui/spinning-text";
+import { useState } from "react";
 
 export default function About() {
   // Sample nav items (same as main page)
   const navItems = [
     { name: "Home", link: "/" },
-    { name: "Work", link: "#work" },
     { name: "About", link: "/about" },
-    { name: "Contact", link: "#contact" },
+    { name: "Innovation", link: "/innovation" },
+    { name: "Contact", link: "/contact" },
   ];
 
   return (
     <div
-      className="min-h-screen w-full flex flex-col items-center justify-center text-white px-4"
-      style={{
-        background: "rgb(10,10,10)",
-        backgroundImage:
-          "radial-gradient(circle at 100% 100%, rgba(244,156,105,0.55) 0%, rgba(205,65,64,0.38) 20%, rgba(102,16,32,0.22) 42%, rgba(10,10,10,1) 70%)",
-      }}
+      className="min-h-screen w-full flex flex-col items-center justify-center text-white px-4 bg-[rgb(10,10,10)]"
     >
       {/* Navbar (copied from main page) */}
       <div className="fixed left-0 w-full z-[9999]" style={{ top: '2rem', position: 'fixed' }}>
@@ -54,8 +50,8 @@ export default function About() {
         </Navbar>
       </div>
       {/* Top Section */}
-      <div className="max-w-6xl w-full mx-auto flex flex-col items-start pt-40 pb-16">
-        <div className="mb-2">
+      <div className="w-full max-w-4xl mx-auto flex flex-col items-start pt-40 pb-16 text-left">
+        <div className="mb-2 mt-10">
           <SpinningText
             className="mb-4 left-11 mb-14"
             fontSize={8}
@@ -67,55 +63,110 @@ export default function About() {
         </div>
         <h1 className="text-4xl md:text-5xl font-regular mb-4">about me.</h1>
         <p className="text-lg text-white/80">
-          i build intelligent, real-world solutions <br></br>automation analyst @ fidelity investments, cs @ torontomet, cofounder @ resdex
+          i build intelligent, real-world solutions <br />automation analyst @ fidelity investments, cs @ torontomet, cofounder @ resdex
         </p>
-        <div className="flex flex-row justify-center items-center gap-6 mt-5">
-          <Image src="/fidelity.png" alt="Fidelity Investments Logo" width={170} height={54} className="object-contain" />
-          <Image src="/tmu-logo-one-colour-white.jpg" alt="Toronto Metropolitan University Logo" width={120} height={54} className="object-contain" />
+       
+        {/* Accordion Section */}
+        <div className="w-full max-w-4xl mx-auto mt-8 flex justify-center">
+          <Accordion />
         </div>
       </div>
-      {/* About Card Section */}
-      <div className="max-w-6xl w-full mx-auto flex flex-col items-center pb-24">
-        <div className="bg-white/5 rounded-2xl shadow-lg border border-white/10 flex flex-col md:flex-row w-full p-8 gap-8">
-          <div className="flex flex-col items-center md:items-start md:w-1/3">
-            <div className="w-28 h-28 rounded-full overflow-hidden border-2 border-white/20 mb-4">
-              <Image src="/profile.png" alt="Profile" width={112} height={112} className="object-cover w-full h-full" />
-            </div>
-            <span className="text-xl font-semibold">Dev Patel</span>
-            <span className="text-sm text-white/60 mt-1">Automation Analyst @ Fidelity Investments</span>
-          </div>
-          <div className="flex-1 flex flex-col gap-4 justify-center">
-            <h2 className="text-2xl font-semibold mb-2">Bio</h2>
-            <p className="text-white/80 text-base leading-relaxed">
-              I'm a passionate software engineer from Toronto, Ontario, currently studying Computer Science at Toronto Metropolitan University. I love building intelligent, real-world solutions and have a strong interest in AI, automation, and applied research. My journey started with robotics in grade school and has led me to work on impactful projects in both academic and professional settings.
-            </p>
-            <div className="flex flex-row gap-8 mt-4">
-              <div className="flex flex-col items-center">
-                <span className="text-base mb-2">Years Coding</span>
-                <span className="text-3xl font-bold">7+</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="text-base mb-2">GPA</span>
-                <span className="text-3xl font-bold">3.94</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="text-base mb-2">Major Projects</span>
-                <span className="text-3xl font-bold">5</span>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-3 mt-6">
-              <span className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium">TypeScript</span>
-              <span className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium">React</span>
-              <span className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium">Next.js</span>
-              <span className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium">AI/ML</span>
-              <span className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium">Automation</span>
-              <span className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium">UI/UX</span>
-              <span className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium">Cloud</span>
-              <span className="px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium">Robotics</span>
-            </div>
+     
+    </div>
+  );
+}
+
+// Simple Accordion Component
+function Accordion() {
+  const items = [
+    {
+      titleText: "Education",
+      title: (
+        <div className="flex flex-row items-center gap-4">
+          <Image src="/tmufinal.png" alt="Toronto Metropolitan University Logo" width={64} height={64} className="object-contain" />
+          <div className="flex flex-col">
+            <span className="font-semibold text-white text-lg leading-tight">BSc, Computer Science</span>
+            <span className="text-xs text-white/60">Toronto Metropolitan University</span>
+            <span className="text-xs text-white/60">Sept 2023 – Present · Toronto, Ontario, Canada</span>
           </div>
         </div>
-      </div>
+      ),
+      content: (
+        <div className="flex flex-col gap-2 pl-[80px]">
+          <span className="text-white/80 text-sm">Focused on AI, automation, and applied research. Relevant coursework: Data Structures, Algorithms, Machine Learning, Software Engineering, and Human-Computer Interaction.</span>
+        </div>
+      )
+    },
+    {
+      titleText: "Fidelity Investments",
+      title: (
+        <div className="flex flex-row items-center gap-4">
+          <Image src="/fidelity.png" alt="Fidelity Investments Logo" width={64} height={64} className="object-contain" />
+          <div className="flex flex-col">
+            <span className="font-semibold text-white text-lg leading-tight">Automation Analyst, Emerging Technologies</span>
+            <span className="text-xs text-white/60">Fidelity Investments · Co-op</span>
+            <span className="text-xs text-white/60">May 2025 – Present · 3 mos &nbsp;|&nbsp; Toronto, Ontario, Canada · Hybrid</span>
+          </div>
+        </div>
+      ),
+      content: (
+        <div className="flex flex-col gap-2 pl-[80px]">
+          <ul className="list-disc pl-6 text-white/80 text-sm space-y-3">
+            <li>Lead end-to-end development of automation solutions that optimize internal processes and deliver measurable time savings for business stakeholders.</li>
+            <li>Utilize PL-900 tools such as Microsoft Power Automate and PowerBI to design and deploy workflows, interactive dashboards, and low-code applications, reducing reliance on manual tasks across departments.</li>
+            <li>Work within a fast-paced Agile Scrum environment, collaborating with cross-functional teams—including business analysts, product owners, and end users—to gather requirements, iterate on prototypes, and deliver production-ready solutions in weekly sprint cycles.</li>
+            <li>Participate in daily stand-ups, sprint planning, backlog refinement, and retrospectives to ensure consistent delivery of high-value features and continuous adaptation to evolving business needs.</li>
+            <li>Manage stakeholder engagement throughout the project lifecycle, from discovery and requirements gathering to UAT, deployment, and post-launch support.</li>
+            <li>Develop technical documentation, training materials, and live demos to support user onboarding and long-term adoption of implemented solutions.</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      titleText: "ResDex",
+      title: (
+        <div className="flex flex-row items-center gap-4">
+          <Image src="/resdex-white.png" alt="ResDex Logo" width={64} height={64} className="object-contain" />
+          <div className="flex flex-col">
+            <span className="font-semibold text-white text-lg leading-tight">Co-Founder & Founding Engineer</span>
+            <span className="text-xs text-white/60">ResDex · Self-employed</span>
+            <span className="text-xs text-white/60">Aug 2024 – Present · 1 yr &nbsp;|&nbsp; Toronto, Ontario, Canada · Remote</span>
+          </div>
+        </div>
+      ),
+      content: (
+        <div className="flex flex-col gap-2 pl-[80px]">
+          <span className="text-white/80 text-sm">Building a cutting-edge, student-centric research platform that empowers users to publish, review, and edit papers seamlessly.</span>
+        </div>
+      )
+    },
+    {
+      titleText: "Interests",
+      title: "Interests",
+      content: "AI/ML, robotics, automation, UI/UX, cloud, and building real-world solutions."
+    },
+  ];
+  const [open, setOpen] = useState<number | null>(null);
+  return (
+    <div className="rounded-2xl bg-white/5 border border-white/10 divide-y divide-white/10 shadow-lg">
+      {items.map((item, idx) => (
+        <div key={item.titleText}>
+          <button
+            className="w-full flex justify-between items-center px-6 py-4 text-left text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 transition"
+            onClick={() => setOpen(open === idx ? null : idx)}
+            aria-expanded={open === idx}
+          >
+            <span className="flex items-center gap-4">{typeof item.title === 'string' ? item.title : item.title}</span>
+            <span className={`transform transition-transform duration-200 ${open === idx ? 'rotate-90' : ''}`}>▶</span>
+          </button>
+          <div
+            className={`px-6 pb-4 text-white/80 text-sm transition-all duration-300 ease-in-out ${open === idx ? 'max-h-[600px] overflow-y-auto opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}
+            style={{}}
+          >
+            {item.content}
+          </div>
+        </div>
+      ))}
     </div>
   );
 } 

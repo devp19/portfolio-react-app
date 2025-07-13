@@ -112,10 +112,10 @@ export default function Home() {
 
   // Sample nav items
   const navItems = [
-    { name: "Home", link: "#home" },
-    { name: "Work", link: "#work" },
-    { name: "About", link: "#about" },
-    { name: "Contact", link: "#contact" },
+    { name: "Home", link: "/" },
+    { name: "Innovation", link: "/innovation" },
+    { name: "About", link: "/about" },
+    { name: "Contact", link: "/contact" },
   ];
 
   useEffect(() => {
@@ -401,33 +401,7 @@ export default function Home() {
     </div>
 
     {/* About Me Section (separate page/section, plain background) */}
-    <section className="w-full flex flex-col items-center justify-center py-24" style={{ background: 'rgb(10, 10, 10)', color: 'white' }}>
-      <h2 className="text-5xl md:text-6xl font-regular tracking-tight mb-10 text-center text-white">about me.</h2>
-      <div className="max-w-2xl w-full mx-auto flex flex-col items-center">
-        <p className="text-center text-lg text-white mb-4 font-regular">
-          Software Engineer from Toronto, Ontario; studying <span className="font-semibold">Computer Science</span> at Toronto Metropolitan University (formerly Ryerson).
-        </p>
-        <p className="text-center text-lg text-white mb-4 font-regular">
-          <span className="font-semibold">Automation Developer at Fidelity Investments</span> for S25 as an <span className="italic">Emerging Technologies Student</span>.
-        </p>
-        <p className="text-center text-base text-white mb-4 font-regular">
-          A small backstory → I was first introduced to programming in Grade 6 and have since fallen in love with programming and the realm of technology! I started off by working on Robots, whether that was through FLL tournaments or even VEX Robotics. I often held a lead-programmer role for autonomous challenges, and that's what influenced my decision to choose Computer Science as my post-secondary career path!
-        </p>
-        <p className="text-center text-base text-white mb-8 font-regular">
-          Going back to the present → I'm in my second year of Computer Science, so with any free time I get, I'm ideally keeping up with any tech-related news surrounding artificial intelligence. I'm a big believer in Artificial-Intelligence adoption in medicinal sectors, which is something I hope to contribute towards post-undergrad.
-        </p>
-        <div className="flex flex-row justify-center items-end gap-16 mt-8 w-full">
-          <div className="flex flex-col items-center">
-            <span className="text-base mb-2">Coding for more than</span>
-            <span className="text-4xl md:text-5xl font-regular tracking-tight text-white">7+ Years</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="text-base mb-2">Grade-Point Average</span>
-            <span className="text-4xl md:text-5xl font-regular tracking-tight text-white">3.94</span>
-          </div>
-        </div>
-      </div>
-    </section>
+   
     </>
   );
 }
