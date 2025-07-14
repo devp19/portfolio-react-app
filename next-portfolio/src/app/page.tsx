@@ -156,7 +156,7 @@ export default function Home() {
     // Animation config
     const configs = [
       { text: 'Hey!', duration: 0.7, stagger: 0.05 },
-      { text: "My name is Dev and this is my little space on the internet where I showcase my work and projects by", duration: 1.1, stagger: 0.05, extraDelay: 0.1 },
+      { text: "My name is Dev and this is my little space on the internet where I showcase my work and projects by", duration: 1.1, stagger: 0.05, extraDelay: 0.3 },
       { text: 'Exploring the intersection of code, cognition, and applied research to build intelligent, real-world solutions.', duration: 1.1, stagger: 0.05 },
     ];
     if (headlineStep === 1 || headlineStep === 2) {
@@ -274,11 +274,11 @@ export default function Home() {
       )}
       <div
         className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden shadow-2xl"
-        style={{
-          background: "#F49C69",
-          backgroundImage:
-            "radial-gradient(circle at 50% 100%, rgba(244, 156, 105, 1) 0%, rgba(205, 65, 64, 1) 20%, rgba(102, 16, 32, 1) 42%,rgb(10, 10, 10) 65%)",
-        }}
+        // style={{
+        //   background: "#F49C69",
+        //   backgroundImage:
+        //     "radial-gradient(circle at 50% 100%, rgba(244, 156, 105, 0.7) 0%, rgba(205, 65, 64, 0.7) 20%, rgba(102, 16, 32, 1) 42%,rgb(10, 10, 10) 65%)",
+        // }}
       >
       {/* Fade-in overlay */}
       {overlayShouldRender && !showRest && (
@@ -417,7 +417,7 @@ export default function Home() {
           transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
         >
           <div className="flex flex-row gap-4">
-            <TiltEffect>
+            {/* <TiltEffect>
               <button
                 className="shine-btn mt-2 px-6 py-2 rounded-full bg-white/10 border border-white/30 text-white/90 font-medium text-base backdrop-blur-md hover:bg-white/20 transition shadow-lg cursor-pointer"
                 style={{
@@ -444,7 +444,7 @@ export default function Home() {
               >
                 View Projects
               </button>
-            </TiltEffect>
+            </TiltEffect> */}
           </div>
         </motion.div>
       </main>

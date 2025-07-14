@@ -7,7 +7,7 @@ import { useState } from "react";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
-export default function About() {
+export default function Contact() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navItems = [
     { name: "Home", link: "/" },
@@ -21,10 +21,6 @@ export default function About() {
       <SmoothCursor />
       <div
         className="min-h-screen w-full flex flex-col items-center justify-center text-white px-4 bg-[rgb(10,10,10)]"
-        // style={{
-        //   backgroundImage:
-        //     "radial-gradient(circle at 95% 110%, rgba(244, 156, 105, 1) 0%, rgba(205, 65, 64, 1) 20%, rgba(102, 16, 32, 1) 42%, rgb(10, 10, 10) 65%)",
-        // }}
       >
         {/* Navbar (full homepage version) */}
         <div className="fixed left-0 w-full z-[9999]" style={{ top: '2rem', position: 'fixed' }}>
@@ -100,7 +96,7 @@ export default function About() {
           </Navbar>
         </div>
         {/* Top Section */}
-        <div className="w-full max-w-4xl mx-auto flex flex-col items-start pt-40 pb-16 text-left">
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-start pt-24 pb-8 text-left min-h-0">
           <div className="mb-2 mt-10">
             <SpinningText
               className="mb-4 left-11 mb-14"
@@ -108,7 +104,7 @@ export default function About() {
               radius={4}
               duration={18}
             >
-              Innovator • Thinker • Builder •
+              Get in Touch • Let's Connect •
             </SpinningText>
           </div>
           <TextAnimate
@@ -118,7 +114,7 @@ export default function About() {
             duration={1.1}
             className="text-4xl md:text-5xl font-regular mb-4"
           >
-            about me.
+            let's chat.
           </TextAnimate>
           <TextAnimate
             animation="blurIn"
@@ -127,122 +123,22 @@ export default function About() {
             duration={1.1}
             className="text-lg text-white/80"
           >
-            i build intelligent, real-world solutions
+            break the ice, im always open to new opportunities and conversations!
           </TextAnimate>
-          <TextAnimate
-            animation="blurIn"
-            as="p"
-            by="word"
-            duration={1.1}
-            className="text-lg text-white/80"
-          >
-            currently automation analyst @ fidelity investments, cs @ torontomet, cofounder @ resdex
-          </TextAnimate>
-         
-          {/* Accordion Section */}
-          <div className="w-full max-w-4xl mx-auto mt-8 flex justify-center">
-            <Accordion />
+          {/* Contact Form or Info */}
+          <div className="w-full max-w-4xl mt-4 flex flex-col gap-6 bg-white/5 border border-white/10 rounded-2xl shadow-lg p-6 items-start">
+            <form className="flex flex-col gap-4 w-full">
+              <input type="text" placeholder="Your Name" className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" required />
+              <input type="email" placeholder="Your Email" className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" required />
+              <textarea placeholder="Your Message" className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" rows={5} required />
+              <button type="submit" className="mt-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-lg shadow-lg hover:bg-white/80 transition">Send Message</button>
+            </form>
+            <div className="text-white/60 text-sm mt-4">
+              Or email me directly at <a href="mailto:devp19@protonmail.com" className="underline hover:text-white">devp19@protonmail.com</a>
+            </div>
           </div>
         </div>
-       
       </div>
     </>
-  );
-}
-
-// Simple Accordion Component
-function Accordion() {
-  const items = [
-    {
-      titleText: "Education",
-      title: (
-        <div className="flex flex-row items-center gap-4">
-          <Image src="/tmufinal.png" alt="Toronto Metropolitan University Logo" width={64} height={64} className="object-contain" />
-          <div className="flex flex-col">
-            <span className="font-semibold text-white text-lg leading-tight">HBSc, Computer Science</span>
-            <span className="text-xs text-white/60">Toronto Metropolitan University</span>
-            <span className="text-xs text-white/60">Sept 2023 – Present · Toronto, Ontario, Canada</span>
-          </div>
-        </div>
-      ),
-      content: (
-        <div className="flex flex-col gap-2 pl-[80px]">
-          <span className="text-white/80 text-sm">Focused on AI, automation, and applied research. Relevant coursework: Data Structures, Algorithms, Machine Learning, Software Engineering, and Human-Computer Interaction.</span>
-          <span className="text-white/80 text-sm">GPA: <span className="font-semibold">3.94</span></span>
-          <span className="text-white/80 text-sm">Dean's List: <span className="font-semibold">2023-2024</span>, <span className="font-semibold">2024-2025</span></span>
-        </div>
-      )
-    },
-    {
-      titleText: "Fidelity Investments",
-      title: (
-        <div className="flex flex-row items-center gap-4">
-          <Image src="/fidelity.png" alt="Fidelity Investments Logo" width={64} height={64} className="object-contain" />
-          <div className="flex flex-col">
-            <span className="font-semibold text-white text-lg leading-tight">Automation Analyst, Emerging Technologies</span>
-            <span className="text-xs text-white/60">Fidelity Investments · Co-op</span>
-            <span className="text-xs text-white/60">May 2025 – Present · 3 mos &nbsp;|&nbsp; Toronto, Ontario, Canada · Hybrid</span>
-          </div>
-        </div>
-      ),
-      content: (
-        <div className="flex flex-col gap-2 pl-[80px]">
-          <ul className="list-disc pl-6 text-white/80 text-sm space-y-3">
-            <li>Lead end-to-end development of automation solutions that optimize internal processes and deliver measurable time savings for business stakeholders.</li>
-            <li>Utilize PL-900 tools such as Microsoft Power Automate and PowerBI to design and deploy workflows, interactive dashboards, and low-code applications, reducing reliance on manual tasks across departments.</li>
-            <li>Work within a fast-paced Agile Scrum environment, collaborating with cross-functional teams—including business analysts, product owners, and end users—to gather requirements, iterate on prototypes, and deliver production-ready solutions in weekly sprint cycles.</li>
-            <li>Participate in daily stand-ups, sprint planning, backlog refinement, and retrospectives to ensure consistent delivery of high-value features and continuous adaptation to evolving business needs.</li>
-            <li>Manage stakeholder engagement throughout the project lifecycle, from discovery and requirements gathering to UAT, deployment, and post-launch support.</li>
-            <li>Develop technical documentation, training materials, and live demos to support user onboarding and long-term adoption of implemented solutions.</li>
-          </ul>
-        </div>
-      )
-    },
-    {
-      titleText: "ResDex",
-      title: (
-        <div className="flex flex-row items-center gap-4">
-          <Image src="/resdex-white.png" alt="ResDex Logo" width={64} height={64} className="object-contain" />
-          <div className="flex flex-col">
-            <span className="font-semibold text-white text-lg leading-tight">Co-Founder & Founding Engineer</span>
-            <span className="text-xs text-white/60">ResDex · Self-employed</span>
-            <span className="text-xs text-white/60">Aug 2024 – Present · 1 yr &nbsp;|&nbsp; Toronto, Ontario, Canada · Remote</span>
-          </div>
-        </div>
-      ),
-      content: (
-        <div className="flex flex-col gap-2 pl-[80px]">
-          <span className="text-white/80 text-sm">Building a cutting-edge, student-centric research platform that empowers users to publish, review, and edit papers seamlessly.</span>
-        </div>
-      )
-    },
-    {
-      titleText: "Interests",
-      title: "Interests",
-      content: "AI/ML, robotics, automation, UI/UX, cloud, and building real-world solutions."
-    },
-  ];
-  const [open, setOpen] = useState<number | null>(null);
-  return (
-    <div className="rounded-2xl bg-white/5 border border-white/10 divide-y divide-white/10 shadow-lg">
-      {items.map((item, idx) => (
-        <div key={item.titleText}>
-          <button
-            className="w-full flex justify-between items-center px-6 py-4 text-left text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 transition"
-            onClick={() => setOpen(open === idx ? null : idx)}
-            aria-expanded={open === idx}
-          >
-            <span className="flex items-center gap-4">{typeof item.title === 'string' ? item.title : item.title}</span>
-            <span className={`transform transition-transform duration-200 ${open === idx ? 'rotate-90' : ''}`}>▶</span>
-          </button>
-          <div
-            className={`px-6 pb-4 text-white/80 text-sm transition-all duration-300 ease-in-out ${open === idx ? 'max-h-[600px] overflow-y-auto opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}
-            style={{}}
-          >
-            {item.content}
-          </div>
-        </div>
-      ))}
-    </div>
   );
 } 
