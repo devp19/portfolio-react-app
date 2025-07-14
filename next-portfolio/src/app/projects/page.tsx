@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
 import { SpinningText } from "@/components/magicui/spinning-text";
 import { FiGithub, FiExternalLink, FiLinkedin } from "react-icons/fi";
+import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 const projects = [
     {
@@ -61,12 +62,14 @@ export default function Projects() {
   ];
 
   return (
-    <div
-      className="min-h-screen w-full flex flex-col items-center justify-center text-white px-4"
-      style={{
-        backgroundColor: "rgb(10,10,10)",
-      }}
-    >
+    <>
+      <SmoothCursor />
+      <div
+        className="min-h-screen w-full flex flex-col items-center justify-center text-white px-4"
+        style={{
+          backgroundColor: "rgb(10,10,10)",
+        }}
+      >
       {/* Navbar */}
       <div className="fixed left-0 w-full z-[9999]" style={{ top: '2rem', position: 'fixed' }}>
         <Navbar>
@@ -271,6 +274,7 @@ export default function Projects() {
         ))}
       </div>
     </div>
+    </>
   );
 } 
 

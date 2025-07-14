@@ -8,7 +8,7 @@ import { BlurFade } from "@/components/magicui/blur-fade";
 import { motion, AnimatePresence } from "framer-motion";
 import { SpinningText } from "@/components/magicui/spinning-text";
 import { FiGithub, FiLinkedin, FiX } from "react-icons/fi";
-import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
+import { Navbar, NavBody, NavItems, MobileNav, MobileNavHeader, MobileNavToggle, MobileNavMenu } from "@/components/ui/navbar";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
 import { useRouter } from "next/navigation";
 
@@ -115,8 +115,8 @@ export default function Home() {
   // Sample nav items
   const navItems = [
     { name: "Home", link: "/" },
-    { name: "Innovation", link: "/innovation" },
     { name: "About", link: "/about" },
+    { name: "Innovation", link: "/innovation" },
     { name: "Contact", link: "/contact" },
   ];
 
@@ -156,7 +156,7 @@ export default function Home() {
     // Animation config
     const configs = [
       { text: 'Hey!', duration: 0.7, stagger: 0.05 },
-      { text: "My name is Dev and this is my little space on the internet where I'm", duration: 1.1, stagger: 0.05, extraDelay: 0.1 },
+      { text: "My name is Dev and this is my little space on the internet where I showcase my work and projects by", duration: 1.1, stagger: 0.05, extraDelay: 0.1 },
       { text: 'Exploring the intersection of code, cognition, and applied research to build intelligent, real-world solutions.', duration: 1.1, stagger: 0.05 },
     ];
     if (headlineStep === 1 || headlineStep === 2) {
@@ -187,6 +187,8 @@ export default function Home() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, [profileMenuOpen]);
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <>
       <SmoothCursor />
@@ -199,13 +201,13 @@ export default function Home() {
           style={{ top: '2rem', position: 'fixed' }}
         >
           <Navbar>
+            {/* Desktop Nav */}
             <NavBody>
               <div className="flex items-center justify-between w-full">
                 <div className="flex items-center gap-4">
                   <Image src="/profile.png" alt="Logo" width={32} height={32} className="rounded-full" />
                 </div>
                 <NavItems items={navItems} />
-                {/* Social icons absolutely positioned top right */}
               </div>
               <div className="absolute top-2 right-6 z-[10000] flex items-center gap-2 pointer-events-auto">
                 <a href="https://github.com/devp19" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition cursor-pointer">
@@ -225,6 +227,48 @@ export default function Home() {
                 </a>
               </div>
             </NavBody>
+            {/* Mobile Nav */}
+            <MobileNav>
+              <MobileNavHeader>
+                <div className="flex items-center gap-4">
+                  <Image src="/profile.png" alt="Logo" width={32} height={32} className="rounded-full" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <MobileNavToggle isOpen={mobileMenuOpen} onClick={() => setMobileMenuOpen((v) => !v)} />
+                </div>
+              </MobileNavHeader>
+              <MobileNavMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)}>
+                <div className="flex flex-col w-full gap-4">
+                  {navItems.map((item, idx) => (
+                    <a
+                      key={item.name}
+                      href={item.link}
+                      className="w-full px-4 py-3 rounded-lg text-base font-medium text-white hover:bg-neutral-800 transition"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </a>
+                  ))}
+                  <div className="flex flex-row gap-3 mt-2">
+                    <a href="https://github.com/devp19" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-neutral-800 transition cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 16 16">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                      </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/devp19" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-neutral-800 transition cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 16 16">
+                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                      </svg>
+                    </a>
+                    <a href="https://x.com/devp19" aria-label="X" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-neutral-800 transition cursor-pointer">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </MobileNavMenu>
+            </MobileNav>
           </Navbar>
         </motion.div>
       )}
@@ -320,8 +364,8 @@ export default function Home() {
           <div className="flex flex-col items-center w-full">
             <div className="flex flex-row items-center justify-center gap-2 mb-0 w-full">
               <Image src="/signature.png" alt="Signature" width={100} height={32} />
-              {/* <span className="text-white/80 font-regulartext-lg"> · </span>
-              <span className="text-white/80 font-regulartext-lg">Dev Patel</span> */}
+              <span className="text-white/80 font-regulartext-lg"> · </span>
+              <span className="text-white/80 font-regulartext-lg">Dev Patel</span>
             </div>
         
           </div>
@@ -349,7 +393,7 @@ export default function Home() {
               duration={1.1}
               className="text-white font-regular tracking-tight text-3xl md:text-4xl leading-tight"
             >
-              {"My name is Dev and this is my little space on the internet where I'm"}
+              {"My name is Dev and this is my little space on the internet where I showcase my work and projects by"}
             </TextAnimate>
           )}
           {showContent && headlineStep === 3 && (
@@ -406,50 +450,6 @@ export default function Home() {
       </main>
     </div>
 
-    {/* About Me Section (separate page/section, plain background) */}
-    <section className="w-full flex flex-col items-center justify-center py-24" style={{ background: 'rgb(10, 10, 10)', color: 'white' }}>
-      <TextAnimate
-        animation="blurIn"
-        as="h2"
-        by="word"
-        duration={1.1}
-        className="text-5xl md:text-6xl font-regular tracking-tight mb-10 text-center text-white"
-      >
-        about me.
-      </TextAnimate>
-      <BlurFade inView>
-        <div className="max-w-2xl w-full mx-auto flex flex-col items-center">
-          <TextAnimate
-            animation="blurIn"
-            as="p"
-            by="word"
-            duration={1.1}
-            className="text-center text-lg text-white mb-4 font-regular"
-          >
-            i build intelligent, real-world solutions automation analyst @ fidelity investments, cs @ torontomet, cofounder @ resdex
-          </TextAnimate>
-          <p className="text-center text-lg text-white mb-4 font-regular">
-            Software Engineer from Toronto, Ontario; studying <span className="font-semibold">Computer Science</span> at Toronto Metropolitan University (formerly Ryerson).
-          </p>
-          <p className="text-center text-base text-white mb-4 font-regular">
-            A small backstory → I was first introduced to programming in Grade 6 and have since fallen in love with programming and the realm of technology! I started off by working on Robots, whether that was through FLL tournaments or even VEX Robotics. I often held a lead-programmer role for autonomous challenges, and that's what influenced my decision to choose Computer Science as my post-secondary career path!
-          </p>
-          <p className="text-center text-base text-white mb-8 font-regular">
-            Going back to the present → I'm in my second year of Computer Science, so with any free time I get, I'm ideally keeping up with any tech-related news surrounding artificial intelligence. I'm a big believer in Artificial-Intelligence adoption in medicinal sectors, which is something I hope to contribute towards post-undergrad.
-          </p>
-          <div className="flex flex-row justify-center items-end gap-16 mt-8 w-full">
-            <div className="flex flex-col items-center">
-              <span className="text-base mb-2">Coding for more than</span>
-              <span className="text-4xl md:text-5xl font-regular tracking-tight text-white">7+ Years</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <span className="text-base mb-2">Grade-Point Average</span>
-              <span className="text-4xl md:text-5xl font-regular tracking-tight text-white">3.94</span>
-            </div>
-          </div>
-        </div>
-      </BlurFade>
-    </section>
    
     </>
   );
