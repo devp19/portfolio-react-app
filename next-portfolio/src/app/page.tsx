@@ -4,11 +4,13 @@ import Image from "next/image";
 import { useEffect, useState, useRef, useCallback, MouseEvent } from "react";
 import type { MouseEvent as ReactMouseEvent } from "react";
 import { TextAnimate } from "@/components/magicui/text-animate";
+import { BlurFade } from "@/components/magicui/blur-fade";
 import { motion, AnimatePresence } from "framer-motion";
 import { SpinningText } from "@/components/magicui/spinning-text";
 import { FiGithub, FiLinkedin, FiX } from "react-icons/fi";
 import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { useRouter } from "next/navigation";
 
 // --- TiltEffect helper ---
 function throttle<T extends (...args: any[]) => any>(
@@ -118,6 +120,8 @@ export default function Home() {
     { name: "Contact", link: "/contact" },
   ];
 
+  const router = useRouter();
+
   useEffect(() => {
     // Start fade out after 1s
     const timeout = setTimeout(() => {
@@ -152,7 +156,7 @@ export default function Home() {
     // Animation config
     const configs = [
       { text: 'Hey!', duration: 0.7, stagger: 0.05 },
-      { text: "My name is Dev and this is my little space on the internet where I'm", duration: 1.1, stagger: 0.05, extraDelay: 0.5 },
+      { text: "My name is Dev and this is my little space on the internet where I'm", duration: 1.1, stagger: 0.05, extraDelay: 0.1 },
       { text: 'Exploring the intersection of code, cognition, and applied research to build intelligent, real-world solutions.', duration: 1.1, stagger: 0.05 },
     ];
     if (headlineStep === 1 || headlineStep === 2) {
@@ -371,26 +375,28 @@ export default function Home() {
           <div className="flex flex-row gap-4">
             <TiltEffect>
               <button
-                className="shine-btn mt-2 px-6 py-2 rounded-md bg-white/10 border border-white/30 text-white/90 font-medium text-base backdrop-blur-md hover:bg-white/20 transition shadow-lg cursor-pointer"
+                className="shine-btn mt-2 px-6 py-2 rounded-full bg-white/10 border border-white/30 text-white/90 font-medium text-base backdrop-blur-md hover:bg-white/20 transition shadow-lg cursor-pointer"
                 style={{
                   boxShadow: "0 4px 32px 0 rgba(255,94,98,0.15)",
                   border: "1.5px solid rgba(255,255,255,0.18)",
                   background: "rgba(255,255,255,0.08)",
                   color: "#fff",
                 }}
+                onClick={() => router.push('/about')}
               >
                 Learn More
               </button>
             </TiltEffect>
             <TiltEffect>
               <button
-                className="shine-btn mt-2 px-6 py-2 rounded-md bg-white/20 border border-white/30 text-white/90 font-medium text-base backdrop-blur-md hover:bg-white/30 transition shadow-lg cursor-pointer"
+                className="shine-btn mt-2 px-6 py-2 rounded-full bg-white/20 border border-white/30 text-white/90 font-medium text-base backdrop-blur-md hover:bg-white/30 transition shadow-lg cursor-pointer"
                 style={{
                   boxShadow: "0 4px 32px 0 rgba(255,94,98,0.15)",
                   border: "1.5px solid rgba(255,255,255,0.18)",
                   background: "rgba(255,255,255,0.12)",
                   color: "#fff",
                 }}
+                onClick={() => router.push('/innovation')}
               >
                 View Projects
               </button>
@@ -401,6 +407,49 @@ export default function Home() {
     </div>
 
     {/* About Me Section (separate page/section, plain background) */}
+    <section className="w-full flex flex-col items-center justify-center py-24" style={{ background: 'rgb(10, 10, 10)', color: 'white' }}>
+      <TextAnimate
+        animation="blurIn"
+        as="h2"
+        by="word"
+        duration={1.1}
+        className="text-5xl md:text-6xl font-regular tracking-tight mb-10 text-center text-white"
+      >
+        about me.
+      </TextAnimate>
+      <BlurFade inView>
+        <div className="max-w-2xl w-full mx-auto flex flex-col items-center">
+          <TextAnimate
+            animation="blurIn"
+            as="p"
+            by="word"
+            duration={1.1}
+            className="text-center text-lg text-white mb-4 font-regular"
+          >
+            i build intelligent, real-world solutions automation analyst @ fidelity investments, cs @ torontomet, cofounder @ resdex
+          </TextAnimate>
+          <p className="text-center text-lg text-white mb-4 font-regular">
+            Software Engineer from Toronto, Ontario; studying <span className="font-semibold">Computer Science</span> at Toronto Metropolitan University (formerly Ryerson).
+          </p>
+          <p className="text-center text-base text-white mb-4 font-regular">
+            A small backstory → I was first introduced to programming in Grade 6 and have since fallen in love with programming and the realm of technology! I started off by working on Robots, whether that was through FLL tournaments or even VEX Robotics. I often held a lead-programmer role for autonomous challenges, and that's what influenced my decision to choose Computer Science as my post-secondary career path!
+          </p>
+          <p className="text-center text-base text-white mb-8 font-regular">
+            Going back to the present → I'm in my second year of Computer Science, so with any free time I get, I'm ideally keeping up with any tech-related news surrounding artificial intelligence. I'm a big believer in Artificial-Intelligence adoption in medicinal sectors, which is something I hope to contribute towards post-undergrad.
+          </p>
+          <div className="flex flex-row justify-center items-end gap-16 mt-8 w-full">
+            <div className="flex flex-col items-center">
+              <span className="text-base mb-2">Coding for more than</span>
+              <span className="text-4xl md:text-5xl font-regular tracking-tight text-white">7+ Years</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <span className="text-base mb-2">Grade-Point Average</span>
+              <span className="text-4xl md:text-5xl font-regular tracking-tight text-white">3.94</span>
+            </div>
+          </div>
+        </div>
+      </BlurFade>
+    </section>
    
     </>
   );

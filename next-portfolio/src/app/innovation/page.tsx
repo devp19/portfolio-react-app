@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
 import { SpinningText } from "@/components/magicui/spinning-text";
+import { TextAnimate } from "@/components/magicui/text-animate";
 import { FiGithub, FiExternalLink, FiLinkedin } from "react-icons/fi";
 import { BlurFade } from "@/components/magicui/blur-fade";
 
@@ -123,10 +124,24 @@ export default function Projects() {
             Innovator • Thinker • Builder •
           </SpinningText>
         </div>
-        <h1 className="text-4xl md:text-5xl font-regular mb-4">where my creativity meets innovation.</h1>
-        <p className="text-lg text-white/80">
-         full stack developer, machine learning researcher, and robotics enthusiast.
-        </p>
+        <TextAnimate
+          animation="blurIn"
+          as="h1"
+          by="word"
+          duration={1.1}
+          className="text-4xl md:text-5xl font-regular mb-4"
+        >
+          where my creativity meets innovation.
+        </TextAnimate>
+        <TextAnimate
+          animation="blurIn"
+          as="p"
+          by="word"
+          duration={1.1}
+          className="text-lg text-white/80"
+        >
+          full stack developer, machine learning researcher, and robotics enthusiast.
+        </TextAnimate>
       </div>
       {/* Projects Grid */}
       <div className="max-w-6xl w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-24 overflow-visible">

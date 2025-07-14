@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Navbar, NavBody, NavItems } from "@/components/ui/navbar";
 import { SpinningText } from "@/components/magicui/spinning-text";
 import { useState } from "react";
+import { TextAnimate } from "@/components/magicui/text-animate";
 
 export default function About() {
   // Sample nav items (same as main page)
@@ -61,10 +62,33 @@ export default function About() {
             Innovator • Thinker • Builder •
           </SpinningText>
         </div>
-        <h1 className="text-4xl md:text-5xl font-regular mb-4">about me.</h1>
-        <p className="text-lg text-white/80">
-          i build intelligent, real-world solutions <br />automation analyst @ fidelity investments, cs @ torontomet, cofounder @ resdex
-        </p>
+        <TextAnimate
+          animation="blurIn"
+          as="h1"
+          by="word"
+          duration={1.1}
+          className="text-4xl md:text-5xl font-regular mb-4"
+        >
+          about me.
+        </TextAnimate>
+        <TextAnimate
+          animation="blurIn"
+          as="p"
+          by="word"
+          duration={1.1}
+          className="text-lg text-white/80"
+        >
+          i build intelligent, real-world solutions
+        </TextAnimate>
+        <TextAnimate
+          animation="blurIn"
+          as="p"
+          by="word"
+          duration={1.1}
+          className="text-lg text-white/80"
+        >
+          currently automation analyst @ fidelity investments, cs @ torontomet, cofounder @ resdex
+        </TextAnimate>
        
         {/* Accordion Section */}
         <div className="w-full max-w-4xl mx-auto mt-8 flex justify-center">
@@ -85,7 +109,7 @@ function Accordion() {
         <div className="flex flex-row items-center gap-4">
           <Image src="/tmufinal.png" alt="Toronto Metropolitan University Logo" width={64} height={64} className="object-contain" />
           <div className="flex flex-col">
-            <span className="font-semibold text-white text-lg leading-tight">BSc, Computer Science</span>
+            <span className="font-semibold text-white text-lg leading-tight">HBSc, Computer Science</span>
             <span className="text-xs text-white/60">Toronto Metropolitan University</span>
             <span className="text-xs text-white/60">Sept 2023 – Present · Toronto, Ontario, Canada</span>
           </div>
@@ -94,6 +118,8 @@ function Accordion() {
       content: (
         <div className="flex flex-col gap-2 pl-[80px]">
           <span className="text-white/80 text-sm">Focused on AI, automation, and applied research. Relevant coursework: Data Structures, Algorithms, Machine Learning, Software Engineering, and Human-Computer Interaction.</span>
+          <span className="text-white/80 text-sm">GPA: <span className="font-semibold">3.94</span></span>
+          <span className="text-white/80 text-sm">Dean's List: <span className="font-semibold">2023-2024</span>, <span className="font-semibold">2024-2025</span></span>
         </div>
       )
     },
