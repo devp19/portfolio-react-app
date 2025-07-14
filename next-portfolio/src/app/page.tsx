@@ -156,7 +156,7 @@ export default function Home() {
     // Animation config
     const configs = [
       { text: 'Hey!', duration: 0.7, stagger: 0.05 },
-      { text: "My name is Dev and this is my little space on the internet where I showcase my work and projects by", duration: 1.1, stagger: 0.05, extraDelay: 0.3 },
+      { text: "My name is Dev and this is my little space on the internet where I showcase my work and projects by", duration: 1.1, stagger: 0.05, extraDelay: 0.1 },
       { text: 'Exploring the intersection of code, cognition, and applied research to build intelligent, real-world solutions.', duration: 1.1, stagger: 0.05 },
     ];
     if (headlineStep === 1 || headlineStep === 2) {

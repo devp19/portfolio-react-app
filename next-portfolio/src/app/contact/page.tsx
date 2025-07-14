@@ -9,12 +9,42 @@ import { SmoothCursor } from "@/components/ui/smooth-cursor";
 
 export default function Contact() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
   const navItems = [
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
     { name: "Innovation", link: "/innovation" },
     { name: "Contact", link: "/contact" },
   ];
+
+  // Netlify form submission handler
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+    try {
+      const response = await fetch("https://formspree.io/f/xovlanov", {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: new FormData(e.currentTarget),
+      });
+      if (response.ok) {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        alert("There was an error. Please try again.");
+      }
+    } catch (err) {
+      alert("There was an error. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -127,15 +157,60 @@ export default function Contact() {
           </TextAnimate>
           {/* Contact Form or Info */}
           <div className="w-full max-w-4xl mt-4 flex flex-col gap-6 bg-white/5 border border-white/10 rounded-2xl shadow-lg p-6 items-start">
-            <form className="flex flex-col gap-4 w-full">
-              <input type="text" placeholder="Your Name" className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" required />
-              <input type="email" placeholder="Your Email" className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" required />
-              <textarea placeholder="Your Message" className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white" rows={5} required />
-              <button type="submit" className="mt-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-lg shadow-lg hover:bg-white/80 transition">Send Message</button>
-            </form>
-            <div className="text-white/60 text-sm mt-4">
+            {sent ? (
+              <div className="w-full flex flex-col items-center justify-center py-16">
+                <h2 className="text-3xl md:text-4xl font-regular text-white mb-2">Success!</h2>
+                <p className="text-white/80 text-lg">Your message has been sent. I will get back to you as soon as possible.</p>
+              </div>
+            ) : (
+              <form 
+                className="flex flex-col gap-4 w-full"
+                action="https://formspree.io/f/xovlanov"
+                method="POST"
+                onSubmit={handleSubmit}
+              >
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white"
+                  required
+                  value={form.name}
+                  onChange={handleChange}
+                  disabled={sent || submitting}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white"
+                  required
+                  value={form.email}
+                  onChange={handleChange}
+                  disabled={sent || submitting}
+                />
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  className="px-4 py-3 rounded-lg bg-white/10 text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white"
+                  rows={5}
+                  required
+                  value={form.message}
+                  onChange={handleChange}
+                  disabled={sent || submitting}
+                />
+                <button
+                  type="submit"
+                  className="mt-2 px-6 py-3 rounded-full bg-white text-black font-semibold text-lg shadow-lg hover:bg-white/80 transition"
+                  disabled={sent || submitting}
+                >
+                  {submitting ? "Sending..." : "Send Message"}
+                </button>
+              </form>
+            )}
+            {/* <div className="text-white/60 text-sm mt-4">
               Or email me directly at <a href="mailto:devp19@protonmail.com" className="underline hover:text-white">devp19@protonmail.com</a>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
