@@ -321,7 +321,9 @@ export default function Projects() {
                   </p>
                   <p className="text-[#b0b0b0] mb-3 text-sm">
                     The platform enables users to showcase their research, build a professional portfolio, and connect with peers and institutions. With a robust tech stack and intuitive UI, ResDex bridges the gap between emerging talent and opportunity.
-                  </p>
+                  </p>Gemini-tuned Random Forest ML model for 3D urban heat-vulnerability mapping (LST, NDVI & building density) with actionable tree-planting insights.
+
+
                 </div>
               </div>
 
