@@ -53,7 +53,7 @@ export default function Contact() {
         className="min-h-screen w-full flex flex-col items-center justify-center text-white px-4 bg-[rgb(10,10,10)]"
       >
         {/* Navbar (full homepage version) */}
-        <div className="fixed left-0 w-full z-[9999]" style={{ top: '2rem', position: 'fixed' }}>
+        <div className="w-full z-[9999]">
           <Navbar>
             {/* Desktop Nav */}
             <NavBody>

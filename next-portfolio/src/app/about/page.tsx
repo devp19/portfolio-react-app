@@ -27,8 +27,8 @@ export default function About() {
         // }}
       >
         {/* Navbar (full homepage version) */}
-        <div className="fixed left-0 w-full z-[9999]" style={{ top: '2rem', position: 'fixed' }}>
-          <Navbar>
+        <div className="w-full z-[9999]">
+          <Navbar className="mt-7">
             {/* Desktop Nav */}
             <NavBody>
               <div className="flex items-center justify-between w-full">
@@ -100,7 +100,7 @@ export default function About() {
           </Navbar>
         </div>
         {/* Top Section */}
-        <div className="w-full max-w-4xl mx-auto flex flex-col items-start pt-40 pb-16 text-left">
+        <div className="w-full max-w-4xl mx-auto flex flex-col items-start pt-20 pb-16 text-left">
           <div className="mb-2 mt-10">
             <SpinningText
               className="mb-4 left-11 mb-14"
@@ -142,6 +142,10 @@ export default function About() {
           {/* Accordion Section */}
           <div className="w-full max-w-4xl mx-auto mt-8 flex justify-center">
             <Accordion />
+          </div>
+          <div className="mb-2 mt-10 text-left w-full text-lg text-white/80 font-regular">year of coding put in retrospect</div>
+          <div className="w-full max-w-4xl mx-auto mt-2 flex justify-start">
+            <Image src="/contribution.png" alt="GitHub Contribution Graph" width={600} height={200} className="rounded-xl shadow-lg object-contain" />
           </div>
         </div>
        
@@ -215,11 +219,6 @@ function Accordion() {
           <span className="text-white/80 text-sm">Building a cutting-edge, student-centric research platform that empowers users to publish, review, and edit papers seamlessly.</span>
         </div>
       )
-    },
-    {
-      titleText: "Interests",
-      title: "Interests",
-      content: "AI/ML, robotics, automation, UI/UX, cloud, and building real-world solutions."
     },
   ];
   const [open, setOpen] = useState<number | null>(null);

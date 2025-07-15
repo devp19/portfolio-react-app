@@ -71,7 +71,7 @@ export default function Projects() {
         }}
       >
       {/* Navbar */}
-      <div className="fixed left-0 w-full z-[9999]" style={{ top: '2rem', position: 'fixed' }}>
+      <div className="w-full z-[9999]">
         <Navbar>
           <NavBody>
             <div className="flex items-center justify-between w-full">
