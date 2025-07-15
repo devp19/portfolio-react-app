@@ -291,7 +291,13 @@ export default function Projects() {
                 <p className="text-white/80 text-sm mt-3 leading-relaxed flex-1 line-clamp-4">{proj.desc}</p>
                 <div className="mt-4">
                   <a
-                    href="#"
+                    href={
+                      proj.title === "RESDEX"
+                        ? "/innovation/resdex"
+                        : proj.title === "HOTSPOTS-AI"
+                        ? "/innovation/hotspots"
+                        : `/innovation/${proj.title}`
+                    }
                     className="inline-flex items-center gap-1 text-white/80 font-medium text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
                     tabIndex={0}
                     aria-label={`Read more about ${proj.title}`}
