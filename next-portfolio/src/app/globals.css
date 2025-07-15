@@ -45,6 +45,7 @@
 
 html, body {
   cursor: url('/circle-cursor.svg') 16 16, auto;
+  overflow-x: hidden;
 }
 
 :root {

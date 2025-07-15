@@ -8,6 +8,7 @@ import { FiGithub, FiExternalLink, FiLinkedin } from "react-icons/fi";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import { useState } from "react";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { IconInfoCircle } from "@tabler/icons-react";
 
 const projects = [
     {
@@ -70,6 +71,7 @@ const projects = [
 
 export default function Projects() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showMessage, setShowMessage] = useState(true);
   const navItems = [
     { name: "Home", link: "/" },
     { name: "About", link: "/about" },
@@ -296,6 +298,18 @@ export default function Projects() {
                         ? "/innovation/resdex"
                         : proj.title === "HOTSPOTS-AI"
                         ? "/innovation/hotspots"
+                        : proj.title === "PERCEPTA"
+                        ? "/innovation/percepta"
+                        : proj.title === "QONNECTR"
+                        ? "/innovation/qonnectr"
+                        : proj.title === "MYBUDDY"
+                        ? "/innovation/mybuddy"
+                        : proj.title === "STOCKEYE"
+                        ? "/innovation/stockeye"
+                        : proj.title === "NEAR FANTASY"
+                        ? "/innovation/near-fantasy"
+                        : proj.title === "CITCO"
+                        ? "/innovation/citco"
                         : `/innovation/${proj.title}`
                     }
                     className="inline-flex items-center gap-1 text-white/80 font-medium text-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
@@ -318,7 +332,25 @@ export default function Projects() {
           </BlurFade>
         ))}
       </div>
+      {/* Glassy Dismissible Message */}
+      {showMessage && (
+        <div
+          className="fixed bottom-6 right-6 z-[99999] flex items-center gap-3 px-5 py-3 rounded-xl backdrop-blur-md bg-white/20 border border-white/30 shadow-lg text-white transition-all"
+          style={{ minWidth: 320 }}
+        >
+          <IconInfoCircle size={20} className="text-white/80" />
+          <span className="text-white/90 text-sm">The [read more] pages are a work in progress. Some features and project explanations may be incomplete!</span>
+          <button
+            onClick={() => setShowMessage(false)}
+            className="ml-2 text-white/60 hover:text-white/90 text-lg font-bold focus:outline-none"
+            aria-label="Dismiss message"
+            style={{ lineHeight: 1 }}
+          >
+            ×
+          </button>
+        </div>
+      )}
     </div>
-    </>
+  </>
   );
 }
