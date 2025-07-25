@@ -26,14 +26,7 @@ export default function CanopyDemo() {
         };
     }, [isMobile]);
 
-    const handleFidelityClick = (e: React.MouseEvent) => {
-        e.preventDefault();
-        setZooming(true);
-        setTimeout(() => {
-            router.push("/fidelity");
-        }, 600);
-    };
-
+  
     const bgColor = lightMode ? "white" : "black";
     const textColor = lightMode ? "black" : "white";
     const iconColor = lightMode ? "#111" : "#fff";
@@ -155,7 +148,6 @@ export default function CanopyDemo() {
                     automation analyst (s25) at
                     <a
                         href="/fidelity"
-                        onClick={handleFidelityClick}
                         style={{
                             textDecoration: "underline",
                             fontWeight: 300,
