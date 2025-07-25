@@ -2,19 +2,29 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { FaXTwitter, FaGithub, FaLinkedin, FaRegMoon, FaRegSun } from "react-icons/fa6";
+import { FaXTwitter, FaGithub, FaLinkedin } from "react-icons/fa6";
 import { CgArrowTopRight } from "react-icons/cg";
 import CustomCursor from "./CustomCursor"; // adjust path if needed
 
 export default function CanopyDemo() {
     const [zooming, setZooming] = useState(false);
     const [lightMode, setLightMode] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const router = useRouter();
 
     useEffect(() => {
+        // Detect mobile screen
+        const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
         document.body.style.cursor = "none";
-        return () => { document.body.style.cursor = ""; };
-    }, []);
+        document.body.style.overflow = isMobile ? "hidden" : "";
+        return () => {
+            window.removeEventListener("resize", checkMobile);
+            document.body.style.cursor = "";
+            document.body.style.overflow = "";
+        };
+    }, [isMobile]);
 
     const handleFidelityClick = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -36,47 +46,63 @@ export default function CanopyDemo() {
                 width: "100vw",
                 position: "relative",
                 display: "flex",
-                alignItems: "center",
+                alignItems: isMobile ? "flex-start" : "center",
                 justifyContent: "center",
                 overflow: "hidden",
                 userSelect: "none",
                 transition: "background 0.4s",
+                paddingTop: isMobile ? "4vh" : 0,
+                boxSizing: "border-box",
             }}
         >
-            <CustomCursor />
+            {/* Only show custom cursor on non-mobile */}
+            {!isMobile && <CustomCursor />}
 
             {/* Centered GIF with theme toggle on click */}
-            <img
-                src="/asciislower.gif"
-                alt="ASCII Art"
-                onClick={() => setLightMode((v) => !v)}
+            <div
                 style={{
-                    opacity: lightMode ? 0.85 : 1,
-                    width: "clamp(180px, 18vw, 180px)",
-                    height: "auto",
-                    transition: "transform 0.6s cubic-bezier(.4,2.2,.2,1), filter 0.6s",
-                    transform: zooming ? "scale(20)" : "scale(1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "100%",
+                    height: isMobile ? "100vh" : "auto",
+                    position: isMobile ? "absolute" : "static",
+                    top: isMobile ? 0 : undefined,
+                    left: isMobile ? 0 : undefined,
                     zIndex: 10,
                     pointerEvents: zooming ? "none" : "auto",
-                    filter: lightMode ? "invert(1)" : "none",
-                    display: "block",
-                    cursor: "pointer",
                 }}
-                draggable={false}
-                title="Toggle light/dark mode"
-            />
+            >
+                <img
+                    src="/asciislower.gif"
+                    alt="ASCII Art"
+                    onClick={() => setLightMode((v) => !v)}
+                    style={{
+                        opacity: lightMode ? 0.85 : 1,
+                        width: isMobile ? "120px" : "clamp(180px, 18vw, 180px)",
+                        height: "auto",
+                        transition: "transform 0.6s cubic-bezier(.4,2.2,.2,1), filter 0.6s",
+                        transform: zooming ? "scale(20)" : "scale(1)",
+                        filter: lightMode ? "invert(1)" : "none",
+                        display: "block",
+                        cursor: "pointer",
+                    }}
+                    draggable={false}
+                    title="Toggle light/dark mode"
+                />
+            </div>
 
             {/* Bottom-left info */}
             <div
                 style={{
                     position: "absolute",
-                    left: "2rem",
-                    bottom: "2rem",
+                    left: isMobile ? "1rem" : "2rem",
+                    bottom: isMobile ? "1.2rem" : "2rem",
                     color: textColor,
-                    fontSize: "0.95rem",
+                    fontSize: isMobile ? "0.93rem" : "0.95rem",
                     opacity: 0.85,
                     lineHeight: 1.5,
-                    maxWidth: "500px",
+                    maxWidth: isMobile ? "92vw" : "500px",
                     zIndex: 20,
                     textAlign: "left",
                     display: "flex",
@@ -86,7 +112,7 @@ export default function CanopyDemo() {
             >
                 <div style={{
                     fontWeight: 300,
-                    fontSize: "0.9rem",
+                    fontSize: isMobile ? "0.88rem" : "0.9rem",
                     marginBottom: "0.5em",
                     display: "flex",
                     alignItems: "center",
@@ -123,7 +149,7 @@ export default function CanopyDemo() {
                     </a>
                 </div>
 
-                <div style={{ fontWeight: 300, fontSize: "0.9rem", marginBottom: "0.5em" }}>
+                <div style={{ fontWeight: 300, fontSize: isMobile ? "0.88rem" : "0.9rem", marginBottom: "0.5em" }}>
                     code, cognition &amp; applied research
                     <br />
                     automation analyst (s25) at
@@ -133,7 +159,7 @@ export default function CanopyDemo() {
                         style={{
                             textDecoration: "underline",
                             fontWeight: 300,
-                            fontSize: "0.9rem",
+                            fontSize: isMobile ? "0.88rem" : "0.9rem",
                             color: textColor,
                             cursor: "pointer",
                             display: "inline-flex",
@@ -153,7 +179,7 @@ export default function CanopyDemo() {
                         style={{
                             textDecoration: "underline",
                             fontWeight: 300,
-                            fontSize: "0.9rem",
+                            fontSize: isMobile ? "0.88rem" : "0.9rem",
                             color: textColor,
                             display: "inline-flex",
                             cursor: "pointer",
@@ -173,7 +199,7 @@ export default function CanopyDemo() {
                         style={{
                             textDecoration: "underline",
                             fontWeight: 300,
-                            fontSize: "0.9rem",
+                            fontSize: isMobile ? "0.88rem" : "0.9rem",
                             color: textColor,
                             display: "inline-flex",
                             cursor: "pointer",
