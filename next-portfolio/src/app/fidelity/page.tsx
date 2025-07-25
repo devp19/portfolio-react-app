@@ -14,12 +14,32 @@ import {
   IconStack2,
   IconInfoCircle,
 } from "@tabler/icons-react";
-import SmoothCursor from "../CustomCursor"; // adjust path if needed
+import CustomCursor from "../CustomCursor"; // adjust path if needed
+import { useEffect, useState } from "react";
+
 
 export default function ResDexPage() {
+
+      const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+        // Detect mobile screen
+        const checkMobile = () => setIsMobile(window.innerWidth <= 600);
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        document.body.style.cursor = "none";
+        document.body.style.overflow = isMobile ? "hidden" : "";
+        return () => {
+            window.removeEventListener("resize", checkMobile);
+            document.body.style.cursor = "";
+            document.body.style.overflow = "";
+        };
+    }, [isMobile]);
+
   return (
     <>
-          <SmoothCursor />
+      
+     {!isMobile && <CustomCursor />}
+          
     
     <main className="min-h-screen bg-black text-white px-6 py-12 font-sans">
       
@@ -52,7 +72,7 @@ Fidelity Investments is the third-largest asset manager globally, with over $12 
         </div>
 
         {/* Info Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
           {/* Timeline */}
           <div>
             <h3 className="text-gray-500 mb-2 text-sm text-white inline-flex items-center gap-2">
