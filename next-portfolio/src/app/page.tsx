@@ -1,37 +1,69 @@
-import { FaXTwitter, FaGithub, FaLinkedin } from "react-icons/fa6";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { FaXTwitter, FaGithub, FaLinkedin, FaRegMoon, FaRegSun } from "react-icons/fa6";
 import { CgArrowTopRight } from "react-icons/cg";
+import CustomCursor from "./CustomCursor"; // adjust path if needed
 
 export default function CanopyDemo() {
+    const [zooming, setZooming] = useState(false);
+    const [lightMode, setLightMode] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        document.body.style.cursor = "none";
+        return () => { document.body.style.cursor = ""; };
+    }, []);
+
+    const handleFidelityClick = (e: React.MouseEvent) => {
+        e.preventDefault();
+        setZooming(true);
+        setTimeout(() => {
+            router.push("/fidelity");
+        }, 600);
+    };
+
+    const bgColor = lightMode ? "white" : "black";
+    const textColor = lightMode ? "black" : "white";
+    const iconColor = lightMode ? "#111" : "#fff";
+
     return (
         <div
             style={{
-                background: "black",
+                background: bgColor,
                 minHeight: "100vh",
                 width: "100vw",
                 position: "relative",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                overflow: "hidden",
                 userSelect: "none",
-                WebkitUserSelect: "none",
-                MozUserSelect: "none",
-                msUserSelect: "none",
+                transition: "background 0.4s",
             }}
         >
-            {/* Centered GIF */}
+            <CustomCursor />
+
+            {/* Centered GIF with theme toggle on click */}
             <img
                 src="/asciislower.gif"
                 alt="ASCII Art"
+                onClick={() => setLightMode((v) => !v)}
                 style={{
-                    maxWidth: "30vw",
-                    maxHeight: "30vh",
+                    opacity: lightMode ? 0.85 : 1,
+                    width: "clamp(180px, 18vw, 180px)",
+                    height: "auto",
+                    transition: "transform 0.6s cubic-bezier(.4,2.2,.2,1), filter 0.6s",
+                    transform: zooming ? "scale(20)" : "scale(1)",
+                    zIndex: 10,
+                    pointerEvents: zooming ? "none" : "auto",
+                    filter: lightMode ? "invert(1)" : "none",
                     display: "block",
-                    userSelect: "none",
-                    WebkitUserSelect: "none",
-                    MozUserSelect: "none",
-                    msUserSelect: "none",
+                    cursor: "pointer",
                 }}
                 draggable={false}
+                title="Toggle light/dark mode"
             />
 
             {/* Bottom-left info */}
@@ -40,25 +72,33 @@ export default function CanopyDemo() {
                     position: "absolute",
                     left: "2rem",
                     bottom: "2rem",
-                    color: "white",
+                    color: textColor,
                     fontSize: "0.95rem",
                     opacity: 0.85,
                     lineHeight: 1.5,
                     maxWidth: "500px",
-                    userSelect: "none",
-                    WebkitUserSelect: "none",
-                    MozUserSelect: "none",
-                    msUserSelect: "none",
+                    zIndex: 20,
+                    textAlign: "left",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.5em",
                 }}
             >
-                <div style={{ fontWeight: 300, fontSize: "0.9rem", marginBottom: "0.5em", display: "flex", alignItems: "center", gap: "0.5em" }}>
+                <div style={{
+                    fontWeight: 300,
+                    fontSize: "0.9rem",
+                    marginBottom: "0.5em",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.5em",
+                    justifyContent: "flex-start"
+                }}>
                     Dev Patel
                     <a
                         href="https://x.com/_devp"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "white", opacity: 0.85, fontSize: "1.1em", verticalAlign: "middle", marginLeft: "1em" }}
-                        tabIndex={0}
+                        style={{ color: iconColor, opacity: 0.85, fontSize: "1.1em", marginLeft: "1em" }}
                         aria-label="Twitter"
                     >
                         <FaXTwitter />
@@ -67,8 +107,7 @@ export default function CanopyDemo() {
                         href="https://github.com/devp19"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "white", opacity: 0.85, fontSize: "1.1em", verticalAlign: "middle", marginLeft: "0.2em" }}
-                        tabIndex={0}
+                        style={{ color: iconColor, opacity: 0.85, fontSize: "1.1em", marginLeft: "0.2em" }}
                         aria-label="GitHub"
                     >
                         <FaGithub />
@@ -77,88 +116,74 @@ export default function CanopyDemo() {
                         href="https://linkedin.com/in/devp19"
                         target="_blank"
                         rel="noopener noreferrer"
-                        style={{ color: "white", opacity: 0.85, fontSize: "1.1em", verticalAlign: "middle", marginLeft: "0.2em" }}
-                        tabIndex={0}
+                        style={{ color: iconColor, opacity: 0.85, fontSize: "1.1em", marginLeft: "0.2em" }}
                         aria-label="LinkedIn"
                     >
                         <FaLinkedin />
                     </a>
                 </div>
+
                 <div style={{ fontWeight: 300, fontSize: "0.9rem", marginBottom: "0.5em" }}>
                     code, cognition &amp; applied research
                     <br />
                     automation analyst (s25) at
                     <a
-                    target="_blank"
-                    href="https://www.fidelity.com"
+                        href="/fidelity"
+                        onClick={handleFidelityClick}
                         style={{
                             textDecoration: "underline",
                             fontWeight: 300,
                             fontSize: "0.9rem",
-                            color: "white",
+                            color: textColor,
                             cursor: "pointer",
                             display: "inline-flex",
                             alignItems: "center",
                             opacity: 0.85,
                             marginLeft: "0.2em",
-                            userSelect: "none",
-                            WebkitUserSelect: "none",
-                            MozUserSelect: "none",
-                            msUserSelect: "none",
                         }}
-                        tabIndex={-1}
+                        tabIndex={0}
                     >
-                        fidelity investments <CgArrowTopRight />
+                        fidelity investments <CgArrowTopRight color={iconColor} />
                     </a>
-                                        
-
                     <br />
                     co-founder & founding engineer at
-                    <a target="_blank"
-                    href="https://nextjs-resdex.vercel.app"
+                    <a
+                        target="_blank"
+                        href="https://nextjs-resdex.vercel.app"
                         style={{
                             textDecoration: "underline",
                             fontWeight: 300,
                             fontSize: "0.9rem",
-                            color: "white",
+                            color: textColor,
                             display: "inline-flex",
                             cursor: "pointer",
                             opacity: 0.85,
                             alignItems: "center",
                             marginLeft: "0.2em",
-                            userSelect: "none",
-                            WebkitUserSelect: "none",
-                            MozUserSelect: "none",
-                            msUserSelect: "none",
                         }}
-                        tabIndex={-1}
+                        tabIndex={0}
                     >
-                        resdex <CgArrowTopRight />
-
+                        resdex <CgArrowTopRight color={iconColor} />
                     </a>
                     <br />
                     honours computer science at
-                    <a target="_blank"
-                    href="https://www.torontomu.ca/"
+                    <a
+                        target="_blank"
+                        href="https://www.torontomu.ca/"
                         style={{
                             textDecoration: "underline",
                             fontWeight: 300,
                             fontSize: "0.9rem",
-                            color: "white",
+                            color: textColor,
                             display: "inline-flex",
                             cursor: "pointer",
                             opacity: 0.85,
                             alignItems: "center",
                             marginLeft: "0.2em",
-                            userSelect: "none",
-                            WebkitUserSelect: "none",
-                            MozUserSelect: "none",
-                            msUserSelect: "none",
                         }}
-                        tabIndex={-1}
+                        tabIndex={0}
                     >
-                        torontomet <CgArrowTopRight />
-
+                        torontomet <CgArrowTopRight color={iconColor} />
                     </a>
                 </div>
             </div>
