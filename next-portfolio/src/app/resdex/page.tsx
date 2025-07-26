@@ -2,29 +2,39 @@
 
 import Image from "next/image";
 import {
+  IconAdjustmentsBolt,
+  IconCloud,
+  IconCurrencyDollar,
+  IconEaseInOut,
+  IconHeart,
+  IconHelp,
+  IconRouteAltLeft,
+  IconTerminal2,
   IconCalendar,
   IconStack2,
   IconInfoCircle,
 } from "@tabler/icons-react";
-import CustomCursor from "../CustomCursor"; // adjust path if needed
+import CustomCursor from "../CustomCursor";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function FidelityPage() {
+export default function ResDexPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [loaded, setLoaded] = useState(false);
-const router = useRouter();
-const [exiting, setExiting] = useState(false);
+    const router = useRouter();
+    const [exiting, setExiting] = useState(false);
+
   useEffect(() => {
     // Detect mobile screen
     const checkMobile = () => setIsMobile(window.innerWidth <= 600);
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
+    // Apply no cursor and scroll behavior
     document.body.style.cursor = "none";
     document.body.style.overflow = isMobile ? "hidden" : "";
 
-    // Trigger fade-in
+    // Trigger fade-in + blur removal
     const timeout = setTimeout(() => setLoaded(true), 50);
 
     return () => {
@@ -62,8 +72,8 @@ const [exiting, setExiting] = useState(false);
           {/* Hero Image */}
           <div className="bg-white rounded-xl overflow-hidden mt-5">
             <Image
-              src="/fidelitycover.jpg"
-              alt="Fidelity Screenshot"
+              src="/resdex-cover.png"
+              alt="ResDex Screenshot"
               width={400}
               height={300}
               className="w-full object-cover"
@@ -72,16 +82,17 @@ const [exiting, setExiting] = useState(false);
 
           {/* Project Title & Description */}
           <div>
-            <p className="text-gray-500 mb-2 text-sm">Internship</p>
-            <h1 className="text-2xl mb-2">Fidelity Investments</h1>
-            <p className="text-gray-300 text-sm">
-              Fidelity Investments is the third-largest asset manager globally,
-              with over $12 trillion in assets under administration and $4.5
-              trillion in AUM. Ranked just behind BlackRock and Vanguard,
-              Fidelity offers industry-leading services in wealth management,
-              brokerage, and retirement planning. Known for its innovation and
-              strong focus on technology, it remains a top name in global
-              finance.
+            <p className="text-gray-500 mb-2 text-sm">Startup</p>
+            <h1 className="text-2xl mb-2">ResDex</h1>
+            <p className="text-gray-300" style={{ fontSize: "0.8rem" }}>
+              ResDex is a centralized research discovery platform that connects
+              students with academic opportunities. Designed to break down
+              institutional barriers, it enables users to showcase their
+              research portfolios, discover projects, and collaborate across
+              disciplines. With real-time search, secure authentication, and
+              streamlined networking features, ResDex makes finding and sharing
+              research as intuitive as social media; bridging the gap between
+              student talent and academic access.
             </p>
           </div>
 
@@ -92,11 +103,13 @@ const [exiting, setExiting] = useState(false);
               <h3 className="text-gray-500 mb-2 text-sm text-white inline-flex items-center gap-2">
                 <IconCalendar size={"0.8rem"} className="text-white" /> Details
               </h3>
-              <ul className="space-y-1 text-gray-300 text-sm">
-                <li>Hybrid Work Environment</li>
-                <li>Toronto Office</li>
-                <li>4 Months</li>
-                <li>May - September 2025</li>
+              <ul
+                className="space-y-1 text-gray-300"
+                style={{ fontSize: "0.8rem" }}
+              >
+                <li>Co-Founder & Founding Engineer</li>
+                <li>12 Months</li>
+                <li>August 2024 - Present</li>
               </ul>
             </div>
 
@@ -105,12 +118,15 @@ const [exiting, setExiting] = useState(false);
               <h3 className="text-gray-500 mb-2 text-sm text-white inline-flex items-center gap-2">
                 <IconStack2 size={"0.8rem"} className="text-white" /> Tech Stack
               </h3>
-              <ul className="space-y-1 text-gray-300 text-sm">
-                <li>Power Automate</li>
-                <li>Power BI</li>
-                <li>Microsoft Azure</li>
-                <li>Python</li>
-                <li>Power Apps</li>
+              <ul
+                className="space-y-1 text-gray-300"
+                style={{ fontSize: "0.8rem" }}
+              >
+                <li>Next.js</li>
+                <li>Typescript</li>
+                <li>Amazon Web Services (S3)</li>
+                <li>Supabase</li>
+                <li>Firestore</li>
               </ul>
             </div>
 
@@ -119,14 +135,13 @@ const [exiting, setExiting] = useState(false);
               <h3 className="text-gray-500 mb-2 text-sm text-white inline-flex items-center gap-2">
                 <IconInfoCircle size={"0.8rem"} className="text-white" /> Overview
               </h3>
-              <p className="mb-2 text-gray-300 text-sm">
-                As an Automation Analyst at Fidelity, I lead end-to-end
-                development of cloud workflows using Power Automate and Azure. I
-                work closely with stakeholders to gather requirements, design
-                solutions, and manage the full software development lifecycle;
-                from planning and building to testing and deployment. My work
-                helps teams automate tasks, improve efficiency, and reduce
-                manual effort.
+              <p className="mb-2 text-gray-300" style={{ fontSize: "0.8rem" }}>
+                As the co-founder and founding engineer behind ResDex, I drive
+                both technical architecture and product direction. I built the
+                platform using Next.js and Supabase with a focus on scalable
+                database design, secure auth, and real-time features. I lead
+                end-to-end development; from API design to UI, while guiding
+                the vision to make research more accessible for students.
               </p>
             </div>
           </div>
