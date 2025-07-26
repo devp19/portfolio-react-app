@@ -10,7 +10,7 @@ import CustomCursor from "../CustomCursor";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function FidelityPage() {
+export default function ResDexPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [exiting, setExiting] = useState(false);
@@ -93,8 +93,8 @@ export default function FidelityPage() {
             }}
           >
             <Image
-              src="/fidelitycover.jpg"
-              alt="Fidelity Screenshot"
+              src="/tmucover2.jpg"
+              alt="Toronto Metropolitan University Drone Shot"
               width={400}
               height={300}
               className="w-full object-cover"
@@ -110,69 +110,16 @@ export default function FidelityPage() {
                 marginBottom: "0.5rem",
               }}
             >
-              Internship
+              Education
             </p>
             <h1 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>
-              Fidelity Investments
+              Toronto Metropolitan University
             </h1>
-            <p style={{ fontSize: "0.8rem", color: fadedText }}>
-              Fidelity Investments is the third-largest asset manager globally,
-              with over $12 trillion in assets under administration and $4.5
-              trillion in AUM. Ranked just behind BlackRock and Vanguard,
-              Fidelity offers industry-leading services in wealth management,
-              brokerage, and retirement planning. Known for its innovation and
-              strong focus on technology, it remains a top name in global
-              finance.
-            </p>
-          </div>
+            {/* <p style={{ fontSize: "0.8rem", color: fadedText }}>
+              Toronto Metropolitan University (TMU), formerly Ryerson University, is a leading urban institution known for its innovation and focus on experiential learning. The Computer Science program at TMU combines theory with practical application in areas like AI, software engineering, and data science, preparing students for real-world impact in tech-driven industries.
+            </p> */}
 
-          {/* Info Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
-            {/* Timeline */}
-            <div>
-              <h3
-                style={{
-                  color: fadedLabel,
-                  fontSize: "0.8rem",
-                  marginBottom: "0.5rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                }}
-              >
-                <IconCalendar size={"0.8rem"} color={textColor} /> Details
-              </h3>
-              <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
-                <li>Hybrid Work Environment</li>
-                <li>Toronto Office</li>
-                <li>4 Months</li>
-                <li>May - September 2025</li>
-              </ul>
-            </div>
-
-            {/* Stack */}
-            <div>
-              <h3
-                style={{
-                  color: fadedLabel,
-                  fontSize: "0.8rem",
-                  marginBottom: "0.5rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                }}
-              >
-                <IconStack2 size={"0.8rem"} color={textColor} /> Tech Stack
-              </h3>
-              <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
-                <li>Power Automate</li>
-                <li>Power BI</li>
-                <li>Microsoft Azure</li>
-                <li>Python</li>
-                <li>Power Apps</li>
-              </ul>
-            </div>
-
+<br></br>
             {/* Overview */}
             <div>
               <h3
@@ -188,15 +135,66 @@ export default function FidelityPage() {
                 <IconInfoCircle size={"0.8rem"} color={textColor} /> Overview
               </h3>
               <p style={{ color: fadedText, fontSize: "0.8rem" }}>
-                As an Automation Analyst at Fidelity, I lead end-to-end
-                development of cloud workflows using Power Automate and Azure. I
-                work closely with stakeholders to gather requirements, design
-                solutions, and manage the full software development lifecycle;
-                from planning and building to testing and deployment. My work
-                helps teams automate tasks, improve efficiency, and reduce
-                manual effort.
+                I'm a third-year Computer Science student at Toronto Metropolitan University (TMU), where I’ve built a strong foundation in both theoretical and applied computing. My coursework has covered key areas such as algorithms and data structures (CPS305), systems programming (CPS393), and software engineering (CPS406); equipping me with the technical skills to design, build, and analyze complex software systems.
+<br></br>
+<br></br>
+Beyond the classroom, I've engaged with emerging fields through electives and projects in artificial intelligence, databases, and human-computer interaction, while continuously refining my skills in Python, JavaScript, C++, and cloud services. TMU’s hands-on approach has allowed me to work on real-world problems early on, from building full-stack web apps to developing automation pipelines.
+<br></br>
+<br></br>
+As I head into my third year, I'm focused on deepening my expertise in machine learning, distributed systems, and research-backed development, aiming to merge my academic experience with meaningful innovation in the tech space.
               </p>
             </div>
+          </div>
+
+          {/* Info Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-sm">
+            {/* Timeline */}
+            <div>
+              <h3
+                style={{
+                  color: fadedLabel,
+                  fontSize: "0.8rem",
+                  marginBottom: "0.5rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
+              >
+                <IconCalendar size={"0.8rem"} color={textColor} /> Details
+              </h3>
+              <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
+                <li>Honours Bachelors of Science</li>
+                <li>3.94 GPA</li>
+                <li>2x Dean's List</li>
+                <li>Computer Science</li>
+                <li>September 2023 – Present</li>
+              </ul>
+            </div>
+
+            {/* Stack */}
+            <div>
+              <h3
+                style={{
+                  color: fadedLabel,
+                  fontSize: "0.8rem",
+                  marginBottom: "0.5rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                }}
+              >
+                <IconStack2 size={"0.8rem"} color={textColor} /> Relevant Courses
+              </h3>
+              <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
+                <li>Discrete Mathematics (MTH 110) A+</li>
+                <li>Computer Science (CPS 109, CPS 209) A+</li>
+                <li>Data Structures & Algorithms (CPS 305) A+</li>
+                <li>Software Engineering (CPS 406) A+</li>
+                <li>Comparative Programming Languages (Smalltalk, Haskell, Elixir, Rust) (CPS506) A+</li>
+              </ul>
+            </div>
+
+        
           </div>
         </div>
       </main>
