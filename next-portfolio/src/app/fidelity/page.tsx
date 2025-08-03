@@ -55,10 +55,10 @@ export default function FidelityPage() {
 
   return (
     <>
-      {!isMobile && <CustomCursor />}
+      {!isMobile && <CustomCursor lightMode={lightMode} />}
 
       <main
-        className={`min-h-screen px-6 py-12 font-sans transition-all duration-700 ease-in-out ${
+        className={`min-h-screen px-6 py-12 font-sans transition-all duration-500 ease-in-out ${
           loaded && !exiting ? "opacity-100 blur-none" : "opacity-0 blur-sm"
         }`}
         style={{

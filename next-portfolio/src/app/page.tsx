@@ -9,11 +9,13 @@ import CustomCursor from "./CustomCursor";
 export default function CanopyDemo() {
   const [zooming, setZooming] = useState(false);
   const [lightMode, setLightMode] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "light";
-    }
-    return false;
-  });
+  if (typeof window !== "undefined") {
+    const theme = localStorage.getItem("theme");
+    return theme === null || theme === "light";
+  }
+  return true;
+});
+
   const [isMobile, setIsMobile] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [exiting, setExiting] = useState(false);
@@ -66,10 +68,10 @@ export default function CanopyDemo() {
         opacity: loaded && !exiting ? 1 : 0,
         filter: loaded && !exiting ? "blur(0px)" : "blur(12px)",
         transition:
-          "opacity 0.6s ease-in-out, filter 0.6s ease-in-out, background 0.4s ease-in-out",
+          "opacity 0.2s ease-in-out, filter 0.2s ease-in-out, background 0.2s ease-in-out",
       }}
     >
-      {!isMobile && <CustomCursor />}
+      {!isMobile && <CustomCursor lightMode={lightMode}/>}
 
       {/* Fade Overlay */}
       {exiting && (
@@ -79,7 +81,7 @@ export default function CanopyDemo() {
             inset: 0,
             backgroundColor: lightMode ? "#fff" : "#000",
             zIndex: 999,
-            animation: "fadeIn 0.6s forwards",
+            animation: "fadeIn 0.2s forwards",
           }}
         />
       )}

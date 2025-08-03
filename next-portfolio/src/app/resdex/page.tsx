@@ -55,7 +55,7 @@ export default function ResDexPage() {
 
   return (
     <>
-      {!isMobile && <CustomCursor />}
+      {!isMobile && <CustomCursor lightMode={lightMode} />}
 
       <main
         className={`min-h-screen px-6 py-12 font-sans transition-all duration-700 ease-in-out ${
