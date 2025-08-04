@@ -12,14 +12,14 @@ import { useRouter } from "next/navigation";
 
 export default function ResDexPage() {
   const [isMobile, setIsMobile] = useState(false);
-  const [loaded, setLoaded] = useState(false);
   const [exiting, setExiting] = useState(false);
-  const [lightMode, setLightMode] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("theme") === "light";
-    }
-    return false;
-  });
+  const [loaded, setLoaded] = useState(false);
+  
+  const [lightMode, setLightMode] = useState(false);
+  
+  useEffect(() => {
+    setLightMode(localStorage.getItem("theme") === "light");
+  }, []);
 
   const router = useRouter();
 
