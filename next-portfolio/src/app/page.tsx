@@ -267,7 +267,7 @@ export default function CanopyDemo() {
           </span>
           , founder{" "}
           <span
-            onClick={() => handleNavigation("/resdex")}
+            onClick={() => handleNavigation("/innovation/resdex")}
             style={{
               textDecoration: "underline",
               fontWeight: 300,

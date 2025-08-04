@@ -61,7 +61,7 @@ export default function ResDexPage() {
 
   const projects = [
   { title: "Lyra", tags: ["AI", "Full-Stack"], description: "Lyra is a privacy-first, open-source cloud IDE that lets you create, edit, run, and preview code right in your browser.", icon: <FaTerminal size={15} color={textColor} />, link: "/innovation/lyra" },
-  { title: "ResDex", tags: ["Full-Stack", "Research"], description: "A centralized research hub that empowers students to showcase their work, build academic portfolios, and connect with peers and institutions.", icon: <IoBookOutline size={15} color={textColor} /> },
+  { title: "ResDex", tags: ["Full-Stack", "Research"], description: "A centralized research hub that empowers students to showcase their work, build academic portfolios, and connect with peers and institutions.", icon: <IoBookOutline size={15} color={textColor} />, link: "/innovation/resdex" },
   { title: "HotSpots AI", tags: ["AI", "Full-Stack", "Research"], description: "Exploring urban heat vulnerability and tree planting priorities in Toronto for sustainable development through machine-learning for data-driven insights.", icon: <MdLocationSearching size={15} color={textColor} /> },
   { title: "Percepta", tags: ["Research"], description: "Deep-dive into heatmap based identification for documents with inbuilt keyword injection at dense areas to enhance visibility.", icon: <MdOutlineViewInAr size={15} color={textColor} /> },
   { title: "QonnectR", tags: ["Full-Stack"], description: "QonnectR is a platform designed to simplify networking and project collaboration through QR code identification.", note: "DeltaHacks XI Winner", icon: <IoQrCode size={15} color={textColor} /> },

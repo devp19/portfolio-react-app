@@ -6,7 +6,7 @@ import {
   IconStack2,
   IconInfoCircle,
 } from "@tabler/icons-react";
-import CustomCursor from "../CustomCursor";
+import CustomCursor from "../../CustomCursor";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
