@@ -9,12 +9,12 @@ import CustomCursor from "./CustomCursor";
 export default function CanopyDemo() {
   const [zooming, setZooming] = useState(false);
   const [lightMode, setLightMode] = useState<boolean>(() => {
-  if (typeof window !== "undefined") {
-    const theme = localStorage.getItem("theme");
-    return theme === null || theme === "light";
-  }
-  return true;
-});
+    if (typeof window !== "undefined") {
+      const theme = localStorage.getItem("theme");
+      return theme === null || theme === "light";
+    }
+    return true;
+  });
 
   const [isMobile, setIsMobile] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -71,7 +71,7 @@ export default function CanopyDemo() {
           "opacity 0.2s ease-in-out, filter 0.2s ease-in-out, background 0.2s ease-in-out",
       }}
     >
-      {!isMobile && <CustomCursor lightMode={lightMode}/>}
+      {!isMobile && <CustomCursor lightMode={lightMode} />}
 
       {/* Fade Overlay */}
       {exiting && (
@@ -114,8 +114,7 @@ export default function CanopyDemo() {
             opacity: lightMode ? 0.85 : 1,
             width: isMobile ? "120px" : "clamp(180px, 18vw, 180px)",
             height: "auto",
-            transition:
-              "transform 0.6s cubic-bezier(.4,2.2,.2,1), filter 0.6s",
+            transition: "transform 0.6s cubic-bezier(.4,2.2,.2,1), filter 0.6s",
             transform: zooming ? "scale(20)" : "scale(1)",
             filter: lightMode ? "invert(1)" : "none",
             display: "block",
@@ -136,7 +135,7 @@ export default function CanopyDemo() {
           fontSize: isMobile ? "0.93rem" : "0.95rem",
           opacity: 0.85,
           lineHeight: 1.5,
-          maxWidth: isMobile ? "92vw" : "500px",
+          maxWidth: isMobile ? "92vw" : "550px",
           zIndex: 20,
           textAlign: "left",
           display: "flex",
@@ -207,11 +206,29 @@ export default function CanopyDemo() {
             fontWeight: 300,
             fontSize: isMobile ? "0.88rem" : "0.9rem",
             marginBottom: "0.5em",
+            lineHeight: 1.8,
           }}
         >
-          code, cognition &amp; applied research
+          <span style={{ fontStyle: 'italic'}}><span
+            onClick={() => handleNavigation("/innovation")}
+            style={{
+              textDecoration: "underline",
+              fontWeight: 300,
+              fontSize: isMobile ? "0.88rem" : "0.9rem",
+              color: textColor,
+              display: "inline-flex",
+              cursor: "pointer",
+              opacity: 0.85,
+              alignItems: "center",
+              marginLeft: "0.2em",
+            }}
+            tabIndex={0}
+          >
+            code, cognition & applied research
+            <CgArrowTopRight color={iconColor} />
+          </span></span>
           <br />
-          automation analyst (s25) at
+         software eng (s25)
           <span
             onClick={() => handleNavigation("/fidelity")}
             style={{
@@ -227,10 +244,29 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            fidelity investments <CgArrowTopRight color={iconColor} />
+            @fidelity             <CgArrowTopRight color={iconColor} />
+
           </span>
-          <br />
-          co-founder & founding engineer at
+          , cs{" "}
+          <span
+            onClick={() => handleNavigation("/torontomet")}
+            style={{
+              textDecoration: "underline",
+              fontWeight: 300,
+              fontSize: isMobile ? "0.88rem" : "0.9rem",
+              color: textColor,
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              opacity: 0.85,
+              marginLeft: "0.2em",
+            }}
+            tabIndex={0}
+          >
+            @torontomet             <CgArrowTopRight color={iconColor} />
+
+          </span>
+          , founder{" "}
           <span
             onClick={() => handleNavigation("/resdex")}
             style={{
@@ -246,29 +282,11 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            resdex <CgArrowTopRight color={iconColor} />
+            @resdex             <CgArrowTopRight color={iconColor} />
+
           </span>
           <br />
-          honours computer science at
-          <span
-            
-            onClick={() => handleNavigation("/torontomet")}
-
-            style={{
-              textDecoration: "underline",
-              fontWeight: 300,
-              fontSize: isMobile ? "0.88rem" : "0.9rem",
-              color: textColor,
-              display: "inline-flex",
-              cursor: "pointer",
-              opacity: 0.85,
-              alignItems: "center",
-              marginLeft: "0.2em",
-            }}
-            tabIndex={0}
-          >
-            torontomet <CgArrowTopRight color={iconColor} />
-          </span>
+          
         </div>
       </div>
 
