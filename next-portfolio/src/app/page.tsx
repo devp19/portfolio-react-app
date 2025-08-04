@@ -104,12 +104,12 @@ export default function CanopyDemo() {
         <img
           src="/asciislower.gif"
           alt="ASCII Art"
-          onClick={() => {
-            const newMode = !lightMode;
-            setLightMode(newMode);
-            localStorage.setItem("theme", newMode ? "light" : "dark");
-            document.body.style.backgroundColor = newMode ? "#fff" : "#000";
-          }}
+          // onClick={() => {
+          //   const newMode = !lightMode;
+          //   setLightMode(newMode);
+          //   localStorage.setItem("theme", newMode ? "light" : "dark");
+          //   document.body.style.backgroundColor = newMode ? "#fff" : "#000";
+          // }}
           style={{
             opacity: lightMode ? 0.85 : 1,
             width: isMobile ? "120px" : "clamp(180px, 18vw, 180px)",
@@ -121,7 +121,6 @@ export default function CanopyDemo() {
             cursor: "pointer",
           }}
           draggable={false}
-          title="Toggle light/dark mode"
         />
       </div>
 
