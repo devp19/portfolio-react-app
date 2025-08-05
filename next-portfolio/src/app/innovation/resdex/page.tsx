@@ -9,6 +9,9 @@ import {
 import CustomCursor from "../../CustomCursor";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { LiaGithub } from "react-icons/lia";
+import { FaLinkedin, FaLink } from "react-icons/fa6";
+
 
 export default function ResDexPage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -45,14 +48,14 @@ export default function ResDexPage() {
   const handleBack = () => {
     setExiting(true);
     setTimeout(() => {
-      router.push("/");
+      router.push("/innovation");
     }, 600); // match transition duration
   };
 
-  const textColor = lightMode ? "#111" : "#fff";
-  const fadedText = lightMode ? "#444" : "#aaa";
-  const fadedLabel = lightMode ? "#666" : "#aaa";
-  const bgColor = lightMode ? "#ffffff" : "#000000";
+  const textColor = lightMode ? "#111" : "#111";
+  const fadedText = lightMode ? "#444" : "#444";
+  const fadedLabel = lightMode ? "#666" : "#666";
+  const bgColor = lightMode ? "#ffffff" : "#ffffff";
 
   return (
     <>
@@ -83,7 +86,15 @@ export default function ResDexPage() {
           >
             ← Back
           </button>
-
+          <p
+            style={{
+              color: fadedLabel,
+              fontSize: "0.8rem",
+              marginBottom: "0.5rem",
+            }}
+          >
+            Last Updated: August, 4th, 2025
+          </p>
           {/* Hero Image */}
           <div
             style={{
@@ -95,7 +106,7 @@ export default function ResDexPage() {
           >
             <Image
               src="/resdex-hero2.png"
-              alt="ResDex Screenshot"
+              alt="Lyra Screenshot"
               width={400}
               height={300}
               className="w-full object-cover"
@@ -113,8 +124,50 @@ export default function ResDexPage() {
             >
               Startup
             </p>
-            <h1 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>
+            <h1
+              style={{
+                fontSize: "1.5rem",
+                marginBottom: "0.5rem",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
+            >
               ResDex
+              <a
+                href="https://resdex.ca"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ResDex GitHub"
+                style={{paddingLeft: "1rem"}}
+              >
+                <FaLink
+                  size={15}
+                  color={textColor}
+                />{" "}
+              </a>
+              <a
+                href="https://github.com/devp19/resdex"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ResDex GitHub"
+              >
+                <LiaGithub
+                  size={20}
+                  color={textColor}
+                />{" "}
+              </a>
+              <a
+                href="https://linkedin.com/company/resdex"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="ResDex LinkedIn"
+              >
+                <FaLinkedin
+                  size={17}
+                  color={textColor}
+                />{" "}
+              </a>
             </h1>
             <p style={{ fontSize: "0.8rem", color: fadedText }}>
               ResDex is a centralized research discovery platform that connects
@@ -146,8 +199,8 @@ export default function ResDexPage() {
               </h3>
               <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
                 <li>Co-Founder & Founding Engineer</li>
-                <li>12 Months</li>
-                <li>August 2024 – Present</li>
+                <li>1 Year+</li>
+                <li>August 2024 - Present</li>
               </ul>
             </div>
 
@@ -186,16 +239,16 @@ export default function ResDexPage() {
                   gap: "0.5rem",
                 }}
               >
-                <IconInfoCircle size={"0.8rem"} color={textColor} /> Overview
+                <IconInfoCircle size={"0.8rem"} color={textColor} /> Table of
+                Contents
               </h3>
-              <p style={{ color: fadedText, fontSize: "0.8rem" }}>
-                As the co-founder and founding engineer behind ResDex, I drive
-                both technical architecture and product direction. I built the
-                platform using Next.js and Supabase with a focus on scalable
-                database design, secure auth, and real-time features. I lead
-                end-to-end development—from API design to UI—while guiding the
-                vision to make research more accessible for students.
-              </p>
+              <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
+                <li>Introduction</li>
+                <li>Project Motive</li>
+                <li>Tech Stack Selection</li>
+                <li>Partnerships</li>
+                <li>Future Plans</li>
+              </ul>
             </div>
           </div>
         </div>

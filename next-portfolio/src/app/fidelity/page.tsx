@@ -48,10 +48,10 @@ useEffect(() => {
     }, 600); // match transition duration
   };
 
-  const textColor = lightMode ? "#111" : "#fff";
-  const fadedText = lightMode ? "#444" : "#aaa";
-  const fadedLabel = lightMode ? "#666" : "#aaa";
-  const bgColor = lightMode ? "#ffffff" : "#000000";
+    const textColor = lightMode ? "#111" : "#111";
+  const fadedText = lightMode ? "#444" : "#444";
+  const fadedLabel = lightMode ? "#666" : "#666";
+  const bgColor = lightMode ? "#ffffff" : "#ffffff";
 
   return (
     <>

@@ -54,10 +54,10 @@ export default function ResDexPage() {
     }, 600); // match transition duration
   };
 
-  const textColor = lightMode ? "#111" : "#fff";
-  const fadedText = lightMode ? "#444" : "#aaa";
-  const fadedLabel = lightMode ? "#666" : "#aaa";
-  const bgColor = lightMode ? "#ffffff" : "#000000";
+  const textColor = lightMode ? "#111" : "#111";
+  const fadedText = lightMode ? "#444" : "#444";
+  const fadedLabel = lightMode ? "#666" : "#666";
+  const bgColor = lightMode ? "#ffffff" : "#ffffff";
 
   const projects = [
   { title: "Lyra", tags: ["AI", "Full-Stack"], description: "Lyra is a privacy-first, open-source cloud IDE that lets you create, edit, run, and preview code right in your browser.", icon: <FaTerminal size={15} color={textColor} />, link: "/innovation/lyra" },
@@ -102,7 +102,7 @@ export default function ResDexPage() {
             onMouseOver={(e) => (e.currentTarget.style.color = textColor)}
             onMouseOut={(e) => (e.currentTarget.style.color = fadedText)}
           >
-            ← Back
+            ← Home
           </button>
 
           {/* Project Title & Description */}
@@ -124,6 +124,10 @@ export default function ResDexPage() {
               journey as an impact-driven innovator. Each project reflects my
               commitment to creating meaningful solutions that address
               real-world challenges.
+
+              <br></br>
+              <br></br>
+              <span className="italic">Note: I'm still working on adding the remaining project read-more pages! Until then, feel free to check out my GitHub: <a href="https://github.com/devp19" target="_blank" className="underline">github.com/devp19</a></span>
             </p>
           </div>
 

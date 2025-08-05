@@ -39,9 +39,9 @@ export default function CanopyDemo() {
     };
   }, [isMobile]);
 
-  const bgColor = lightMode ? "white" : "black";
-  const textColor = lightMode ? "black" : "white";
   const iconColor = lightMode ? "#111" : "#fff";
+  const textColor = lightMode ? "#111" : "#111";
+  const bgColor = lightMode ? "#ffffff" : "#ffffff";
 
   const handleNavigation = (path: string) => {
     document.body.style.backgroundColor = lightMode ? "#fff" : "#000";

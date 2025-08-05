@@ -9,6 +9,8 @@ import {
 import CustomCursor from "../../CustomCursor";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { LiaGithub } from "react-icons/lia";
+import { FaLinkedin, FaLink } from "react-icons/fa6";
 
 export default function ResDexPage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -49,10 +51,10 @@ export default function ResDexPage() {
     }, 600); // match transition duration
   };
 
-  const textColor = lightMode ? "#111" : "#fff";
-  const fadedText = lightMode ? "#444" : "#aaa";
-  const fadedLabel = lightMode ? "#666" : "#aaa";
-  const bgColor = lightMode ? "#ffffff" : "#000000";
+  const textColor = lightMode ? "#111" : "#111";
+  const fadedText = lightMode ? "#444" : "#444";
+  const fadedLabel = lightMode ? "#666" : "#666";
+  const bgColor = lightMode ? "#ffffff" : "#ffffff";
 
   return (
     <>
@@ -121,9 +123,41 @@ export default function ResDexPage() {
             >
               Project
             </p>
-            <h1 style={{ fontSize: "1.5rem", marginBottom: "0.5rem" }}>
-              Lyra
-            </h1>
+             <h1
+                          style={{
+                            fontSize: "1.5rem",
+                            marginBottom: "0.5rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "0.5rem",
+                          }}
+                        >
+                          Lyra
+                          <a
+                            href="https://lyra-ide.vercel.app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="ResDex GitHub"
+                            style={{paddingLeft: "1rem"}}
+                          >
+                            <FaLink
+                              size={15}
+                              color={textColor}
+                            />{" "}
+                          </a>
+                          <a
+                            href="https://github.com/devp19/lyra"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="ResDex GitHub"
+                          >
+                            <LiaGithub
+                              size={20}
+                              color={textColor}
+                            />{" "}
+                          </a>
+                         
+                        </h1>
             <p style={{ fontSize: "0.8rem", color: fadedText }}>
               Lyra is a privacy-first, open-source cloud IDE designed for modern developers seeking power, flexibility, and control. It seamlessly integrates advanced AI features, live code execution, and GitHub syncing—all within a secure, user-centric platform where your code and keys never leave your device. With Lyra, you get limitless, agentic coding without vendor lock-in or compromise on privacy.
             </p>
