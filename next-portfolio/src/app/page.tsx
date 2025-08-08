@@ -118,7 +118,6 @@ export default function CanopyDemo() {
             transform: zooming ? "scale(20)" : "scale(1)",
             filter: lightMode ? "invert(1)" : "none",
             display: "block",
-            cursor: "pointer",
           }}
           draggable={false}
         />
@@ -208,27 +207,34 @@ export default function CanopyDemo() {
             lineHeight: 1.8,
           }}
         >
-          <span style={{ fontStyle: 'italic'}}><span
-            onClick={() => handleNavigation("/innovation")}
-            style={{
-              textDecoration: "underline",
-              fontWeight: 300,
-              fontSize: isMobile ? "0.88rem" : "0.9rem",
-              color: textColor,
-              display: "inline-flex",
-              cursor: "pointer",
-              opacity: 0.85,
-              alignItems: "center",
-              marginLeft: "0.2em",
-            }}
-            tabIndex={0}
-          >
-            code, cognition & applied research
-            <CgArrowTopRight color={iconColor} />
-          </span></span>
+          <span   data-cursor-hover
+ style={{ fontStyle: "italic" }}>
+            
+            {" "}
+            <a
+           
+              onClick={() => handleNavigation("/innovation")}
+              style={{
+                textDecoration: "underline",
+                fontWeight: 300,
+                fontSize: isMobile ? "0.88rem" : "0.9rem",
+                color: textColor,
+                display: "inline-flex",
+                cursor: "pointer",
+                opacity: 0.85,
+                alignItems: "center",
+                marginLeft: "0.2em",
+              }}
+              tabIndex={0}
+            >
+              code, cognition & applied research
+              <CgArrowTopRight color={iconColor} />
+            </a>
+          </span>
           <br />
-         software eng (s25)
-          <span
+          software eng (s25)
+          <span   data-cursor-hover
+
             onClick={() => handleNavigation("/fidelity")}
             style={{
               textDecoration: "underline",
@@ -243,11 +249,12 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            @fidelity             <CgArrowTopRight color={iconColor} />
-
+            @fidelity <CgArrowTopRight color={iconColor} />
           </span>
           , cs{" "}
           <span
+            data-cursor-hover
+
             onClick={() => handleNavigation("/torontomet")}
             style={{
               textDecoration: "underline",
@@ -262,11 +269,12 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            @torontomet             <CgArrowTopRight color={iconColor} />
-
+            @torontomet <CgArrowTopRight color={iconColor} />
           </span>
           , founder{" "}
           <span
+            data-cursor-hover
+
             onClick={() => handleNavigation("/innovation/resdex")}
             style={{
               textDecoration: "underline",
@@ -281,11 +289,9 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            @resdex             <CgArrowTopRight color={iconColor} />
-
+            @resdex <CgArrowTopRight color={iconColor} />
           </span>
           <br />
-          
         </div>
       </div>
 

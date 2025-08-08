@@ -72,14 +72,14 @@ export default function CustomCursor({ lightMode }: { lightMode: boolean }) {
         }}
       />
 
-      <div
+      {/* <div
         className={`hover:block custom-cursor-outline fixed top-0 left-0 w-7 h-7 border rounded-full pointer-events-none z-50 transition-opacity duration-300`}
         style={{
           border: `1px solid ${lightMode ? "black" : "white"}`,
           transform: `translate(${mousePosition.x - 14}px, ${mousePosition.y - 14}px) scale(${isHovering ? 1.5 : 1})`,
           opacity: isVisible ? 1 : 0,
         }}
-      />
+      /> */}
     </>
   );
 }
