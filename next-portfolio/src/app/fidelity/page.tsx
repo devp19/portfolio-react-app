@@ -66,19 +66,20 @@ useEffect(() => {
       >
         <div className="max-w-2xl mx-auto space-y-12">
           {/* Back button */}
-          <button
+         <button
             onClick={handleBack}
-            style={{
-              color: fadedText,
-              cursor: "pointer",
-              border: "none",
-              background: "none",
-              fontSize: "0.9rem",
-            }}
+            className="relative group border-none bg-none text-[0.9rem] pb-0.5 cursor-pointer"
+            style={{ color: fadedText }}
             onMouseOver={(e) => (e.currentTarget.style.color = textColor)}
             onMouseOut={(e) => (e.currentTarget.style.color = fadedText)}
           >
             ← Back
+            <span
+              className="absolute left-0 -bottom-0.5 h-0.25 w-full bg-current
+                         origin-left scale-x-0
+                         transition-transform duration-300
+                         group-hover:scale-x-100"
+            />
           </button>
 
           <div
