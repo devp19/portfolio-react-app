@@ -26,7 +26,7 @@ export default function CanopyDemo() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
-    document.body.style.cursor = "none";
+    // document.body.style.cursor = "none";
     document.body.style.overflow = isMobile ? "hidden" : "";
 
     const timeout = setTimeout(() => setLoaded(true), 50);
@@ -48,7 +48,7 @@ export default function CanopyDemo() {
     setExiting(true);
     setTimeout(() => {
       router.push(path);
-    }, 600);
+    }, 200);
   };
 
   return (
@@ -71,7 +71,7 @@ export default function CanopyDemo() {
           "opacity 0.2s ease-in-out, filter 0.2s ease-in-out, background 0.2s ease-in-out",
       }}
     >
-      {!isMobile && <CustomCursor lightMode={lightMode} />}
+      {/* {!isMobile && <CustomCursor lightMode={lightMode} />} */}
 
       {/* Fade Overlay */}
       {exiting && (

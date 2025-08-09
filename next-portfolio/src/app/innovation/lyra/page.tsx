@@ -31,7 +31,6 @@ export default function ResDexPage() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
-    document.body.style.cursor = "none";
     document.body.style.overflow = isMobile ? "hidden" : "";
 
     const timeout = setTimeout(() => setLoaded(true), 50);
@@ -48,7 +47,7 @@ export default function ResDexPage() {
     setExiting(true);
     setTimeout(() => {
       router.push("/innovation");
-    }, 600); // match transition duration
+    }, 200); 
   };
 
   const textColor = lightMode ? "#111" : "#111";
@@ -58,7 +57,6 @@ export default function ResDexPage() {
 
   return (
     <>
-      {!isMobile && <CustomCursor lightMode={lightMode} />}
 
       <main
         className={`min-h-screen px-6 py-12 font-sans transition-all duration-700 ease-in-out ${
@@ -70,20 +68,20 @@ export default function ResDexPage() {
         }}
       >
         <div className="max-w-2xl mx-auto space-y-12">
-          {/* Back button */}
-          <button
+           <button
             onClick={handleBack}
-            style={{
-              color: fadedText,
-              cursor: "pointer",
-              border: "none",
-              background: "none",
-              fontSize: "0.9rem",
-            }}
+            className="relative group border-none bg-none text-[0.9rem] pb-0.5 cursor-pointer"
+            style={{ color: fadedText }}
             onMouseOver={(e) => (e.currentTarget.style.color = textColor)}
             onMouseOut={(e) => (e.currentTarget.style.color = fadedText)}
           >
             ← Back
+            <span
+              className="absolute left-0 -bottom-0.5 h-0.25 w-full bg-current
+                         origin-left scale-x-0
+                         transition-transform duration-300
+                         group-hover:scale-x-100"
+            />
           </button>
 <p
               style={{
@@ -94,7 +92,6 @@ export default function ResDexPage() {
             >
               Last Updated: August, 4th, 2025
             </p>
-          {/* Hero Image */}
           <div
             style={{
               background: "#fff",
@@ -112,7 +109,6 @@ export default function ResDexPage() {
             />
           </div>
 
-          {/* Project Title & Description */}
           <div>
             <p
               style={{
@@ -163,9 +159,7 @@ export default function ResDexPage() {
             </p>
           </div>
 
-          {/* Info Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
-            {/* Timeline */}
             <div>
               <h3
                 style={{
@@ -184,7 +178,6 @@ export default function ResDexPage() {
               </ul>
             </div>
 
-            {/* Stack */}
             <div>
               <h3
                 style={{
@@ -207,7 +200,6 @@ export default function ResDexPage() {
               </ul>
             </div>
 
-            {/* Overview */}
             <div>
               <h3
                 style={{

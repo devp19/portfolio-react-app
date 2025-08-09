@@ -28,7 +28,6 @@ useEffect(() => {
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
-    document.body.style.cursor = "none";
     document.body.style.overflow = isMobile ? "hidden" : "";
 
     const timeout = setTimeout(() => setLoaded(true), 50);
@@ -45,7 +44,7 @@ useEffect(() => {
     setExiting(true);
     setTimeout(() => {
       router.push("/");
-    }, 600); // match transition duration
+    }, 600);
   };
 
     const textColor = lightMode ? "#111" : "#111";
@@ -55,7 +54,6 @@ useEffect(() => {
 
   return (
     <>
-      {!isMobile && <CustomCursor lightMode={lightMode} />}
 
       <main
         className={`min-h-screen px-6 py-12 font-sans transition-all duration-500 ease-in-out ${
@@ -83,7 +81,6 @@ useEffect(() => {
             ← Back
           </button>
 
-          {/* Hero Image */}
           <div
             style={{
               background: "#fff",
@@ -101,7 +98,6 @@ useEffect(() => {
             />
           </div>
 
-          {/* Project Title & Description */}
           <div>
             <p
               style={{
@@ -126,9 +122,7 @@ useEffect(() => {
             </p>
           </div>
 
-          {/* Info Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
-            {/* Timeline */}
             <div>
               <h3
                 style={{
@@ -150,7 +144,6 @@ useEffect(() => {
               </ul>
             </div>
 
-            {/* Stack */}
             <div>
               <h3
                 style={{
@@ -173,7 +166,6 @@ useEffect(() => {
               </ul>
             </div>
 
-            {/* Overview */}
             <div>
               <h3
                 style={{

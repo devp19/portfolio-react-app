@@ -29,7 +29,7 @@ export default function CustomCursor({ lightMode }: { lightMode: boolean }) {
       clearTimeout(inactivityTimer);
       inactivityTimer = setTimeout(() => {
         setIsVisible(false);
-      }, 3000);
+      }, 1000);
     };
 
     const handleMouseEnter = () => setIsHovering(true);
@@ -66,7 +66,7 @@ export default function CustomCursor({ lightMode }: { lightMode: boolean }) {
         className="hover:block custom-cursor-dot fixed top-0 left-0 w-3 h-3 rounded-full pointer-events-none z-50 transition-all duration-300 ease-out"
         style={{
           background: "white",
-          transform: `translate(${mousePosition.x - 6}px, ${mousePosition.y - 6}px) scale(${isHovering ? 2.5 : 1})`,
+          transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) scale(${isHovering ? 2.5 : 1})`,
           mixBlendMode: "difference",
           opacity: isVisible ? 1 : 0,
         }}

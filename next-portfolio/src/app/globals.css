@@ -160,3 +160,16 @@ html, body {
 .no-visible-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+
+
+/* Disable text cursor on text elements specifically */
+p, h1, h2, h3, h4, h5, h6, label, 
+textarea, input, [contenteditable] {
+  cursor: default;
+}
+
+/* Keep pointer cursor on interactive elements */
+button, a, [role="button"] {
+  cursor: pointer !important;
+}

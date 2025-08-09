@@ -28,7 +28,6 @@ export default function ResDexPage() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
-    document.body.style.cursor = "none";
     document.body.style.overflow = isMobile ? "hidden" : "";
 
     const timeout = setTimeout(() => setLoaded(true), 50);
@@ -45,7 +44,7 @@ export default function ResDexPage() {
     setExiting(true);
     setTimeout(() => {
       router.push("/");
-    }, 600); // match transition duration
+    }, 600); 
   };
 
   const textColor = lightMode ? "#111" : "#111";
@@ -55,7 +54,6 @@ export default function ResDexPage() {
 
   return (
     <>
-      {!isMobile && <CustomCursor lightMode={lightMode} />}
 
       <main
         className={`min-h-screen px-6 py-12 font-sans transition-all duration-500 ease-in-out ${
@@ -83,7 +81,6 @@ export default function ResDexPage() {
             ← Back
           </button>
 
-          {/* Hero Image */}
           <div
             style={{
               background: "#fff",
@@ -101,7 +98,6 @@ export default function ResDexPage() {
             />
           </div>
 
-          {/* Project Title & Description */}
           <div>
             <p
               style={{
@@ -146,9 +142,7 @@ As I head into my third year, I'm focused on deepening my expertise in machine l
             </div>
           </div>
 
-          {/* Info Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 text-sm">
-            {/* Timeline */}
             <div>
               <h3
                 style={{
@@ -171,7 +165,6 @@ As I head into my third year, I'm focused on deepening my expertise in machine l
               </ul>
             </div>
 
-            {/* Stack */}
             <div>
               <h3
                 style={{
