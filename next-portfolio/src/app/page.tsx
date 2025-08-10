@@ -102,7 +102,7 @@ export default function CanopyDemo() {
         }}
       >
         <img
-          src="/asciislower.gif"
+          src="/ascii-white.gif"
           alt="ASCII Art"
           // onClick={() => {
           //   const newMode = !lightMode;
@@ -116,7 +116,6 @@ export default function CanopyDemo() {
             height: "auto",
             transition: "transform 0.6s cubic-bezier(.4,2.2,.2,1), filter 0.6s",
             transform: zooming ? "scale(20)" : "scale(1)",
-            filter: lightMode ? "invert(1)" : "none",
             display: "block",
           }}
           draggable={false}
