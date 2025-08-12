@@ -26,7 +26,6 @@ export default function CanopyDemo() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
-    // document.body.style.cursor = "none";
     document.body.style.overflow = isMobile ? "hidden" : "";
 
     const timeout = setTimeout(() => setLoaded(true), 50);
@@ -38,6 +37,16 @@ export default function CanopyDemo() {
       clearTimeout(timeout);
     };
   }, [isMobile]);
+
+  useEffect(() => {
+    const scrollTimeout = setTimeout(() => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      });
+    }, 100); 
+    return () => clearTimeout(scrollTimeout);
+  }, []);
 
   const iconColor = lightMode ? "#111" : "#fff";
   const textColor = lightMode ? "#111" : "#111";
@@ -71,9 +80,6 @@ export default function CanopyDemo() {
           "opacity 0.2s ease-in-out, filter 0.2s ease-in-out, background 0.2s ease-in-out",
       }}
     >
-      {/* {!isMobile && <CustomCursor lightMode={lightMode} />} */}
-
-      {/* Fade Overlay */}
       {exiting && (
         <div
           style={{
@@ -86,7 +92,6 @@ export default function CanopyDemo() {
         />
       )}
 
-      {/* Centered GIF */}
       <div
         style={{
           display: "flex",
@@ -104,17 +109,12 @@ export default function CanopyDemo() {
         <img
           src="/ascii-white.gif"
           alt="ASCII Art"
-          // onClick={() => {
-          //   const newMode = !lightMode;
-          //   setLightMode(newMode);
-          //   localStorage.setItem("theme", newMode ? "light" : "dark");
-          //   document.body.style.backgroundColor = newMode ? "#fff" : "#000";
-          // }}
           style={{
             opacity: lightMode ? 0.85 : 1,
             width: isMobile ? "120px" : "clamp(180px, 18vw, 180px)",
             height: "auto",
-            transition: "transform 0.6s cubic-bezier(.4,2.2,.2,1), filter 0.6s",
+            transition:
+              "transform 0.6s cubic-bezier(.4,2.2,.2,1), filter 0.6s",
             transform: zooming ? "scale(20)" : "scale(1)",
             display: "block",
           }}
@@ -122,7 +122,6 @@ export default function CanopyDemo() {
         />
       </div>
 
-      {/* Bottom-left info */}
       <div
         style={{
           position: "absolute",
@@ -140,7 +139,6 @@ export default function CanopyDemo() {
           gap: "0.5em",
         }}
       >
-        {/* Name & Socials */}
         <div
           style={{
             fontWeight: 300,
@@ -197,7 +195,6 @@ export default function CanopyDemo() {
           </a>
         </div>
 
-        {/* Roles & Links */}
         <div
           style={{
             fontWeight: 300,
@@ -206,12 +203,8 @@ export default function CanopyDemo() {
             lineHeight: 1.8,
           }}
         >
-          <span   data-cursor-hover
- style={{ fontStyle: "italic" }}>
-            
-            {" "}
+          <span data-cursor-hover style={{ fontStyle: "italic" }}>
             <a
-           
               onClick={() => handleNavigation("/innovation")}
               style={{
                 textDecoration: "underline",
@@ -232,8 +225,8 @@ export default function CanopyDemo() {
           </span>
           <br />
           software eng (s25)
-          <span   data-cursor-hover
-
+          <span
+            data-cursor-hover
             onClick={() => handleNavigation("/fidelity")}
             style={{
               textDecoration: "underline",
@@ -253,7 +246,6 @@ export default function CanopyDemo() {
           , cs{" "}
           <span
             data-cursor-hover
-
             onClick={() => handleNavigation("/torontomet")}
             style={{
               textDecoration: "underline",
@@ -273,7 +265,6 @@ export default function CanopyDemo() {
           , founder{" "}
           <span
             data-cursor-hover
-
             onClick={() => handleNavigation("/innovation/resdex")}
             style={{
               textDecoration: "underline",
@@ -294,7 +285,6 @@ export default function CanopyDemo() {
         </div>
       </div>
 
-      {/* Keyframe styles */}
       <style>
         {`
           @keyframes fadeIn {
