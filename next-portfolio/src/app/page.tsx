@@ -203,7 +203,7 @@ export default function CanopyDemo() {
             lineHeight: 1.8,
           }}
         >
-          <span data-cursor-hover style={{ fontStyle: "italic" }}>
+          <span data-cursor-hover>
             <a
               onClick={() => handleNavigation("/innovation")}
               style={{
@@ -215,16 +215,15 @@ export default function CanopyDemo() {
                 cursor: "pointer",
                 opacity: 0.85,
                 alignItems: "center",
-                marginLeft: "0.2em",
               }}
               tabIndex={0}
             >
-              code, cognition & applied research
+              Passionate about Distributed Systems, LLMs and Finance
               <CgArrowTopRight color={iconColor} />
             </a>
           </span>
           <br />
-          software eng (s25)
+          Software Engineer (S25)
           <span
             data-cursor-hover
             onClick={() => handleNavigation("/fidelity")}
@@ -241,9 +240,10 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            @fidelity <CgArrowTopRight color={iconColor} />
+            @Fidelity Investments <CgArrowTopRight color={iconColor} />
           </span>
-          , cs{" "}
+          <br></br>
+          Computer Science
           <span
             data-cursor-hover
             onClick={() => handleNavigation("/torontomet")}
@@ -260,10 +260,10 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            @torontomet <CgArrowTopRight color={iconColor} />
+            @Toronto Metropolitan University <CgArrowTopRight color={iconColor} />
           </span>
-          , founder{" "}
-          <span
+
+          {/* <span
             data-cursor-hover
             onClick={() => handleNavigation("/innovation/resdex")}
             style={{
@@ -280,7 +280,7 @@ export default function CanopyDemo() {
             tabIndex={0}
           >
             @resdex <CgArrowTopRight color={iconColor} />
-          </span>
+          </span> */}
           <br />
         </div>
       </div>
