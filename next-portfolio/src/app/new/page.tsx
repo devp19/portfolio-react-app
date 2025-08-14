@@ -3,31 +3,28 @@
 import React, { useMemo, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { TfiArrowTopRight } from "react-icons/tfi";
 
 export default function CanopyDemo() {
-
-
   return (
     <main className="min-h-dvh bg-white text-[#0d0d0d] px-[clamp(20px,5vw,72px)] py-16">
-
-<video
-  src="./cube.mov"
-  autoPlay
-  loop
-  muted
-  playsInline
-  style={{
-    width: "60px",
-    height: "60px",
-    border: "none",
-    outline: "none",
-    background: "transparent",
-    display: "block",
-    marginBottom: "20px",
-    marginTop: '100px'
-  }}
-/>
-
+      <video
+        src="./cube.mov"
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          width: "60px",
+          height: "60px",
+          border: "none",
+          outline: "none",
+          background: "transparent",
+          display: "block",
+          marginBottom: "20px",
+          marginTop: "100px",
+        }}
+      />
 
       <section className="mb-7 max-w-[900px]">
         <p className="font-light text-[clamp(18px,2.8vw,28px)] leading-tight text-[#808080]">
@@ -57,36 +54,42 @@ export default function CanopyDemo() {
       {/* Projects grid */}
       <section className="grid grid-cols-1 gap-8 md:grid-cols-2 mt-30">
         {/* Left card */}
-        <a href="#" className="block">
-          <div className="overflow-hidden rounded-[28px] border border-[#e6e7eb] bg-[#f1f2f4]" style={{ maxHeight: "340px" }}>
-              <img
-                src="./final-lyra.png"
-                alt=""
-                className="object-cover"
-              />
-              
+        <a target="_blank" href="https://lyra-ide.vercel.app" className="block">
+          <div
+            className="overflow-hidden rounded-[28px] border border-[#e6e7eb] bg-[#f1f2f4]"
+            style={{ maxHeight: "340px" }}
+          >
+            <img src="./final-lyra.png" alt="" className="object-cover" />
           </div>
-          <div className="flex items-baseline gap-3 px-1 pt-3 text-[15px] font-light text-[#6b727c]">
+
+          <div className="flex items-baseline px-1 pt-3 text-[15px] font-light text-[#6b727c]">
             <p className="m-0 text-[#1a1a1a]">Lyra</p>
-            <p className="ml-[4px] text-[#8b919a]">Cloud AI-Integrated Code Editor</p>
+            <p className="ml-[10px] text-[#8b919a]">
+              Cloud AI-Integrated Code Editor
+            </p>
+            <button className="ml-auto text-[#8b919a] text-end inline-flex items-center">
+              GitHub <TfiArrowTopRight />
+            </button>
           </div>
         </a>
 
-        <a href="#" className="block">
-          <div className="overflow-hidden rounded-[28px] border border-[#e6e7eb] bg-[#f1f2f4]" style={{ maxHeight: "340px" }} >
-              <img
-                src="./resdex-hero2.png"
-                alt=""
-                className="object-cover"
-              />
-              
+        <a target="_blank" href="https://resdex.ca" className="block">
+          <div
+            className="overflow-hidden rounded-[28px] border border-[#e6e7eb] bg-[#f1f2f4]"
+            style={{ maxHeight: "340px" }}
+          >
+            <img src="./resdex-hero2.png" alt="" className="object-cover" />
           </div>
-          <div className="flex items-baseline gap-3 px-1 pt-3 text-[15px] font-light text-[#6b727c]">
+          <div className="flex items-baseline px-1 pt-3 text-[15px] font-light text-[#6b727c]">
             <p className="m-0 text-[#1a1a1a]">ResDex</p>
-            <p className="ml-[4px] text-[#8b919a]">Educational Social-Media Platform</p>
+            <p className="ml-[10px] text-[#8b919a]">
+              Research Based Social-Media Platform
+            </p>
+            <button className="ml-auto text-[#8b919a] text-end inline-flex items-center">
+              Website <TfiArrowTopRight />
+            </button>
           </div>
         </a>
-
       </section>
     </main>
   );
