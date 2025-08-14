@@ -9,7 +9,25 @@ export default function CanopyDemo() {
 
   return (
     <main className="min-h-dvh bg-white text-[#0d0d0d] px-[clamp(20px,5vw,72px)] py-16">
-     
+
+<video
+  src="./cube.mov"
+  autoPlay
+  loop
+  muted
+  playsInline
+  style={{
+    width: "60px",
+    height: "60px",
+    border: "none",
+    outline: "none",
+    background: "transparent",
+    display: "block",
+    marginBottom: "20px",
+    marginTop: '100px'
+  }}
+/>
+
 
       <section className="mb-7 max-w-[900px]">
         <p className="font-light text-[clamp(18px,2.8vw,28px)] leading-tight text-[#808080]">
@@ -37,77 +55,38 @@ export default function CanopyDemo() {
       </section>
 
       {/* Projects grid */}
-      <section className="grid grid-cols-1 gap-8 md:grid-cols-2">
+      <section className="grid grid-cols-1 gap-8 md:grid-cols-2 mt-30">
         {/* Left card */}
         <a href="#" className="block">
-          <div className="overflow-hidden rounded-[28px] border border-[#e6e7eb] bg-[#f1f2f4]">
-            <div className="relative w-full pb-[52%] bg-[#e9ebef]">
-              <Image
-                src="/images/room-bg.jpg"
+          <div className="overflow-hidden rounded-[28px] border border-[#e6e7eb] bg-[#f1f2f4]" style={{ maxHeight: "340px" }}>
+              <img
+                src="./final-lyra.png"
                 alt=""
-                fill
                 className="object-cover"
-                priority
               />
-              {/* overlays */}
-              <div className="pointer-events-none absolute left-[12%] right-[12%] top-[22%] flex items-end gap-6">
-                <Image
-                  src="/images/bike-overlay.jpg"
-                  alt=""
-                  width={760}
-                  height={420}
-                  className="rounded-xl border border-black/5 shadow-[0_10px_30px_rgba(0,0,0,0.18)]"
-                />
-                <Image
-                  src="/images/map-overlay.png"
-                  alt=""
-                  width={480}
-                  height={240}
-                  className="-ml-16 translate-y-5 drop-shadow-[0_10px_24px_rgba(0,0,0,0.22)]"
-                />
-              </div>
-            </div>
+              
           </div>
-          <div className="flex items-baseline gap-3 px-1 pt-3 text-[14px] text-[#6b727c]">
-            <p className="m-0 text-[#1a1a1a]">Red Bull TV for visionOS</p>
-            <p className="m-0 text-[#8b919a]">Immersive Media</p>
+          <div className="flex items-baseline gap-3 px-1 pt-3 text-[15px] font-light text-[#6b727c]">
+            <p className="m-0 text-[#1a1a1a]">Lyra</p>
+            <p className="ml-[4px] text-[#8b919a]">Cloud AI-Integrated Code Editor</p>
           </div>
         </a>
 
-        {/* Right card */}
         <a href="#" className="block">
-          <div className="overflow-hidden rounded-[28px] border border-[#e6e7eb] bg-[#f1f2f4]">
-            <div className="relative w-full pb-[52%] bg-gradient-to-b from-[#f0f1f4] to-[#e6e7eb]">
-              <div className="absolute inset-0 flex items-center justify-center gap-7 px-[5%]">
-                <Image
-                  src="/images/iphone-mock.png"
-                  alt=""
-                  width={180}
-                  height={360}
-                  className="object-contain"
-                />
-                <Image
-                  src="/images/mac-mock.png"
-                  alt=""
-                  width={640}
-                  height={380}
-                  className="object-contain"
-                />
-                <Image
-                  src="/images/vision-pro.png"
-                  alt=""
-                  width={220}
-                  height={140}
-                  className="object-contain"
-                />
-              </div>
-            </div>
+          <div className="overflow-hidden rounded-[28px] border border-[#e6e7eb] bg-[#f1f2f4]" style={{ maxHeight: "340px" }} >
+              <img
+                src="./resdex-hero2.png"
+                alt=""
+                className="object-cover"
+              />
+              
           </div>
-          <div className="flex items-baseline gap-3 px-1 pt-3 text-[14px] text-[#6b727c]">
-            <p className="m-0 font-semibold text-[#1a1c20]">SixD</p>
-            <p className="m-0 text-[#8b919a]">SwiftUI & Interaction Design</p>
+          <div className="flex items-baseline gap-3 px-1 pt-3 text-[15px] font-light text-[#6b727c]">
+            <p className="m-0 text-[#1a1a1a]">ResDex</p>
+            <p className="ml-[4px] text-[#8b919a]">Educational Social-Media Platform</p>
           </div>
         </a>
+
       </section>
     </main>
   );
