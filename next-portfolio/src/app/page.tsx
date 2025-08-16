@@ -218,8 +218,8 @@ export default function CanopyDemo() {
               }}
               tabIndex={0}
             >
-              Passionate about Distributed Systems, LLMs and Finance
-              <CgArrowTopRight color={iconColor} />
+              Where My Creativity Meets Innovation
+             <CgArrowTopRight color={iconColor} />
             </a>
           </span>
           <br />
