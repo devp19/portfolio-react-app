@@ -1,25 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import {
-  IconCalendar,
-  IconStack2,
-  IconInfoCircle,
-} from "@tabler/icons-react";
-import CustomCursor from "../../CustomCursor";
+import { IconCalendar, IconStack2, IconInfoCircle } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { LiaGithub } from "react-icons/lia";
-import { FaLinkedin, FaLink } from "react-icons/fa6";
+import { FaLink } from "react-icons/fa6";
 
 export default function ResDexPage() {
   const [isMobile, setIsMobile] = useState(false);
   const [exiting, setExiting] = useState(false);
-  
   const [loaded, setLoaded] = useState(false);
-  
   const [lightMode, setLightMode] = useState(false);
-  
+
   useEffect(() => {
     setLightMode(localStorage.getItem("theme") === "light");
   }, []);
@@ -34,7 +27,6 @@ export default function ResDexPage() {
     document.body.style.overflow = isMobile ? "hidden" : "";
 
     const timeout = setTimeout(() => setLoaded(true), 50);
-
     return () => {
       window.removeEventListener("resize", checkMobile);
       document.body.style.cursor = "";
@@ -47,7 +39,7 @@ export default function ResDexPage() {
     setExiting(true);
     setTimeout(() => {
       router.push("/innovation");
-    }, 200); 
+    }, 200);
   };
 
   const textColor = lightMode ? "#111" : "#111";
@@ -55,20 +47,17 @@ export default function ResDexPage() {
   const fadedLabel = lightMode ? "#666" : "#666";
   const bgColor = lightMode ? "#ffffff" : "#ffffff";
 
-  return (
-    <>
-
+  if (isMobile) {
+    return (
       <main
         className={`min-h-screen px-6 py-12 font-sans transition-all duration-700 ease-in-out ${
           loaded && !exiting ? "opacity-100 blur-none" : "opacity-0 blur-sm"
         }`}
-        style={{
-          background: bgColor,
-          color: textColor,
-        }}
+        style={{ background: bgColor, color: textColor }}
       >
-        <div className="max-w-2xl mx-auto space-y-12">
-           <button
+        {/* Top bar */}
+        <div className="mx-auto max-w-6xl">
+          <button
             onClick={handleBack}
             className="relative group border-none bg-none text-[0.9rem] pb-0.5 cursor-pointer"
             style={{ color: fadedText }}
@@ -76,154 +65,201 @@ export default function ResDexPage() {
             onMouseOut={(e) => (e.currentTarget.style.color = fadedText)}
           >
             ← Back
-            <span
-              className="absolute left-0 -bottom-0.5 h-0.25 w-full bg-current
-                         origin-left scale-x-0
-                         transition-transform duration-300
-                         group-hover:scale-x-100"
-            />
+            <span className="absolute left-0 -bottom-0.5 h-0.25 w-full bg-current origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
           </button>
-<p
-              style={{
-                color: fadedLabel,
-                fontSize: "0.8rem",
-                marginBottom: "0.5rem",
-              }}
-            >
-              Last Updated: August, 4th, 2025
-            </p>
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: "0.75rem",
-              overflow: "hidden",
-              marginTop: "1.25rem",
-            }}
-          >
-            <Image
-              src="/final-lyra.png"
-              alt="Lyra Screenshot"
-              width={400}
-              height={300}
-              className="w-full object-cover"
-            />
+        </div>
+
+        {/* Mobile layout - single column */}
+        <div className="mx-auto mt-8 max-w-6xl space-y-8">
+          {/* Project info */}
+          <div className="space-y-6">
+            <div>
+              <p style={{ color: fadedLabel, fontSize: "0.8rem", marginBottom: "0.5rem" }}>
+                Project
+              </p>
+              <h1 style={{ fontSize: "1.5rem", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                Lyra
+                <a href="https://lyra-ide.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Lyra Website" style={{ paddingLeft: "1rem" }}>
+                  <FaLink size={15} color={textColor} />
+                </a>
+                <a href="https://github.com/devp19/lyra" target="_blank" rel="noopener noreferrer" aria-label="Lyra GitHub">
+                  <LiaGithub size={20} color={textColor} />
+                </a>
+              </h1>
+              <p style={{ fontSize: "0.8rem", color: fadedText }}>
+                Lyra is a privacy-first, open-source cloud IDE designed for modern developers seeking power, flexibility, and control.
+              </p>
+            </div>
           </div>
 
-          <div>
-            <p
-              style={{
-                color: fadedLabel,
-                fontSize: "0.8rem",
-                marginBottom: "0.5rem",
-              }}
-            >
-              Project
-            </p>
-             <h1
-                          style={{
-                            fontSize: "1.5rem",
-                            marginBottom: "0.5rem",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "0.5rem",
-                          }}
-                        >
-                          Lyra
-                          <a
-                            href="https://lyra-ide.vercel.app"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="ResDex GitHub"
-                            style={{paddingLeft: "1rem"}}
-                          >
-                            <FaLink
-                              size={15}
-                              color={textColor}
-                            />{" "}
-                          </a>
-                          <a
-                            href="https://github.com/devp19/lyra"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="ResDex GitHub"
-                          >
-                            <LiaGithub
-                              size={20}
-                              color={textColor}
-                            />{" "}
-                          </a>
-                         
-                        </h1>
-            <p style={{ fontSize: "0.8rem", color: fadedText }}>
-              Lyra is a privacy-first, open-source cloud IDE designed for modern developers seeking power, flexibility, and control. It seamlessly integrates advanced AI features, live code execution, and GitHub syncing—all within a secure, user-centric platform where your code and keys never leave your device. With Lyra, you get limitless, agentic coding without vendor lock-in or compromise on privacy.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-sm">
-            <div>
-              <h3
-                style={{
-                  color: fadedLabel,
-                  fontSize: "0.8rem",
-                  marginBottom: "0.5rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                }}
-              >
-                <IconCalendar size={"0.8rem"} color={textColor} /> Details
-              </h3>
-              <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
-                <li>August 2025 – Present</li>
-              </ul>
+          {/* Content */}
+          <div className="space-y-5">
+            <div style={{ background: "#fff", borderRadius: "0.75rem", overflow: "hidden" }}>
+              <Image src="/final-lyra.png" alt="Lyra Screenshot" width={1200} height={800} className="w-full object-cover rounded-xl" priority />
             </div>
-
-            <div>
-              <h3
-                style={{
-                  color: fadedLabel,
-                  fontSize: "0.8rem",
-                  marginBottom: "0.5rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                }}
-              >
-                <IconStack2 size={"0.8rem"} color={textColor} /> Tech Stack
-              </h3>
-              <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
-                <li>Next.js</li>
-                <li>TypeScript</li>
-                <li>Cloudflare Workers AI</li>
-                <li>CodeMirror</li>
-                <li>xTerm.js</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3
-                style={{
-                  color: fadedLabel,
-                  fontSize: "0.8rem",
-                  marginBottom: "0.5rem",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.5rem",
-                }}
-              >
-                <IconInfoCircle size={"0.8rem"} color={textColor} /> Table of Contents
-              </h3>
-                <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
-                  <li>Introduction</li>
-                  <li>Project Motive</li>
-                  <li>Tech Stack Selection</li>
-                  <li>How It Works</li>
-                  <li>Future Plans</li>
-                </ul>
-            </div>
+            {/* Rest of content... */}
           </div>
         </div>
       </main>
-    </>
+    );
+  }
+
+  return (
+    <div
+      className={`h-screen flex flex-col font-sans transition-all duration-700 ease-in-out ${
+        loaded && !exiting ? "opacity-100 blur-none" : "opacity-0 blur-sm"
+      }`}
+      style={{ background: bgColor, color: textColor }}
+    >
+      {/* Fixed top bar */}
+      <div className="flex-shrink-0 px-6 py-6" style={{marginTop: "2rem"}}>
+        <div className="mx-auto max-w-6xl">
+          <button
+            onClick={handleBack}
+            className="relative group border-none bg-none text-[0.9rem] pb-0.5 cursor-pointer ml-6"
+            style={{ color: fadedText }}
+            onMouseOver={(e) => (e.currentTarget.style.color = textColor)}
+            onMouseOut={(e) => (e.currentTarget.style.color = fadedText)}
+          >
+            ← Back
+            <span className="absolute left-0 -bottom-0.5 h-0.25 w-full bg-current origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
+          </button>
+        </div>
+      </div>
+
+      {/* Main content area with fixed height */}
+      <div className="flex-1 flex overflow-hidden">
+        <div className="mx-auto w-full max-w-6xl px-6 flex gap-10">
+          {/* LEFT: Fixed sidebar */}
+          <div className="w-[400px] flex-shrink-0 overflow-y-auto pr-4">
+            <div className="space-y-6">
+              <div>
+                <p style={{ color: fadedLabel, fontSize: "0.8rem", marginBottom: "0.5rem" }}>
+                  Project
+                </p>
+
+                <h1 style={{ fontSize: "1.5rem", marginBottom: "0.5rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                  Lyra
+                  <a href="https://lyra-ide.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Lyra Website" style={{ paddingLeft: "1rem" }}>
+                    <FaLink size={15} color={textColor} />
+                  </a>
+                  <a href="https://github.com/devp19/lyra" target="_blank" rel="noopener noreferrer" aria-label="Lyra GitHub">
+                    <LiaGithub size={20} color={textColor} />
+                  </a>
+                </h1>
+
+                <p style={{ fontSize: "0.8rem", color: fadedText, width: "80%" }}>
+                  Lyra is a privacy-first, open-source cloud IDE designed for modern developers seeking power, flexibility, and control. It integrates advanced AI, live code execution, and GitHub syncing within a secure platform where your code and keys never leave your device.
+                </p>
+              </div>
+
+              {/* Meta groups */}
+              <div className="space-y-6">
+                <div>
+                  <div className="border-t border-gray-200" style={{ maxWidth: "80%", marginBottom: "1rem" }}></div>
+
+                  <h3 className="inline-flex items-center gap-2" style={{ color: fadedLabel, fontSize: "0.8rem", marginBottom: "0.5rem" }}>
+                    <IconCalendar size={"0.8rem"} color={textColor} /> Details
+                  </h3>
+                  <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
+                    <li>August 2025 – Present</li>
+                  </ul>
+                </div>
+
+                <div className="border-t border-gray-200" style={{ maxWidth: "80%" }}></div>
+
+                <div>
+                  <h3 className="inline-flex items-center gap-2" style={{ color: fadedLabel, fontSize: "0.8rem", marginBottom: "0.5rem" }}>
+                    <IconStack2 size={"0.8rem"} color={textColor} /> Tech Stack
+                  </h3>
+                  <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
+                    <li>Next.js</li>
+                    <li>TypeScript</li>
+                    <li>Cloudflare Workers AI</li>
+                    <li>CodeMirror</li>
+                    <li>xTerm.js</li>
+                  </ul>
+                </div>
+
+                <div className="border-t border-gray-200" style={{ maxWidth: "80%", marginBottom: "1rem" }}></div>
+
+                <div>
+                  <h3 className="inline-flex items-center gap-2" style={{ color: fadedLabel, fontSize: "0.8rem", marginBottom: "0.5rem" }}>
+                    <IconInfoCircle size={"0.8rem"} color={textColor} /> Table of Contents
+                  </h3>
+                  <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#project-motive">Project Motive</a></li>
+                    <li><a href="#tech-stack-selection">Tech Stack Selection</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#future-plans">Future Plans</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT: Scrollable content area */}
+          <div className="flex-1 overflow-y-auto pb-12">
+            <div className="space-y-5">
+              <div style={{ background: "#fff", borderRadius: "0.75rem", overflow: "hidden" }}>
+                <Image src="/final-lyra.png" alt="Lyra Screenshot" width={1200} height={800} className="w-full object-cover rounded-xl" priority />
+              </div>
+
+              <article className="prose prose-invert max-w-none">
+                <section id="introduction">
+                  <h2 style={{ fontSize: "1.5rem" }}>Privacy-First Cloud IDE for Modern Developers</h2>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "0.5rem" }}>
+                    Lyra is designed with a strong emphasis on privacy, putting users in complete control of their data and workflows. By prioritizing local control, Lyra ensures that all processes and sensitive information remain securely on your device, eliminating the need to compromise your keys or credentials. Its streamlined environment accelerates developer productivity by combining agentic coding and terminal workflows into one unified platform. With Lyra, you can seamlessly work from any location, confidently managing projects and automations without sacrificing security or speed.
+                  </p>
+                </section>
+
+                <section id="project-motive">
+                  <h2 style={{ fontSize: "1.2rem", marginTop: "2rem" }}>Motive</h2>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "0.5rem" }}>
+                    I'm building Lyra because, as a developer, I was frustrated with the trade-offs I faced using existing code editors. Many popular alternatives either stored my code on someone else's servers or buried essential features behind expensive subscriptions. Paying monthly just to unlock the tools I needed, or trusting third parties with sensitive keys and data, felt wrong, especially when my workflow depended on privacy and full control.
+                    <br /><br />
+                    I wanted an environment where I could work securely and efficiently, without worrying about hidden costs or giving up ownership of my work. Lyra is my answer: a code editor that puts privacy, local control, and developer speed first; created to solve the very issues I ran into myself.
+                  </p>
+                </section>
+
+                <section id="tech-stack-selection">
+                  <h2 style={{ fontSize: "1.2rem", marginTop: "2rem" }}>Tech Stack Selection</h2>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "0.5rem" }}>
+                    The choice of Next.js as the foundation provides server-side rendering capabilities and excellent developer experience. TypeScript ensures type safety throughout the application, while Cloudflare Workers AI enables powerful AI features without compromising privacy. CodeMirror offers a robust code editing experience, and xTerm.js provides terminal functionality directly in the browser.
+                  </p>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "1rem" }}>
+                    Each technology was carefully selected to balance performance, security, and developer experience. The stack enables rapid development while maintaining the core principles of privacy and local control that define Lyra's mission.
+                  </p>
+                </section>
+
+                <section id="how-it-works">
+                  <h2 style={{ fontSize: "1.2rem", marginTop: "2rem" }}>How It Works</h2>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "0.5rem" }}>
+                    Lyra operates on a client-first architecture where all sensitive operations happen locally. The IDE interfaces with GitHub for repository management while keeping your credentials secure. AI assistance is provided through Cloudflare's edge network, ensuring fast responses without data retention concerns.
+                  </p>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "1rem" }}>
+                    The platform leverages modern web technologies to deliver a native-like experience directly in the browser. All code execution, file management, and AI interactions are designed with privacy as the primary consideration, ensuring your intellectual property remains under your complete control.
+                  </p>
+                </section>
+
+                <section id="future-plans">
+                  <h2 style={{ fontSize: "1.2rem", marginTop: "2rem" }}>Future Plans</h2>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "0.5rem" }}>
+                    Future development includes enhanced collaboration features, expanded language support, integrated debugging tools, and advanced AI-powered code analysis. All while maintaining the core principle of privacy-first design.
+                  </p>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "1rem" }}>
+                    The roadmap focuses on adding features that developers need most while never compromising on the fundamental values of privacy, security, and local control. Community feedback will drive priority decisions as Lyra grows and evolves.
+                  </p>
+                  <p style={{ color: fadedText, fontSize: "0.8rem", marginTop: "1rem" }}>
+                    Additional planned features include real-time collaboration tools, advanced project templates, integrated testing frameworks, and enhanced AI capabilities for code generation and refactoring assistance.
+                  </p>
+                </section>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -161,10 +161,9 @@ export default function ResDexPage() {
               Intersection of Innovation & Research
             </h1>
             <p style={{ fontSize: "0.8rem", color: fadedText }}>
-              Directory of my innovative projects and research showcasing my
-              journey as an impact-driven innovator. Each project reflects my
-              commitment to creating meaningful solutions that address real-world
-              challenges.
+              My contributions to making the world of technology more accessible and impactful, showcasing projects that simplify complex problems and drive positive change.
+
+
               <br />
               <br />
               <span className="italic">
