@@ -94,6 +94,7 @@ export default function ResDexPage() {
       description:
         "Deep-dive into heat-map based identification for documents with in-built keyword injection at dense areas to enhance visibility.",
       icon: <MdOutlineViewInAr size={15} color={textColor} />,
+      link: "/innovation/percepta",
     },
     {
       title: "QonnectR",
