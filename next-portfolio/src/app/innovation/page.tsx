@@ -62,17 +62,10 @@ export default function ResDexPage() {
   const bgColor    = lightMode ? "#ffffff" : "#ffffff";
 
   const projects = [
-    {
-      title: "Lyra",
-      tags: ["AI", "Full-Stack"],
-      description:
-        "Lyra is a privacy-first, open-source cloud IDE that lets you create, edit, run, and preview code right in your browser.",
-      icon: <FaTerminal size={15} color={textColor} />,
-      link: "/innovation/lyra",
-    },
+    
     {
       title: "ResDex",
-      tags: ["Full-Stack", "Research"],
+      tags: ["Full-Stack"],
       description:
         "A centralized research hub that empowers students to showcase their work, build academic portfolios, and connect with peers and institutions.",
       icon: <IoBookOutline size={15} color={textColor} />,
@@ -84,6 +77,16 @@ export default function ResDexPage() {
       description:
         "Exploring urban heat vulnerability and tree planting priorities in Toronto for sustainable development through machine-learning for data-driven insights.",
       icon: <MdLocationSearching size={15} color={textColor} />,
+      link: "/innovation/hotspots",
+
+    },
+    {
+      title: "Lyra",
+      tags: ["AI", "Full-Stack"],
+      description:
+        "Lyra is a privacy-first, open-source cloud IDE that lets you create, edit, run, and preview code right in your browser.",
+      icon: <FaTerminal size={15} color={textColor} />,
+      link: "/innovation/lyra",
     },
     {
       title: "Percepta",
