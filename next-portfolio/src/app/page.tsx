@@ -218,12 +218,12 @@ export default function CanopyDemo() {
               }}
               tabIndex={0}
             >
-              Where My Creativity Meets Innovation
+              where my creativity meets innovation
              <CgArrowTopRight color={iconColor} />
             </a>
           </span>
           <br />
-          Software Engineer (S25)
+          software engineer (s25)
           <span
             data-cursor-hover
             onClick={() => handleNavigation("/fidelity")}
@@ -240,10 +240,10 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            @Fidelity Investments <CgArrowTopRight color={iconColor} />
+            @fidelity <CgArrowTopRight color={iconColor} />
           </span>
           <br></br>
-          Computer Science
+          honours computer science
           <span
             data-cursor-hover
             onClick={() => handleNavigation("/torontomet")}
@@ -260,7 +260,7 @@ export default function CanopyDemo() {
             }}
             tabIndex={0}
           >
-            @Toronto Metropolitan University <CgArrowTopRight color={iconColor} />
+            @torontomet <CgArrowTopRight color={iconColor} />
           </span>
 
           {/* <span
