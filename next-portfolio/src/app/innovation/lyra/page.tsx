@@ -290,6 +290,13 @@ export default function ResDexPage() {
                   <p style={{ fontSize: "0.8rem", color: fadedText, width: "80%" }}>
                     Lyra is a privacy-first, open-source cloud IDE designed for modern developers seeking power, flexibility, and control. It integrates advanced AI, live code execution, and GitHub syncing within a secure platform where your code and keys never leave your device.
                   </p>
+                  <div className="flex items-center gap-2 ml-1 mt-4">
+      <div className="relative">
+        <div className="w-2 h-2 bg-black rounded-full"></div>
+        <div className="absolute top-0 left-0 w-2 h-2 bg-black rounded-full animate-ping"></div>
+      </div>
+      <span style={{fontSize: "0.8rem", color: fadedText}}>Work in progress</span>
+    </div>
                 </div>
 
                 <div className="space-y-6">
