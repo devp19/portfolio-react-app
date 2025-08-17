@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dev Patel",
     description: "Software Engineer – Code, Cognition & Applied Research",
-    images: ["/og-image.png"],
+    images: ["/og-image-2.png"],
   },
 };
 
