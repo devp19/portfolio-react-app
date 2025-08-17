@@ -303,6 +303,22 @@ export default function ResDexPage() {
                   <div>
                     <div className="border-t border-gray-200" style={{ maxWidth: "80%", marginBottom: "1rem" }}></div>
 
+
+                    <h3 className="inline-flex items-center gap-2" style={{ color: fadedLabel, fontSize: "0.8rem", marginBottom: "0.5rem" }}>
+                      <IconInfoCircle size={"0.8rem"} color={textColor} /> Table of Contents
+                    </h3>
+                    <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
+                      <li><button onClick={() => smoothScrollToSection('introduction')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>Introduction</button></li>
+                      <li><button onClick={() => smoothScrollToSection('project-motive')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>Project Motive</button></li>
+                      <li><button onClick={() => smoothScrollToSection('tech-stack-selection')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>Tech Stack Selection</button></li>
+                      <li><button onClick={() => smoothScrollToSection('how-it-works')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>How It Works</button></li>
+                      <li><button onClick={() => smoothScrollToSection('future-plans')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>Future Plans</button></li>
+                    </ul>
+                  </div>
+
+                    <div className="border-t border-gray-200" style={{ maxWidth: "80%", marginBottom: "1rem" }}></div>
+
+  <div>
                     <h3 className="inline-flex items-center gap-2" style={{ color: fadedLabel, fontSize: "0.8rem", marginBottom: "0.5rem" }}>
                       <IconCalendar size={"0.8rem"} color={textColor} /> Details
                     </h3>
@@ -326,20 +342,8 @@ export default function ResDexPage() {
                     </ul>
                   </div>
 
-                  <div className="border-t border-gray-200" style={{ maxWidth: "80%", marginBottom: "1rem" }}></div>
 
-                  <div>
-                    <h3 className="inline-flex items-center gap-2" style={{ color: fadedLabel, fontSize: "0.8rem", marginBottom: "0.5rem" }}>
-                      <IconInfoCircle size={"0.8rem"} color={textColor} /> Table of Contents
-                    </h3>
-                    <ul style={{ color: fadedText, fontSize: "0.8rem" }}>
-                      <li><button onClick={() => smoothScrollToSection('introduction')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>Introduction</button></li>
-                      <li><button onClick={() => smoothScrollToSection('project-motive')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>Project Motive</button></li>
-                      <li><button onClick={() => smoothScrollToSection('tech-stack-selection')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>Tech Stack Selection</button></li>
-                      <li><button onClick={() => smoothScrollToSection('how-it-works')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>How It Works</button></li>
-                      <li><button onClick={() => smoothScrollToSection('future-plans')} style={{ color: fadedText, fontSize: "0.8rem", background: "none", border: "none", cursor: "pointer", padding: 0, textAlign: "left" }}>Future Plans</button></li>
-                    </ul>
-                  </div>
+                
                 </div>
               </div>
             </div>
