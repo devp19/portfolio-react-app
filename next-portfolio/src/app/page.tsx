@@ -218,7 +218,7 @@ export default function CanopyDemo() {
               }}
               tabIndex={0}
             >
-              where my creativity meets innovation
+              code, cognitive science, and applied research
              <CgArrowTopRight color={iconColor} />
             </a>
           </span>
