@@ -19,8 +19,12 @@ import {
 } from "react-icons/md";
 import { SlGraph } from "react-icons/sl";
 import { IoBookOutline, IoQrCode } from "react-icons/io5";
+import Example from "@/components/contribution";
+import { getCachedContributions } from '@/lib/github-contributions';
 
 import CustomCursor from "../CustomCursor";
+
+    const { contributions, total } = await getCachedContributions();
 
 export default function ResDexPage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -126,8 +130,9 @@ export default function ResDexPage() {
       : projects.filter((proj) => proj.tags.includes(activeTab));
 
   return (
+    
     <>
-
+    
       <main
         className={`min-h-screen px-6 py-12 font-sans transition-all duration-700 ease-in-out ${
           loaded && !exiting ? "opacity-100 blur-none" : "opacity-0 blur-sm"
@@ -142,7 +147,7 @@ export default function ResDexPage() {
             onMouseOver={(e) => (e.currentTarget.style.color = textColor)}
             onMouseOut={(e) => (e.currentTarget.style.color = fadedText)}
           >
-            ← Home
+            ← Home / Innovation
             <span
               className="absolute left-0 -bottom-0.5 h-0.25 w-full bg-current
                          origin-left scale-x-0
@@ -151,11 +156,11 @@ export default function ResDexPage() {
             />
           </button>
 
-          <div>
+          <div style={{ scale: 1 }}>
             <p
               style={{
                 color: fadedLabel,
-                fontSize: "0.8rem",
+                fontSize: "0.9rem",
                 marginBottom: "0.5rem",
               }}
             >
@@ -170,7 +175,12 @@ export default function ResDexPage() {
 
               <br />
               <br />
-              <span className="italic">
+              </p>
+
+              <Example data={contributions} total={total} />
+
+
+              {/* <span className="italic" style={{ fontSize: "0.8rem", color: fadedText }}>
                 Note: I'm still working on adding the remaining project
                 read-more pages! Until then, feel free to check out my GitHub:&nbsp;
                 <a
@@ -180,12 +190,13 @@ export default function ResDexPage() {
                 >
                   github.com/devp19
                 </a>
-              </span>
-            </p>
+              </span> */}
           </div>
+                            <div className="border-t border-gray-200" style={{ maxWidth: "100%" }}></div>
+
 
           <div
-            className="relative flex gap-2 mt-6"
+            className="relative flex gap-2"
             style={{ fontSize: "0.85rem", color: fadedText }}
           >
             {["All", "Research", "Full-Stack", "AI"].map((tab) => (
@@ -193,7 +204,7 @@ export default function ResDexPage() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
 className="
-  relative z-10 px-4 py-1 rounded-full select-none
+  relative z-10 px-4 rounded-full select-none
   bg-transparent                       /* starting state  */
   transition-colors duration-900 ease-out   /* smooth fade */
   hover:bg-[#f3f4f6]                   /* target color on hover */
@@ -298,6 +309,8 @@ className="
           </div>
         </div>
       </main>
+     
     </>
+    
   );
 }
