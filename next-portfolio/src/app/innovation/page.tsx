@@ -204,7 +204,7 @@ export default function ResDexPage() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
 className="
-  relative z-10 px-4 rounded-full select-none
+  relative z-10 px-4 py-1 rounded-full select-none
   bg-transparent                       /* starting state  */
   transition-colors duration-900 ease-out   /* smooth fade */
   hover:bg-[#f3f4f6]                   /* target color on hover */
